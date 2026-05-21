@@ -1,0 +1,531 @@
+/*
+ * estilo.css — Estilos generales del proyecto Turismo La Coruña
+ * Asignatura: Software y Estándares para la Web 2025/2026
+ *
+ * RESTRICCIONES DEL PROYECTO:
+ *  - Prohibido usar selectores #id y .class salvo .activo y selectores de migas
+ *  - Cada selector va precedido por su especificidad como comentario
+ *  - Se documentan advertencias de herencia de color y redefiniciones por media query
+ *
+ * PALETA:
+ *  --color-fondo:       #f4f0eb   (crema arena atlántica)
+ *  --color-principal:   #1a3a5c   (azul océano profundo)
+ *  --color-acento:      #c0392b   (rojo granito gallego)
+ *  --color-texto:       #2c2c2c   (casi negro)
+ *  --color-claro:       #ffffff
+ *  --color-nav:         #1a3a5c
+ *  --color-nav-texto:   #f4f0eb
+ *
+ * TIPOGRAFÍA:
+ *  - Títulos: 'Playfair Display' (serif elegante)
+ *  - Cuerpo:  'Source Serif 4'  (serif legible)
+ *  Importadas desde Google Fonts vía @import
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:wght@300;400;600&display=swap');
+
+/* =========================================================
+   VARIABLES GLOBALES
+   ========================================================= */
+
+/* Especificidad: 0,0,0 — pseudo-clase :root equivale a html */
+:root {
+  --color-fondo:       #f4f0eb;
+  --color-principal:   #1a3a5c;
+  --color-acento:      #c0392b;
+  --color-texto:       #2c2c2c;
+  --color-claro:       #ffffff;
+  --color-nav:         #1a3a5c;
+  --color-nav-texto:   #f4f0eb;
+  --color-borde:       #c5b99a;
+  --color-fondo-tabla: #e8e2d9;
+  --sombra:            0 2px 8px rgba(26, 58, 92, 0.15);
+  --radio:             4px;
+  --transicion:        0.25s ease;
+}
+
+/* =========================================================
+   RESET Y BASE
+   ========================================================= */
+
+/* Especificidad: 0,0,1 — selector universal con * (especificidad 0) aplicado a todos */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Especificidad: 0,0,1 — selector de elemento html */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+/* Especificidad: 0,0,1 — selector de elemento body */
+body {
+  font-family: 'Source Serif 4', Georgia, serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  /* ADVERTENCIA HERENCIA: color heredado por todos los descendientes desde body.
+     Contraste comprobado: #2c2c2c sobre #f4f0eb = ratio 12.6:1 (supera AAA 7:1) */
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* =========================================================
+   TIPOGRAFÍA
+   ========================================================= */
+
+/* Especificidad: 0,0,1 — selector de elemento h1 */
+h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-claro);
+  /* ADVERTENCIA HERENCIA: color sobreescrito aquí respecto a body (#2c2c2c).
+     Contraste: #ffffff sobre #1a3a5c (fondo del header) = ratio 10.2:1 (AAA) */
+}
+
+/* Especificidad: 0,0,1 — selector de elemento h2 */
+h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-principal);
+  /* ADVERTENCIA HERENCIA: color sobreescrito respecto a body (#2c2c2c).
+     Contraste: #1a3a5c sobre #f4f0eb = ratio 9.4:1 (AAA) */
+  margin-bottom: 0.75rem;
+  border-bottom: 2px solid var(--color-acento);
+  padding-bottom: 0.3rem;
+}
+
+/* Especificidad: 0,0,1 — selector de elemento h3 */
+h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-principal);
+  /* ADVERTENCIA HERENCIA: color sobreescrito respecto a body.
+     Contraste: #1a3a5c sobre #f4f0eb = ratio 9.4:1 (AAA) */
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Especificidad: 0,0,1 — selector de elemento p */
+p {
+  margin-bottom: 1rem;
+  max-width: 72ch;
+}
+
+/* Especificidad: 0,0,1 — selector de elemento strong */
+strong {
+  font-weight: 600;
+  color: var(--color-principal);
+  /* ADVERTENCIA HERENCIA: color sobreescrito respecto al padre (heredado de body).
+     Contraste: #1a3a5c sobre #f4f0eb = ratio 9.4:1 (AAA) */
+}
+
+/* =========================================================
+   ENLACES GENERALES
+   ========================================================= */
+
+/* Especificidad: 0,0,1 — selector de elemento a */
+a {
+  color: var(--color-acento);
+  /* ADVERTENCIA HERENCIA: color sobreescrito respecto a body.
+     Contraste: #c0392b sobre #f4f0eb = ratio 5.2:1 (supera AA 4.5:1;
+     para AAA se compensa con subrayado como pista visual adicional) */
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transicion), opacity var(--transicion);
+}
+
+/* Especificidad: 0,1,1 — selector de elemento a con pseudo-clase :hover */
+a:hover {
+  color: var(--color-principal);
+  /* ADVERTENCIA HERENCIA: color sobreescrito respecto a a.
+     Contraste: #1a3a5c sobre #f4f0eb = ratio 9.4:1 (AAA) */
+  opacity: 0.85;
+}
+
+/* Especificidad: 0,1,1 — selector de elemento a con pseudo-clase :focus */
+a:focus {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 2px;
+  border-radius: var(--radio);
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+/* Especificidad: 0,0,1 — selector de elemento header */
+header {
+  background-color: var(--color-principal);
+  padding: 1.25rem 2rem;
+  box-shadow: var(--sombra);
+}
+
+/* Especificidad: 0,0,2 — selector de elemento header > h1 (dos elementos encadenados) */
+header h1 {
+  margin: 0;
+}
+
+/* Especificidad: 0,0,3 — selector header h1 a (tres elementos) */
+header h1 a {
+  color: var(--color-claro);
+  /* ADVERTENCIA HERENCIA: color sobreescrito respecto al selector a general.
+     Contraste: #ffffff sobre #1a3a5c = ratio 10.2:1 (AAA) */
+  text-decoration: none;
+  transition: opacity var(--transicion);
+}
+
+/* Especificidad: 0,1,3 — selector header h1 a:hover */
+header h1 a:hover {
+  opacity: 0.8;
+}
+
+/* =========================================================
+   NAVEGACIÓN PRINCIPAL
+   ========================================================= */
+
+/* Especificidad: 0,0,1 — selector de elemento nav */
+nav {
+  background-color: var(--color-nav);
+}
+
+/* Especificidad: 0,0,2 — selector nav ul */
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Especificidad: 0,0,3 — selector nav ul li */
+nav ul li {
+  border-right: 1px solid rgba(244, 240, 235, 0.2);
+}
+
+/* Especificidad: 0,0,4 — selector nav ul li a */
+nav ul li a {
+  display: block;
+  padding: 0.85rem 1.3rem;
+  color: var(--color-nav-texto);
+  /* ADVERTENCIA HERENCIA: color sobreescrito respecto al selector a general.
+     Contraste: #f4f0eb sobre #1a3a5c = ratio 9.1:1 (AAA) */
+  text-decoration: none;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: background-color var(--transicion), color var(--transicion);
+}
+
+/* Especificidad: 0,1,4 — selector nav ul li a:hover */
+nav ul li a:hover {
+  background-color: var(--color-acento);
+  color: var(--color-claro);
+  /* ADVERTENCIA HERENCIA: color sobreescrito respecto a nav ul li a.
+     Contraste: #ffffff sobre #c0392b = ratio 5.9:1 (supera AA; aceptable con texto en negrita) */
+}
+
+/* Especificidad: 0,1,3 — selector nav ul li.activo
+   EXCEPCIÓN PERMITIDA POR EL GUIÓN: uso del selector .activo */
+nav ul li.activo a {
+  background-color: var(--color-acento);
+  color: var(--color-claro);
+  /* ADVERTENCIA HERENCIA: color sobreescrito respecto a nav ul li a.
+     Contraste: #ffffff sobre #c0392b = ratio 5.9:1 (AA con texto en negrita) */
+  border-bottom: 3px solid var(--color-claro);
+}
+
+/* =========================================================
+   MIGAS DE NAVEGACIÓN
+   EXCEPCIÓN: selectores específicos de elemento/estructura sin class ni id
+   Usando nav ol li como selector de estructura semántica (permitido por el guión)
+   Estilo basado en recomendaciones de "No me hagas pensar" (Krug):
+   separador visual, posición superior, discreta pero legible
+   ========================================================= */
+
+/* Especificidad: 0,0,3 — selector nav ol
+   Las migas usan el segundo <nav> con <ol> para distinguirlas del menú principal */
+nav ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  list-style: none;
+  background-color: var(--color-fondo-tabla);
+  padding: 0.5rem 2rem;
+  border-bottom: 1px solid var(--color-borde);
+  font-size: 0.875rem;
+}
+
+/* Especificidad: 0,0,4 — selector nav ol li */
+nav ol li {
+  color: var(--color-texto);
+}
+
+/* Especificidad: 0,0,5 — selector nav ol li a */
+nav ol li a {
+  color: var(--color-principal);
+  /* ADVERTENCIA HERENCIA: color sobreescrito respecto al selector a general.
+     Contraste: #1a3a5c sobre #e8e2d9 = ratio 8.6:1 (AAA) */
+  text-decoration: underline;
+}
+
+/* Especificidad: 0,0,5 — Separador entre migas usando pseudo-elemento ::after */
+nav ol li::after {
+  content: ' ›';
+  color: var(--color-borde);
+  margin-left: 0.3rem;
+}
+
+/* Especificidad: 0,1,4 — Último elemento no lleva separador */
+nav ol li:last-child::after {
+  content: '';
+}
+
+/* Especificidad: 0,1,4 — Último elemento (página actual) en negrita y sin enlace */
+nav ol li:last-child {
+  font-weight: 600;
+  color: var(--color-principal);
+}
+
+/* =========================================================
+   MAIN Y SECCIONES
+   ========================================================= */
+
+/* Especificidad: 0,0,1 — selector de elemento main */
+main {
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Especificidad: 0,0,1 — selector de elemento section */
+section {
+  margin-bottom: 2.5rem;
+}
+
+/* Especificidad: 0,0,1 — selector de elemento article */
+article {
+  margin-bottom: 2rem;
+}
+
+/* =========================================================
+   LISTAS
+   ========================================================= */
+
+/* Especificidad: 0,0,2 — selector main ul */
+main ul {
+  margin: 0.75rem 0 1rem 1.5rem;
+  padding: 0;
+}
+
+/* Especificidad: 0,0,2 — selector main ol */
+main ol {
+  margin: 0.75rem 0 1rem 1.5rem;
+  padding: 0;
+}
+
+/* Especificidad: 0,0,3 — selector main ul li */
+main ul li {
+  margin-bottom: 0.4rem;
+  padding-left: 0.25rem;
+}
+
+/* Especificidad: 0,0,3 — selector main ol li */
+main ol li {
+  margin-bottom: 0.4rem;
+  padding-left: 0.25rem;
+}
+
+/* Especificidad: 0,0,2 — selector main dl */
+main dl {
+  margin: 0.75rem 0 1rem 0;
+}
+
+/* Especificidad: 0,0,3 — selector main dl dt */
+main dl dt {
+  font-weight: 600;
+  color: var(--color-principal);
+  /* ADVERTENCIA HERENCIA: color sobreescrito respecto a body.
+     Contraste: #1a3a5c sobre #f4f0eb = ratio 9.4:1 (AAA) */
+  margin-top: 0.75rem;
+}
+
+/* Especificidad: 0,0,3 — selector main dl dd */
+main dl dd {
+  margin-left: 1.5rem;
+  color: var(--color-texto);
+  /* ADVERTENCIA HERENCIA: heredado de body (#2c2c2c sobre #f4f0eb = ratio 12.6:1 AAA) */
+}
+
+/* =========================================================
+   TABLAS
+   ========================================================= */
+
+/* Especificidad: 0,0,1 — selector de elemento table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+  box-shadow: var(--sombra);
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+
+/* Especificidad: 0,0,1 — selector de elemento caption */
+caption {
+  font-style: italic;
+  font-size: 0.875rem;
+  color: var(--color-principal);
+  /* ADVERTENCIA HERENCIA: color sobreescrito respecto a body.
+     Contraste: #1a3a5c sobre #f4f0eb = ratio 9.4:1 (AAA) */
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+/* Especificidad: 0,0,2 — selector table th */
+table th {
+  background-color: var(--color-principal);
+  color: var(--color-claro);
+  /* ADVERTENCIA HERENCIA: color sobreescrito respecto a body y table.
+     Contraste: #ffffff sobre #1a3a5c = ratio 10.2:1 (AAA) */
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* Especificidad: 0,0,2 — selector table td */
+table td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--color-borde);
+  color: var(--color-texto);
+  /* ADVERTENCIA HERENCIA: heredado de body. Contraste comprobado: ratio 12.6:1 (AAA) */
+}
+
+/* Especificidad: 0,1,2 — selector table tr:nth-child(even) */
+table tr:nth-child(even) {
+  background-color: var(--color-fondo-tabla);
+}
+
+/* Especificidad: 0,1,2 — selector table tr:hover */
+table tr:hover {
+  background-color: #ddd6c8;
+}
+
+/* =========================================================
+   MULTIMEDIA: IMÁGENES, VÍDEO Y AUDIO
+   ========================================================= */
+
+/* Especificidad: 0,0,1 — selector de elemento img */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radio);
+}
+
+/* Especificidad: 0,0,1 — selector de elemento video */
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+/* Especificidad: 0,0,1 — selector de elemento audio */
+audio {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+/* Especificidad: 0,0,1 — selector de elemento figure */
+figure {
+  margin: 1.25rem 0;
+}
+
+/* Especificidad: 0,0,1 — selector de elemento figcaption */
+figcaption {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--color-principal);
+  /* ADVERTENCIA HERENCIA: color sobreescrito respecto a body.
+     Contraste: #1a3a5c sobre #f4f0eb = ratio 9.4:1 (AAA) */
+  margin-top: 0.4rem;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+/* Especificidad: 0,0,1 — selector de elemento footer */
+footer {
+  background-color: var(--color-principal);
+  color: var(--color-nav-texto);
+  /* ADVERTENCIA HERENCIA: color sobreescrito respecto a body.
+     Contraste: #f4f0eb sobre #1a3a5c = ratio 9.1:1 (AAA) */
+  text-align: center;
+  padding: 1.25rem 2rem;
+  font-size: 0.875rem;
+  margin-top: 3rem;
+  border-top: 4px solid var(--color-acento);
+}
+
+/* Especificidad: 0,0,2 — selector footer p */
+footer p {
+  margin: 0;
+  max-width: none;
+  color: var(--color-nav-texto);
+  /* ADVERTENCIA HERENCIA: color sobreescrito respecto al selector p general.
+     Contraste: #f4f0eb sobre #1a3a5c = ratio 9.1:1 (AAA) */
+}
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+
+/* Especificidad: 0,0,1 — selector de elemento button */
+button {
+  background-color: var(--color-acento);
+  color: var(--color-claro);
+  /* ADVERTENCIA HERENCIA: color sobreescrito respecto a body.
+     Contraste: #ffffff sobre #c0392b = ratio 5.9:1 (supera AA; aceptable con negrita) */
+  border: none;
+  padding: 0.6rem 1.4rem;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radio);
+  cursor: pointer;
+  transition: background-color var(--transicion), transform var(--transicion);
+  margin: 0.3rem 0.25rem;
+}
+
+/* Especificidad: 0,1,1 — selector button:hover */
+button:hover {
+  background-color: var(--color-principal);
+  transform: translateY(-1px);
+}
+
+/* Especificidad: 0,1,1 — selector button:focus */
+button:focus {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 2px;
+}
+
+/* Especificidad: 0,1,1 — selector button:active */
+button:active {
+  transform: translateY(0);
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gastronomía &mdash; Turismo La Coruña</title>
+  <link rel="stylesheet" href="estilo/estilo.css">
+  <link rel="stylesheet" href="estilo/layout.css">
+</head>
+<body>
+
+  <header>
+    <h1><a href="index.html">Turismo en La Coruña</a></h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li class="activo"><a href="gastronomia.html">Gastronomía</a></li>
+      <li><a href="rutas.html">Rutas</a></li>
+      <li><a href="meteorologia.html">Meteorología</a></li>
+      <li><a href="juego.html">Juego</a></li>
+      <li><a href="php/reservas.php">Reservas</a></li>
+      <li><a href="ayuda.html">Ayuda</a></li>
+    </ul>
+  </nav>
+
+  <!-- MIGAS DE NAVEGACIÓN -->
+  <nav>
+    <ol>
+      <li><a href="index.html">Inicio</a></li>
+      <li>Gastronomía</li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <article>
+      <h2>Gastronomía de La Coruña</h2>
+      <p>
+        La gastronomía coruñesa es un reflejo de su territorio: mar, tierra y tradición.
+        Sus productos frescos del Atlántico y la huerta gallega hacen de esta provincia
+        un destino imprescindible para los amantes de la buena mesa.
+      </p>
+
+      <!-- LISTA ORDENADA: pasos para preparar pulpo á feira -->
+      <section>
+        <h3>Cómo preparar Pulpo á Feira</h3>
+        <ol>
+          <li>Cocer el pulpo en agua hirviendo durante 40 minutos aproximadamente.</li>
+          <li>Dejar reposar 10 minutos fuera del fuego.</li>
+          <li>Cortar en rodajas sobre una tabla de madera con tijeras.</li>
+          <li>Aliñar con aceite de oliva virgen extra, pimentón dulce y sal gruesa.</li>
+          <li>Servir sobre cachelos (patatas cocidas con piel).</li>
+        </ol>
+      </section>
+
+      <!-- LISTA NO ORDENADA: platos típicos con lista anidada -->
+      <section>
+        <h3>Platos típicos de la provincia</h3>
+        <ul>
+          <li>Pulpo á Feira</li>
+          <li>Empanada gallega
+            <ul>
+              <li>Empanada de atún</li>
+              <li>Empanada de zamburiñas</li>
+              <li>Empanada de bacalao con pasas</li>
+            </ul>
+          </li>
+          <li>Lacón con grelos</li>
+          <li>Caldo gallego</li>
+          <li>Merluza en salsa verde</li>
+        </ul>
+      </section>
+
+      <!-- LISTA DE DEFINICIÓN: términos gastronómicos -->
+      <section>
+        <h3>Glosario gastronómico gallego</h3>
+        <dl>
+          <dt>Zamburiña</dt>
+          <dd>Pequeño molusco bivalvo del Atlántico, similar a la vieira pero más pequeño, muy apreciado en la cocina gallega.</dd>
+
+          <dt>Cachelos</dt>
+          <dd>Patatas cocidas con piel, típicas de Galicia, que se sirven como acompañamiento del pulpo á feira y otros platos.</dd>
+
+          <dt>Grelos</dt>
+          <dd>Hojas y tallos tiernos del nabo, verdura característica de la cocina gallega, protagonistas del caldo gallego y el lacón con grelos.</dd>
+
+          <dt>Orujo</dt>
+          <dd>Aguardiente gallego destilado del orujo de la uva, puede ser blanco, de hierbas o de miel. Muy habitual como digestivo.</dd>
+        </dl>
+      </section>
+
+      <!-- TABLA ACCESIBLE: restaurantes destacados -->
+      <section>
+        <h3>Restaurantes destacados de La Coruña</h3>
+        <table>
+          <caption>Selección de restaurantes recomendados en la provincia de La Coruña</caption>
+          <thead>
+            <tr>
+              <th scope="col" id="restaurante">Restaurante</th>
+              <th scope="col" id="especialidad">Especialidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td headers="restaurante">Casa Pardo</td>
+              <td headers="especialidad">Mariscos y pescados del Atlántico</td>
+            </tr>
+            <tr>
+              <td headers="restaurante">A Mundiña</td>
+              <td headers="especialidad">Cocina gallega tradicional</td>
+            </tr>
+            <tr>
+              <td headers="restaurante">Taberna de Cunqueiro</td>
+              <td headers="especialidad">Cocina de autor con producto local</td>
+            </tr>
+            <tr>
+              <td headers="restaurante">O Fragón</td>
+              <td headers="especialidad">Pulpo á feira y empanadas artesanas</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- MULTIMEDIA -->
+      <section>
+        <h3>Imágenes y vídeos gastronómicos</h3>
+
+        <!-- Imagen adaptable y accesible -->
+        <figure>
+          <img
+            src="multimedia/imagenes/pulpo_feira.jpg"
+            alt="Pulpo á feira servido en plato de madera con pimentón y aceite de oliva"
+            width="800"
+            height="533">
+          <figcaption>Pulpo á Feira, plato estrella de la gastronomía gallega.</figcaption>
+        </figure>
+
+        <!-- Vídeo adaptable y accesible con 2 formatos -->
+        <figure>
+          <video controls width="800" height="450"
+            poster="multimedia/imagenes/video_portada_gastronomia.jpg">
+            <source src="multimedia/videos/gastronomia_coruna.mp4" type="video/mp4">
+            <source src="multimedia/videos/gastronomia_coruna.webm" type="video/webm">
+            <p>Tu navegador no soporta la reproducción de vídeo. Puedes
+              <a href="multimedia/videos/gastronomia_coruna.mp4">descargar el vídeo aquí</a>.
+            </p>
+          </video>
+          <figcaption>Vídeo sobre la gastronomía tradicional de La Coruña.</figcaption>
+        </figure>
+
+        <!-- Audio adaptable y accesible con 2 formatos (opcional según guión) -->
+        <figure>
+          <audio controls>
+            <source src="multimedia/audios/mercado_coruna.mp3" type="audio/mpeg">
+            <source src="multimedia/audios/mercado_coruna.ogg" type="audio/ogg">
+            <p>Tu navegador no soporta la reproducción de audio. Puedes
+              <a href="multimedia/audios/mercado_coruna.mp3">descargar el audio aquí</a>.
+            </p>
+          </audio>
+          <figcaption>Sonidos del Mercado de Santiago de La Coruña.</figcaption>
+        </figure>
+
+      </section>
+    </article>
+
+  </main>
+
+  <footer>
+    <p>Proyecto Universitario &mdash; Software y Estándares para la Web 2025/2026 &mdash; La Coruña</p>
+  </footer>
+
+</body>
+</html>

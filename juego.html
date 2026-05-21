@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego &mdash; Turismo La Coruña</title>
+  <link rel="stylesheet" href="estilo/estilo.css">
+  <link rel="stylesheet" href="estilo/layout.css">
+</head>
+<body>
+
+  <header>
+    <h1><a href="index.html">Turismo en La Coruña</a></h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="gastronomia.html">Gastronomía</a></li>
+      <li><a href="rutas.html">Rutas</a></li>
+      <li><a href="meteorologia.html">Meteorología</a></li>
+      <li class="activo"><a href="juego.html">Juego</a></li>
+      <li><a href="php/reservas.php">Reservas</a></li>
+      <li><a href="ayuda.html">Ayuda</a></li>
+    </ul>
+  </nav>
+
+  <!-- MIGAS DE NAVEGACIÓN -->
+  <nav>
+    <ol>
+      <li><a href="index.html">Inicio</a></li>
+      <li>Juego</li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <section>
+      <h2>¿Cuánto sabes de La Coruña?</h2>
+      <p>
+        Responde correctamente las 10 preguntas sobre los recursos turísticos de
+        La Coruña y obtén tu puntuación final. Debes responder todas las preguntas
+        para completar el juego.
+      </p>
+      <p>
+        <strong>Instrucciones:</strong> Selecciona una de las 5 opciones de respuesta
+        para cada pregunta y pulsa "Siguiente". Al finalizar verás tu puntuación de 0 a 10.
+      </p>
+    </section>
+
+    <!-- Contenedor del juego, gestionado íntegramente por js/juego.js (ECMAScript puro, OOP) -->
+    <section>
+      <h2>Preguntas</h2>
+      <!-- js/juego.js inyecta aquí las preguntas y los controles -->
+      <p>Cargando juego...</p>
+    </section>
+
+    <!-- Resultado final, mostrado por js/juego.js al terminar -->
+    <section>
+      <h2>Tu puntuación</h2>
+      <p>Completa el juego para ver tu puntuación.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Proyecto Universitario &mdash; Software y Estándares para la Web 2025/2026 &mdash; La Coruña</p>
+  </footer>
+
+  <!-- ECMAScript puro (sin jQuery), paradigma orientado a objetos obligatorio -->
+  <script src="js/juego.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turismo La Coruña</title>
+  <link rel="stylesheet" href="estilo/estilo.css">
+  <link rel="stylesheet" href="estilo/layout.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+  <header>
+    <h1><a href="index.html">Turismo en La Coruña</a></h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li class="activo"><a href="index.html">Inicio</a></li>
+      <li><a href="gastronomia.html">Gastronomía</a></li>
+      <li><a href="rutas.html">Rutas</a></li>
+      <li><a href="meteorologia.html">Meteorología</a></li>
+      <li><a href="juego.html">Juego</a></li>
+      <li><a href="php/reservas.php">Reservas</a></li>
+      <li><a href="ayuda.html">Ayuda</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section>
+      <h2>Bienvenidos a La Coruña</h2>
+      <p>
+        La Coruña es una ciudad costera del noroeste de España, capital de la provincia homónima en
+        Galicia. Conocida por su Torre de Hércules, el faro romano más antiguo del mundo en uso,
+        la ciudad combina historia, gastronomía, rutas naturales y una vibrante vida cultural.
+      </p>
+    </section>
+
+    <!-- CARRUSEL DE FOTOS -->
+    <section>
+      <h2>Galería de la Provincia</h2>
+      <figure>
+        <img src="multimedia/imagenes/carrusel1.jpg" alt="Torre de Hércules, faro romano Patrimonio de la Humanidad">
+      </figure>
+      <!-- El carrusel es gestionado por js/carrusel.js -->
+      <p>
+        <button type="button">&#8249; Anterior</button>
+        <button type="button">Siguiente &#8250;</button>
+      </p>
+    </section>
+
+    <!-- NOTICIAS (consumo de servicio web via jQuery) -->
+    <section>
+      <h2>Noticias sobre La Coruña</h2>
+      <p>Cargando noticias...</p>
+      <!-- El contenido es inyectado por js/noticias.js -->
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Proyecto Universitario &mdash; Software y Estándares para la Web 2025/2026 &mdash; La Coruña</p>
+  </footer>
+
+  <script src="js/carrusel.js"></script>
+  <script src="js/noticias.js"></script>
+
+</body>
+</html>

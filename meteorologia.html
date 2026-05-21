@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meteorología &mdash; Turismo La Coruña</title>
+  <link rel="stylesheet" href="estilo/estilo.css">
+  <link rel="stylesheet" href="estilo/layout.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+  <header>
+    <h1><a href="index.html">Turismo en La Coruña</a></h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="gastronomia.html">Gastronomía</a></li>
+      <li><a href="rutas.html">Rutas</a></li>
+      <li class="activo"><a href="meteorologia.html">Meteorología</a></li>
+      <li><a href="juego.html">Juego</a></li>
+      <li><a href="php/reservas.php">Reservas</a></li>
+      <li><a href="ayuda.html">Ayuda</a></li>
+    </ul>
+  </nav>
+
+  <!-- MIGAS DE NAVEGACIÓN -->
+  <nav>
+    <ol>
+      <li><a href="index.html">Inicio</a></li>
+      <li>Meteorología</li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <section>
+      <h2>Tiempo actual en La Coruña</h2>
+      <p>Información meteorológica en tiempo real para la capital de la provincia.</p>
+      <!-- Contenido inyectado por js/meteorologia.js mediante servicio web -->
+      <p>Cargando datos meteorológicos actuales...</p>
+    </section>
+
+    <section>
+      <h2>Previsión para los próximos 7 días</h2>
+      <p>Previsión meteorológica para La Coruña capital.</p>
+      <!-- Contenido inyectado por js/meteorologia.js mediante servicio web -->
+      <p>Cargando previsión semanal...</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Proyecto Universitario &mdash; Software y Estándares para la Web 2025/2026 &mdash; La Coruña</p>
+  </footer>
+
+  <script src="js/meteorologia.js"></script>
+
+</body>
+</html>

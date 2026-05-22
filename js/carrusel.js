@@ -200,27 +200,27 @@ $(function () {
   // Todas las imágenes son archivos locales en multimedia/imagenes/
   const diapositivas = [
     new Diapositiva(
-      "multimedia/imagenes/carrusel_torre_hercules.jpg",
+      "multimedia/imagenes/torre de hercules al atardecer.jpg",
       "Torre de Hércules al atardecer, faro romano Patrimonio de la Humanidad de La Coruña",
       "Torre de Hércules — Faro romano del siglo II d.C., Patrimonio de la Humanidad UNESCO"
     ),
     new Diapositiva(
-      "multimedia/imagenes/carrusel_paseo_maritimo.jpg",
+      "multimedia/imagenes/paseo maritimo de la coruna.jpg",
       "Paseo Marítimo de La Coruña con el Atlántico al fondo y paseantes",
       "Paseo Marítimo — Uno de los paseos costeros más largos de Europa (13 km)"
     ),
     new Diapositiva(
-      "multimedia/imagenes/carrusel_playa_riazor.jpg",
+      "multimedia/imagenes/playa de riazor.jpg",
       "Playa de Riazor con arena blanca y aguas del Atlántico en un día soleado",
       "Playa de Riazor — La playa urbana más emblemática de La Coruña"
     ),
     new Diapositiva(
-      "multimedia/imagenes/carrusel_casco_antiguo.jpg",
+      "multimedia/imagenes/galerias de cristal.jpg",
       "Casco antiguo de La Coruña con sus galerías de cristal características",
       "Ciudad de Cristal — Las galerías acristaladas del casco antiguo, símbolo de la ciudad"
     ),
     new Diapositiva(
-      "multimedia/imagenes/carrusel_mapa_provincia.jpg",
+      "multimedia/imagenes/situacion la coruna.png",
       "Mapa de situación de la provincia de La Coruña en el noroeste de España, en Galicia",
       "📍 Situación — La Coruña se encuentra en el extremo noroeste de la Península Ibérica"
     )

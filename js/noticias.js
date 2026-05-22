@@ -220,11 +220,11 @@ class ServicioNoticias {
  */
 $(function () {
   // ⚠️ SUSTITUIR por la clave real obtenida en https://gnews.io (plan gratuito)
-  const API_KEY = "TU_API_KEY_AQUI";
+  const API_KEY = "4b08f6a20815d3d0a4951d0e094da478";
 
   const servicio = new ServicioNoticias(
     API_KEY,
-    "La Coruña turismo Galicia",
+    "La Coruña",
     5
   );
   servicio.inicializar();

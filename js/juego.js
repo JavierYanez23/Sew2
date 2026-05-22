@@ -68,6 +68,16 @@ class ResultadoRespuesta {
     this.indiceSeleccionado = indiceSeleccionado;
     this.acertada           = pregunta.esCorrecta(indiceSeleccionado);
   }
+
+  /**
+   * Devuelve un resumen legible de la respuesta (útil para el informe final).
+   * @returns {string}
+   */
+  descripcion() {
+    const correcta = this.pregunta.respuestaCorrecta();
+    const elegida  = this.pregunta.opciones[this.indiceSeleccionado];
+    return `${this.acertada ? 'ACERTADA' : 'FALLADA'} — Elegida: "${elegida}"; Correcta: "${correcta}"`;
+  }
 }
 
 /**
@@ -194,7 +204,7 @@ class Juego {
       return;
     }
 
-    const indiceSeleccionado = parseInt(seleccionado.value, 10);
+    const indiceSeleccionado = Number.parseInt(seleccionado.value, 10);
     const pregunta           = this.preguntas[this.indiceActual];
     this.respuestas.push(new ResultadoRespuesta(pregunta, indiceSeleccionado));
 

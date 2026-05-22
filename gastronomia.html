@@ -13,7 +13,7 @@
     <h1><a href="index.html">Turismo en La Coruña</a></h1>
   </header>
 
-  <nav>
+  <nav aria-label="Menú principal">
     <ul>
       <li><a href="index.html">Inicio</a></li>
       <li class="activo"><a href="gastronomia.html">Gastronomía</a></li>
@@ -26,7 +26,7 @@
   </nav>
 
   <!-- MIGAS DE NAVEGACIÓN -->
-  <nav>
+  <nav aria-label="Migas de pan">
     <ol>
       <li><a href="index.html">Inicio</a></li>
       <li>Gastronomía</li>
@@ -141,6 +141,8 @@
         <figure>
           <video controls width="800" height="450"
             poster="multimedia/imagenes/video_portada_gastronomia.jpg">
+            <track kind="subtitles" srclang="es" label="Español" src="multimedia/subtitles/gastronomia_coruna_es.vtt" default>
+            <track kind="descriptions" srclang="es" label="Descripción" src="multimedia/subtitles/gastronomia_coruna_desc_es.vtt">
             <source src="multimedia/videos/gastronomia_coruna.mp4" type="video/mp4">
             <source src="multimedia/videos/gastronomia_coruna.webm" type="video/webm">
             <p>Tu navegador no soporta la reproducción de vídeo. Puedes

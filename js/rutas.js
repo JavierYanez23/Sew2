@@ -33,9 +33,9 @@ class HitoRuta {
     this.nombre      = this._texto(nodoXML, "nombre");
     this.descripcion = this._texto(nodoXML, "descripcion").trim().replace(/\s+/g, " ");
     const coord      = nodoXML.querySelector("coordenadas");
-    this.longitud    = parseFloat(this._texto(coord, "longitud") || "0");
-    this.latitud     = parseFloat(this._texto(coord, "latitud")  || "0");
-    this.altitud     = parseFloat(this._texto(coord, "altitud")  || "0");
+    this.longitud    = Number.parseFloat(this._texto(coord, "longitud") || "0");
+    this.latitud     = Number.parseFloat(this._texto(coord, "latitud")  || "0");
+    this.altitud     = Number.parseFloat(this._texto(coord, "altitud")  || "0");
     const distElem   = nodoXML.querySelector("distanciaDesdeAnterior");
     this.distancia   = distElem ? distElem.textContent.trim() : "0";
     this.unidades    = distElem ? (distElem.getAttribute("unidades") || "m") : "m";
@@ -144,9 +144,9 @@ class Ruta {
     this.altimetria   = nodoXML.querySelector("altimetria")?.getAttribute("archivo") || "";
 
     const coordIni    = nodoXML.querySelector("coordenadasInicio");
-    this.latInicio    = parseFloat(this._texto(coordIni, "latitud")  || "43.36");
-    this.lonInicio    = parseFloat(this._texto(coordIni, "longitud") || "-8.41");
-    this.altInicio    = parseFloat(this._texto(coordIni, "altitud")  || "0");
+    this.latInicio    = Number.parseFloat(this._texto(coordIni, "latitud")  || "43.36");
+    this.lonInicio    = Number.parseFloat(this._texto(coordIni, "longitud") || "-8.41");
+    this.altInicio    = Number.parseFloat(this._texto(coordIni, "altitud")  || "0");
 
     this.referencias  = Array.from(nodoXML.querySelectorAll("referencias referencia"))
                             .map(r => r.textContent.trim());
@@ -155,12 +155,6 @@ class Ruta {
                      .map(h => new HitoRuta(h));
   }
 
-  /** @private */
-  _texto(nodo, tag) {
-    if (!nodo) return "";
-    const hijo = nodo.querySelector(tag);
-    return hijo ? hijo.textContent : "";
-  }
 
   /**
    * Genera el HTML completo de la ficha de ruta como objeto jQuery.
@@ -237,7 +231,7 @@ class Ruta {
  */
 class GestorMapas {
   constructor() {
-    this.mapaActual = null;
+    GestorMapas.mapaActual = null;
   }
 
   /**
@@ -304,7 +298,7 @@ class GestorMapas {
       // Ajustar vista al extent del KML cuando cargue
       capaKML.getSource().once("change", () => {
         const extent = capaKML.getSource().getExtent();
-        if (extent && isFinite(extent[0])) {
+        if (extent && Number.isFinite(extent[0])) {
           this.mapaActual.getView().fit(extent, {
             padding : [40, 40, 40, 40],
             maxZoom : 15

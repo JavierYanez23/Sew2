@@ -129,7 +129,7 @@ def generar_svg_ruta(ruta: ET.Element, directorio_salida: str) -> None:
             dist_m = 0.0
         # Si la distancia declarada es 0 pero no es el inicio, usar haversine
         prev = puntos[-1]
-        if dist_m == 0.0 and len(puntos) > 0:
+        if dist_m == 0 and len(puntos) > 0:
             dist_m = haversine_metros(prev[3], prev[4], lat_h, lon_h)
         dist_acum = prev[0] + dist_m
         puntos.append((dist_acum, alt_h, nombre_hito[:25], lat_h, lon_h))

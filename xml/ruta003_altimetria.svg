@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ruta003_altimetria.svg
+  Altimetría de: Ruta en Bicicleta por las Rías Altas
+  Generado por generar_svg.py
+  Proyecto: Turismo en La Coruña | UO301366
+  Polilínea cerrada con referencias de escala horizontal y vertical en metros.
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="900" height="480"
+     viewBox="0 0 900 480"
+     role="img"
+     aria-label="Perfil altimétrico de la ruta: Ruta en Bicicleta por las Rías Altas">
+
+  <title>Perfil altimétrico: Ruta en Bicicleta por las Rías Altas</title>
+  <desc>
+    Gráfico SVG del perfil de elevación de la ruta turística "Ruta en Bicicleta por las Rías Altas"
+    de la provincia de La Coruña. Eje horizontal: distancia en metros.
+    Eje vertical: altitud en metros sobre el nivel del mar.
+  </desc>
+
+  <!-- Fondo del SVG -->
+  <rect width="900" height="480" fill="#f4f0eb" rx="8"/>
+
+  <!-- Área del gráfico (fondo blanco) -->
+  <rect x="80" y="50"
+        width="780" height="330"
+        fill="white" stroke="#2c2c2c" stroke-width="1.5" rx="2"/>
+
+  <!-- Título del gráfico -->
+  <text x="450" y="32"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="16"
+        font-weight="bold"
+        fill="#1a3a5c">
+    Altimetría: Ruta en Bicicleta por las Rías Altas
+  </text>
+
+  <!-- Cuadrícula horizontal (altitud) -->
+  <line x1="80" y1="380.0" x2="860" y2="380.0" stroke="#c5b99a" stroke-width="0.5" stroke-dasharray="4,4"/>
+    <line x1="80" y1="314.0" x2="860" y2="314.0" stroke="#c5b99a" stroke-width="0.5" stroke-dasharray="4,4"/>
+    <line x1="80" y1="248.0" x2="860" y2="248.0" stroke="#c5b99a" stroke-width="0.5" stroke-dasharray="4,4"/>
+    <line x1="80" y1="182.0" x2="860" y2="182.0" stroke="#c5b99a" stroke-width="0.5" stroke-dasharray="4,4"/>
+    <line x1="80" y1="116.0" x2="860" y2="116.0" stroke="#c5b99a" stroke-width="0.5" stroke-dasharray="4,4"/>
+    <line x1="80" y1="50.0" x2="860" y2="50.0" stroke="#c5b99a" stroke-width="0.5" stroke-dasharray="4,4"/>
+    
+
+  <!-- Cuadrícula vertical (distancia) -->
+  <line x1="80.0" y1="50" x2="80.0" y2="380" stroke="#c5b99a" stroke-width="0.5" stroke-dasharray="4,4"/>
+    <line x1="210.0" y1="50" x2="210.0" y2="380" stroke="#c5b99a" stroke-width="0.5" stroke-dasharray="4,4"/>
+    <line x1="340.0" y1="50" x2="340.0" y2="380" stroke="#c5b99a" stroke-width="0.5" stroke-dasharray="4,4"/>
+    <line x1="470.0" y1="50" x2="470.0" y2="380" stroke="#c5b99a" stroke-width="0.5" stroke-dasharray="4,4"/>
+    <line x1="600.0" y1="50" x2="600.0" y2="380" stroke="#c5b99a" stroke-width="0.5" stroke-dasharray="4,4"/>
+    <line x1="730.0" y1="50" x2="730.0" y2="380" stroke="#c5b99a" stroke-width="0.5" stroke-dasharray="4,4"/>
+    <line x1="860.0" y1="50" x2="860.0" y2="380" stroke="#c5b99a" stroke-width="0.5" stroke-dasharray="4,4"/>
+    
+
+  <!-- Escala eje Y (altitud en metros) -->
+  <text x="72" y="384.0" text-anchor="end" font-size="11" fill="#2c2c2c">-1 m</text>
+    <text x="72" y="318.0" text-anchor="end" font-size="11" fill="#2c2c2c">4 m</text>
+    <text x="72" y="252.0" text-anchor="end" font-size="11" fill="#2c2c2c">11 m</text>
+    <text x="72" y="186.0" text-anchor="end" font-size="11" fill="#2c2c2c">18 m</text>
+    <text x="72" y="120.0" text-anchor="end" font-size="11" fill="#2c2c2c">25 m</text>
+    <text x="72" y="54.0" text-anchor="end" font-size="11" fill="#2c2c2c">31 m</text>
+    
+
+  <!-- Escala eje X (distancia) -->
+  <text x="80.0" y="398" text-anchor="middle" font-size="11" fill="#2c2c2c">0.0 km</text>
+    <text x="210.0" y="398" text-anchor="middle" font-size="11" fill="#2c2c2c">7.5 km</text>
+    <text x="340.0" y="398" text-anchor="middle" font-size="11" fill="#2c2c2c">15.0 km</text>
+    <text x="470.0" y="398" text-anchor="middle" font-size="11" fill="#2c2c2c">22.5 km</text>
+    <text x="600.0" y="398" text-anchor="middle" font-size="11" fill="#2c2c2c">30.1 km</text>
+    <text x="730.0" y="398" text-anchor="middle" font-size="11" fill="#2c2c2c">37.6 km</text>
+    <text x="860.0" y="398" text-anchor="middle" font-size="11" fill="#2c2c2c">45.1 km</text>
+    
+
+  <!-- Etiqueta eje Y -->
+  <text transform="rotate(-90, 18, 215)" x="18" y="215" text-anchor="middle" font-size="13" fill="#1a3a5c" font-weight="bold">Altitud (m)</text>
+
+  <!-- Etiqueta eje X -->
+  <text x="470" y="472" text-anchor="middle" font-size="13" fill="#1a3a5c" font-weight="bold">Distancia</text>
+
+  <!-- POLILÍNEA CERRADA: relleno del perfil de elevación -->
+  <polygon
+    points="80.0,332.2 80.0,332.2 391.4,312.6 529.8,341.9 650.9,322.4 858.4,117.4 859.8,88.1 860.0,332.2 860.0,380.0 80.0,380.0 80.0,332.2"
+    fill="#7bafd4"
+    fill-opacity="0.4"
+    stroke="none"/>
+
+  <!-- POLILÍNEA: contorno del perfil de elevación -->
+  <polyline
+    points="80.0,332.2 80.0,332.2 391.4,312.6 529.8,341.9 650.9,322.4 858.4,117.4 859.8,88.1 860.0,332.2"
+    fill="none"
+    stroke="#1a3a5c"
+    stroke-width="2.5"
+    stroke-linejoin="round"
+    stroke-linecap="round"/>
+
+  <!-- Hitos del recorrido con etiquetas -->
+  <circle cx="80.0" cy="332.2" r="4" fill="#1a3a5c" stroke="white" stroke-width="1.5"/>
+    <line x1="80.0" y1="332.2" x2="80.0" y2="380" stroke="#1a3a5c" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.5"/>
+    <text transform="rotate(-90, 80.0, 405)" x="80.0" y="405" text-anchor="start" font-size="10" fill="#1a3a5c" font-weight="bold">Inicio</text>
+    <text x="86.0" y="326.2" font-size="10" fill="#2c2c2c">3 m</text>
+    <circle cx="80.0" cy="332.2" r="4" fill="#1a3a5c" stroke="white" stroke-width="1.5"/>
+    <line x1="80.0" y1="332.2" x2="80.0" y2="380" stroke="#1a3a5c" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.5"/>
+    <text transform="rotate(-90, 80.0, 405)" x="80.0" y="405" text-anchor="start" font-size="10" fill="#1a3a5c" font-weight="bold">Puerto de La Coruña</text>
+    <text x="86.0" y="326.2" font-size="10" fill="#2c2c2c">3 m</text>
+    <circle cx="391.4" cy="312.6" r="4" fill="#1a3a5c" stroke="white" stroke-width="1.5"/>
+    <line x1="391.4" y1="312.6" x2="391.4" y2="380" stroke="#1a3a5c" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.5"/>
+    <text transform="rotate(-90, 391.4, 405)" x="391.4" y="405" text-anchor="start" font-size="10" fill="#1a3a5c" font-weight="bold">Sada y su Puerto Pesquero</text>
+    <text x="397.4" y="306.6" font-size="10" fill="#2c2c2c">5 m</text>
+    <circle cx="529.8" cy="341.9" r="4" fill="#1a3a5c" stroke="white" stroke-width="1.5"/>
+    <line x1="529.8" y1="341.9" x2="529.8" y2="380" stroke="#1a3a5c" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.5"/>
+    <text transform="rotate(-90, 529.8, 405)" x="529.8" y="405" text-anchor="start" font-size="10" fill="#1a3a5c" font-weight="bold">Playa de Gandarío</text>
+    <text x="535.8" y="335.9" font-size="10" fill="#2c2c2c">2 m</text>
+    <circle cx="650.9" cy="322.4" r="4" fill="#1a3a5c" stroke="white" stroke-width="1.5"/>
+    <line x1="650.9" y1="322.4" x2="650.9" y2="380" stroke="#1a3a5c" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.5"/>
+    <text transform="rotate(-90, 650.9, 405)" x="650.9" y="405" text-anchor="start" font-size="10" fill="#1a3a5c" font-weight="bold">Miño y su Playa Fluvial</text>
+    <text x="656.9" y="316.4" font-size="10" fill="#2c2c2c">4 m</text>
+    <circle cx="858.4" cy="117.4" r="4" fill="#1a3a5c" stroke="white" stroke-width="1.5"/>
+    <line x1="858.4" y1="117.4" x2="858.4" y2="380" stroke="#1a3a5c" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.5"/>
+    <text transform="rotate(-90, 858.4, 405)" x="858.4" y="405" text-anchor="start" font-size="10" fill="#1a3a5c" font-weight="bold">Casco Histórico de Betanz</text>
+    <text x="864.4" y="111.4" font-size="10" fill="#2c2c2c">25 m</text>
+    <circle cx="859.8" cy="88.1" r="4" fill="#1a3a5c" stroke="white" stroke-width="1.5"/>
+    <line x1="859.8" y1="88.1" x2="859.8" y2="380" stroke="#1a3a5c" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.5"/>
+    <text transform="rotate(-90, 859.8, 405)" x="859.8" y="405" text-anchor="start" font-size="10" fill="#1a3a5c" font-weight="bold">Iglesia de San Francisco </text>
+    <text x="865.8" y="82.1" font-size="10" fill="#2c2c2c">28 m</text>
+    
+
+  <!-- Marco del área del gráfico (encima de todo) -->
+  <rect x="80" y="50"
+        width="780" height="330"
+        fill="none" stroke="#2c2c2c" stroke-width="1.5" rx="2"/>
+
+</svg>

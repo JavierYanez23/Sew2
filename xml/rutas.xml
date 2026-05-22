@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rutas SYSTEM "rutas.dtd">
+<!--
+  rutas.xml — Rutas turísticas de la provincia de La Coruña
+  Proyecto: Turismo en La Coruña | UO301366
+  Asignatura: Software y Estándares para la Web 2025/2026
+-->
+<rutas provincia="La Coruña">
+
+  <!-- ============================================================
+       RUTA 1: Ruta de la Torre de Hércules y la Costa Atlántica
+       ============================================================ -->
+  <ruta id="ruta001">
+    <nombre>Ruta de la Torre de Hércules y la Costa Atlántica</nombre>
+    <tipo>Paisajística</tipo>
+    <transporte>A pie</transporte>
+    <fechaInicio opcional="si">2025-06-15</fechaInicio>
+    <horaInicio opcional="si">09:00</horaInicio>
+    <duracion>3 horas</duracion>
+    <agencia>CoruñaTur</agencia>
+    <descripcion>
+      Recorrido a pie por el litoral norte de La Coruña desde la Torre de Hércules,
+      faro romano Patrimonio de la Humanidad, hasta las playas del Orzán y Riazor,
+      pasando por el Parque de Santa Margarita. Una ruta que combina historia,
+      naturaleza y espectaculares vistas al Océano Atlántico.
+    </descripcion>
+    <personas>Apta para familias con niños y personas de tercera edad</personas>
+    <lugarInicio>Torre de Hércules</lugarInicio>
+    <direccionInicio>Avenida de Navarra s/n, La Coruña</direccionInicio>
+    <coordenadasInicio>
+      <longitud>-8.4033</longitud>
+      <latitud>43.3860</latitud>
+      <altitud>57</altitud>
+    </coordenadasInicio>
+    <referencias>
+      <referencia>https://turismocoruna.com/torre-de-hercules/</referencia>
+      <referencia>https://es.wikipedia.org/wiki/Torre_de_H%C3%A9rcules</referencia>
+      <referencia>https://whc.unesco.org/en/list/1312</referencia>
+    </referencias>
+    <recomendacion>9</recomendacion>
+    <planimetria archivo="ruta001_planimetria.kml"/>
+    <altimetria archivo="ruta001_altimetria.svg"/>
+    <hitos>
+
+      <hito orden="1">
+        <nombre>Torre de Hércules</nombre>
+        <descripcion>
+          Faro romano del siglo II d.C., único en el mundo en activo, declarado
+          Patrimonio de la Humanidad por la UNESCO en 2009. Desde su cima se
+          obtienen vistas panorámicas de la ría y del océano.
+        </descripcion>
+        <coordenadas>
+          <longitud>-8.4033</longitud>
+          <latitud>43.3860</latitud>
+          <altitud>57</altitud>
+        </coordenadas>
+        <distanciaDesdeAnterior unidades="m">0</distanciaDesdeAnterior>
+        <fotos>
+          <foto>torre_hercules_exterior.jpg</foto>
+          <foto>torre_hercules_panoramica.jpg</foto>
+          <foto>torre_hercules_escalera.jpg</foto>
+        </fotos>
+        <videos>
+          <video>torre_hercules_360.mp4</video>
+        </videos>
+      </hito>
+
+      <hito orden="2">
+        <nombre>Parque Escultórico de la Torre de Hércules</nombre>
+        <descripcion>
+          Conjunto de esculturas al aire libre que rodean la Torre, entre las que
+          destacan la Rosa de los Vientos, el Ara Solis y el monolito en homenaje
+          a las víctimas del Prestige.
+        </descripcion>
+        <coordenadas>
+          <longitud>-8.4050</longitud>
+          <latitud>43.3845</latitud>
+          <altitud>48</altitud>
+        </coordenadas>
+        <distanciaDesdeAnterior unidades="m">250</distanciaDesdeAnterior>
+        <fotos>
+          <foto>parque_escultorico_rosa_vientos.jpg</foto>
+          <foto>parque_escultorico_ara_solis.jpg</foto>
+        </fotos>
+      </hito>
+
+      <hito orden="3">
+        <nombre>Playa de Las Lapas</nombre>
+        <descripcion>
+          Pequeña cala de arena dorada situada en el extremo norte del paseo litoral,
+          rodeada de acantilados que ofrecen protección del viento atlántico. Ideal
+          para el baño en verano.
+        </descripcion>
+        <coordenadas>
+          <longitud>-8.4120</longitud>
+          <latitud>43.3820</latitud>
+          <altitud>5</altitud>
+        </coordenadas>
+        <distanciaDesdeAnterior unidades="m">900</distanciaDesdeAnterior>
+        <fotos>
+          <foto>playa_lapas_panoramica.jpg</foto>
+          <foto>playa_lapas_acantilados.jpg</foto>
+        </fotos>
+      </hito>
+
+      <hito orden="4">
+        <nombre>Paseo Marítimo de La Coruña</nombre>
+        <descripcion>
+          Con más de 13 km de longitud, es uno de los paseos marítimos más largos
+          de Europa. Bordea la costa atlántica desde el barrio de Os Mallos hasta
+          Santa Cristina, con vistas continuas al mar y abundante vegetación.
+        </descripcion>
+        <coordenadas>
+          <longitud>-8.4250</longitud>
+          <latitud>43.3790</latitud>
+          <altitud>8</altitud>
+        </coordenadas>
+        <distanciaDesdeAnterior unidades="m">1400</distanciaDesdeAnterior>
+        <fotos>
+          <foto>paseo_maritimo_atardecer.jpg</foto>
+          <foto>paseo_maritimo_bicicletas.jpg</foto>
+        </fotos>
+        <videos>
+          <video>paseo_maritimo_timelapse.mp4</video>
+        </videos>
+      </hito>
+
+      <hito orden="5">
+        <nombre>Playa de Riazor</nombre>
+        <descripcion>
+          Playa urbana de arena blanca y aguas limpias, una de las más populares
+          de Galicia. Cuenta con servicios completos y es escenario habitual de
+          competiciones deportivas de vóley playa y surf.
+        </descripcion>
+        <coordenadas>
+          <longitud>-8.4350</longitud>
+          <latitud>43.3680</latitud>
+          <altitud>4</altitud>
+        </coordenadas>
+        <distanciaDesdeAnterior unidades="m">1800</distanciaDesdeAnterior>
+        <fotos>
+          <foto>playa_riazor_panoramica.jpg</foto>
+          <foto>playa_riazor_surf.jpg</foto>
+          <foto>playa_riazor_atardecer.jpg</foto>
+        </fotos>
+      </hito>
+
+      <hito orden="6">
+        <nombre>Playa del Orzán</nombre>
+        <descripcion>
+          Contigua a Riazor, separada únicamente por el Paseo Marítimo, el Orzán
+          es el epicentro del surf coruñés. Sus olas regulares la convierten en
+          uno de los mejores spots de surf del norte de España.
+        </descripcion>
+        <coordenadas>
+          <longitud>-8.4370</longitud>
+          <latitud>43.3710</latitud>
+          <altitud>4</altitud>
+        </coordenadas>
+        <distanciaDesdeAnterior unidades="m">400</distanciaDesdeAnterior>
+        <fotos>
+          <foto>playa_orzan_surf.jpg</foto>
+          <foto>playa_orzan_atardecer.jpg</foto>
+        </fotos>
+      </hito>
+
+    </hitos>
+  </ruta>
+
+  <!-- ============================================================
+       RUTA 2: Ruta del Camino Inglés a Santiago de Compostela
+       ============================================================ -->
+  <ruta id="ruta002">
+    <nombre>Ruta del Camino Inglés</nombre>
+    <tipo>Senderismo</tipo>
+    <transporte>A pie</transporte>
+    <fechaInicio opcional="si">2025-07-01</fechaInicio>
+    <horaInicio opcional="si">07:30</horaInicio>
+    <duracion>2 días</duracion>
+    <agencia>Caminos de Galicia</agencia>
+    <descripcion>
+      El Camino Inglés es la ruta jacobea que recorrían los peregrinos medievales
+      procedentes de las Islas Británicas y el norte de Europa que llegaban en barco
+      al puerto de La Coruña o Ferrol. Desde La Coruña, el trayecto recorre unos
+      75 km hasta Santiago de Compostela atravesando paisajes rurales gallegos,
+      aldeas históricas y tramos del antiguo camino romano.
+    </descripcion>
+    <personas>Personas en buena forma física. No recomendado para tercera edad sin entrenamiento previo.</personas>
+    <lugarInicio>Obelisco de La Coruña</lugarInicio>
+    <direccionInicio>Plaza de Pontevedra s/n, La Coruña</direccionInicio>
+    <coordenadasInicio>
+      <longitud>-8.4060</longitud>
+      <latitud>43.3700</latitud>
+      <altitud>15</altitud>
+    </coordenadasInicio>
+    <referencias>
+      <referencia>https://www.caminodesantiago.gal/es/caminos/camino-ingles</referencia>
+      <referencia>https://es.wikipedia.org/wiki/Camino_ingl%C3%A9s</referencia>
+      <referencia>https://www.gronze.com/camino-ingles</referencia>
+    </referencias>
+    <recomendacion>8</recomendacion>
+    <planimetria archivo="ruta002_planimetria.kml"/>
+    <altimetria archivo="ruta002_altimetria.svg"/>
+    <hitos>
+
+      <hito orden="1">
+        <nombre>Obelisco de La Coruña (Punto de inicio oficial)</nombre>
+        <descripcion>
+          Monumento neoclásico del siglo XIX situado en la plaza de Pontevedra.
+          Es el punto oficial de inicio del Camino Inglés desde La Coruña, donde
+          los peregrinos sellan por primera vez su credencial.
+        </descripcion>
+        <coordenadas>
+          <longitud>-8.4060</longitud>
+          <latitud>43.3700</latitud>
+          <altitud>15</altitud>
+        </coordenadas>
+        <distanciaDesdeAnterior unidades="m">0</distanciaDesdeAnterior>
+        <fotos>
+          <foto>obelisco_coruna.jpg</foto>
+          <foto>obelisco_coruna_peregrinos.jpg</foto>
+        </fotos>
+      </hito>
+
+      <hito orden="2">
+        <nombre>Iglesia de Santiago de Padrón</nombre>
+        <descripcion>
+          Iglesia románica del siglo XII que guarda, según la tradición, la barca
+          de piedra que trajo los restos del apóstol Santiago desde Palestina.
+          Situada a orillas del río Ulla, es uno de los lugares más sagrados
+          del Camino Jacobeo.
+        </descripcion>
+        <coordenadas>
+          <longitud>-8.6594</longitud>
+          <latitud>42.7375</latitud>
+          <altitud>10</altitud>
+        </coordenadas>
+        <distanciaDesdeAnterior unidades="km">38</distanciaDesdeAnterior>
+        <fotos>
+          <foto>iglesia_padron_exterior.jpg</foto>
+          <foto>iglesia_padron_barca_piedra.jpg</foto>
+          <foto>iglesia_padron_interior.jpg</foto>
+        </fotos>
+      </hito>
+
+      <hito orden="3">
+        <nombre>Monte Pedroso</nombre>
+        <descripcion>
+          Punto más elevado del tramo final del Camino Inglés, con vistas
+          panorámicas de Santiago de Compostela. Desde aquí los peregrinos
+          avistan por primera vez las torres de la catedral.
+        </descripcion>
+        <coordenadas>
+          <longitud>-8.5450</longitud>
+          <latitud>42.8820</latitud>
+          <altitud>464</altitud>
+        </coordenadas>
+        <distanciaDesdeAnterior unidades="km">25</distanciaDesdeAnterior>
+        <fotos>
+          <foto>monte_pedroso_vistas.jpg</foto>
+          <foto>monte_pedroso_catedral_fondo.jpg</foto>
+        </fotos>
+        <videos>
+          <video>monte_pedroso_panoramica.mp4</video>
+        </videos>
+      </hito>
+
+      <hito orden="4">
+        <nombre>Capilla de Santa Lucía (Entrada a Santiago)</nombre>
+        <descripcion>
+          Pequeña capilla del siglo XV que marca la entrada oficial al término
+          municipal de Santiago de Compostela. Los peregrinos medievales hacían
+          aquí su primera parada para dar gracias por haber llegado sanos y salvos.
+        </descripcion>
+        <coordenadas>
+          <longitud>-8.5370</longitud>
+          <latitud>42.8940</latitud>
+          <altitud>260</altitud>
+        </coordenadas>
+        <distanciaDesdeAnterior unidades="km">4</distanciaDesdeAnterior>
+        <fotos>
+          <foto>capilla_santa_lucia.jpg</foto>
+          <foto>capilla_santa_lucia_peregrinos.jpg</foto>
+        </fotos>
+      </hito>
+
+      <hito orden="5">
+        <nombre>Catedral de Santiago de Compostela</nombre>
+        <descripcion>
+          Meta final del Camino Inglés. La catedral románica, iniciada en el
+          siglo XI, alberga el sepulcro del apóstol Santiago el Mayor y es
+          uno de los tres grandes centros de peregrinación del mundo cristiano.
+          La Misa del Peregrino se celebra a las 12:00 todos los días.
+        </descripcion>
+        <coordenadas>
+          <longitud>-8.5446</longitud>
+          <latitud>42.8805</latitud>
+          <altitud>260</altitud>
+        </coordenadas>
+        <distanciaDesdeAnterior unidades="km">8</distanciaDesdeAnterior>
+        <fotos>
+          <foto>catedral_santiago_fachada.jpg</foto>
+          <foto>catedral_santiago_plaza_obradoiro.jpg</foto>
+          <foto>catedral_santiago_interior.jpg</foto>
+        </fotos>
+        <videos>
+          <video>catedral_santiago_botafumeiro.mp4</video>
+        </videos>
+      </hito>
+
+    </hitos>
+  </ruta>
+
+  <!-- ============================================================
+       RUTA 3: Ruta en Bicicleta por las Rías Altas
+       ============================================================ -->
+  <ruta id="ruta003">
+    <nombre>Ruta en Bicicleta por las Rías Altas</nombre>
+    <tipo>Mixta</tipo>
+    <transporte>Bicicleta</transporte>
+    <duracion>1 día</duracion>
+    <agencia>BikeGalicia</agencia>
+    <descripcion>
+      Ruta circular en bicicleta que recorre los municipios costeros de las Rías Altas
+      coruñesas, desde La Coruña hasta Betanzos, pasando por Sada y Miño. Un trayecto
+      que combina tramos de costa espectacular, gastronomía marinera en los puertos
+      pesqueros y el casco histórico medieval de Betanzos, uno de los mejor conservados
+      de Galicia.
+    </descripcion>
+    <personas>Ciclistas con experiencia media. No recomendado para niños menores de 12 años.</personas>
+    <lugarInicio>Puerto de La Coruña</lugarInicio>
+    <direccionInicio>Muelle de Trasatlánticos s/n, La Coruña</direccionInicio>
+    <coordenadasInicio>
+      <longitud>-8.3945</longitud>
+      <latitud>43.3680</latitud>
+      <altitud>3</altitud>
+    </coordenadasInicio>
+    <referencias>
+      <referencia>https://www.turismo.gal/que-ver/provincias/a-coruna</referencia>
+      <referencia>https://es.wikipedia.org/wiki/R%C3%ADas_Altas</referencia>
+      <referencia>https://www.bikegalizaroutes.com/rias-altas</referencia>
+    </referencias>
+    <recomendacion>8</recomendacion>
+    <planimetria archivo="ruta003_planimetria.kml"/>
+    <altimetria archivo="ruta003_altimetria.svg"/>
+    <hitos>
+
+      <hito orden="1">
+        <nombre>Puerto de La Coruña</nombre>
+        <descripcion>
+          Punto de partida de la ruta. El puerto deportivo y pesquero de La Coruña
+          es uno de los más activos de Galicia. La zona de la Marina ofrece vistas
+          de la bahía y del Castillo de San Antón, hoy Museo Arqueológico.
+        </descripcion>
+        <coordenadas>
+          <longitud>-8.3945</longitud>
+          <latitud>43.3680</latitud>
+          <altitud>3</altitud>
+        </coordenadas>
+        <distanciaDesdeAnterior unidades="m">0</distanciaDesdeAnterior>
+        <fotos>
+          <foto>puerto_coruna_marina.jpg</foto>
+          <foto>puerto_coruna_castillo_sananton.jpg</foto>
+        </fotos>
+      </hito>
+
+      <hito orden="2">
+        <nombre>Sada y su Puerto Pesquero</nombre>
+        <descripcion>
+          Localidad marinera a 18 km de La Coruña, conocida por su puerto pesquero
+          artesanal y sus mejillones de las bateas de la ría. El casco antiguo
+          conserva la arquitectura tradicional gallega de los siglos XVIII y XIX.
+        </descripcion>
+        <coordenadas>
+          <longitud>-8.2470</longitud>
+          <latitud>43.3530</latitud>
+          <altitud>5</altitud>
+        </coordenadas>
+        <distanciaDesdeAnterior unidades="km">18</distanciaDesdeAnterior>
+        <fotos>
+          <foto>sada_puerto.jpg</foto>
+          <foto>sada_bateas_mejillones.jpg</foto>
+          <foto>sada_casco_antiguo.jpg</foto>
+        </fotos>
+      </hito>
+
+      <hito orden="3">
+        <nombre>Playa de Gandarío</nombre>
+        <descripcion>
+          Una de las playas más bellas de la provincia, con aguas tranquilas
+          protegidas por la ría de Betanzos. Cuenta con bandera azul y servicios
+          completos. Ideal para una parada de descanso a mitad de recorrido.
+        </descripcion>
+        <coordenadas>
+          <longitud>-8.2310</longitud>
+          <latitud>43.3650</latitud>
+          <altitud>2</altitud>
+        </coordenadas>
+        <distanciaDesdeAnterior unidades="km">8</distanciaDesdeAnterior>
+        <fotos>
+          <foto>playa_gandario_bandera_azul.jpg</foto>
+          <foto>playa_gandario_ria.jpg</foto>
+        </fotos>
+      </hito>
+
+      <hito orden="4">
+        <nombre>Miño y su Playa Fluvial</nombre>
+        <descripcion>
+          El río Miño forma en este municipio una playa fluvial de agua dulce
+          excepcionalmente extensa y con aguas calmadas, muy frecuentada por
+          familias. El municipio organiza cada verano la Festa do Camarón,
+          con degustación de productos del río.
+        </descripcion>
+        <coordenadas>
+          <longitud>-8.2063</longitud>
+          <latitud>43.3482</latitud>
+          <altitud>4</altitud>
+        </coordenadas>
+        <distanciaDesdeAnterior unidades="km">7</distanciaDesdeAnterior>
+        <fotos>
+          <foto>mino_playa_fluvial.jpg</foto>
+          <foto>mino_rio.jpg</foto>
+        </fotos>
+        <videos>
+          <video>mino_festa_camaron.mp4</video>
+        </videos>
+      </hito>
+
+      <hito orden="5">
+        <nombre>Casco Histórico de Betanzos</nombre>
+        <descripcion>
+          Betanzos es una de las villas medievales mejor conservadas de Galicia.
+          Declarada Conjunto Histórico-Artístico, destaca por sus iglesias góticas
+          de San Francisco y Santa María del Azogue, sus soportales y sus calles
+          empedradas. Conocida también por la tortilla de patata más grande del mundo.
+        </descripcion>
+        <coordenadas>
+          <longitud>-8.2097</longitud>
+          <latitud>43.2789</latitud>
+          <altitud>25</altitud>
+        </coordenadas>
+        <distanciaDesdeAnterior unidades="km">12</distanciaDesdeAnterior>
+        <fotos>
+          <foto>betanzos_iglesia_san_francisco.jpg</foto>
+          <foto>betanzos_soportales.jpg</foto>
+          <foto>betanzos_plaza_garcia_hermanos.jpg</foto>
+        </fotos>
+        <videos>
+          <video>betanzos_globo_carnaval.mp4</video>
+        </videos>
+      </hito>
+
+      <hito orden="6">
+        <nombre>Iglesia de San Francisco de Betanzos</nombre>
+        <descripcion>
+          Joya del gótico gallego del siglo XIV, construida por el Conde Fernán
+          Pérez de Andrade. Su pórtico de entrada está flanqueado por dos jabalíes
+          de piedra, emblema heráldico del conde, y en su interior se conserva
+          su sepulcro, obra maestra de la escultura medieval gallega.
+        </descripcion>
+        <coordenadas>
+          <longitud>-8.2105</longitud>
+          <latitud>43.2795</latitud>
+          <altitud>28</altitud>
+        </coordenadas>
+        <distanciaDesdeAnterior unidades="m">80</distanciaDesdeAnterior>
+        <fotos>
+          <foto>betanzos_san_francisco_portico.jpg</foto>
+          <foto>betanzos_san_francisco_sepulcro.jpg</foto>
+          <foto>betanzos_san_francisco_interior.jpg</foto>
+        </fotos>
+      </hito>
+
+    </hitos>
+  </ruta>
+
+</rutas>

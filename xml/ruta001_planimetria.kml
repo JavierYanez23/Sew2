@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ruta001_planimetria.kml
+  Ruta: Ruta de la Torre de Hércules y la Costa Atlántica
+  Generado por generar_kml.py
+  Proyecto: Turismo en La Coruña | UO301366
+-->
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Ruta de la Torre de Hércules y la Costa Atlántica</name>
+    <description>
+      Tipo: Paisajística
+      Transporte: A pie
+      Duración: 3 horas
+      Agencia: CoruñaTur
+      Recorrido a pie por el litoral norte de La Coruña desde la Torre de Hércules,       faro romano Patrimonio de la Humanidad, hasta las playas del Orzán y Riazor,       pasando por el Parque de Santa Margarita. Una ruta que combina historia,       naturaleza y espectaculares vistas al Océano Atlántico.
+    </description>
+
+    <!-- Estilos del KML -->
+    <Style id="estilo_ruta">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>4</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>330000ff</color>
+      </PolyStyle>
+    </Style>
+
+    <Style id="estilo_inicio">
+      <IconStyle>
+        <color>ff00ff00</color>
+        <scale>1.3</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/shapes/flag.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <color>ff00ff00</color>
+        <scale>1.1</scale>
+      </LabelStyle>
+    </Style>
+
+    <Style id="estilo_hito">
+      <IconStyle>
+        <color>ff0000ff</color>
+        <scale>1.1</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+
+    <!-- Placemark de inicio de ruta -->
+    <Placemark>
+      <name>Inicio: Ruta de la Torre de Hércules y la Costa Atlántica</name>
+      <description>Recorrido a pie por el litoral norte de La Coruña desde la Torre de Hércules,       faro romano Patrimonio de la Humanidad, hasta las playas del Orzán y Riazor,       pasando por el Parque de Santa Ma...</description>
+      <styleUrl>#estilo_inicio</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.4033,43.3860,57</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- Placemarks de los hitos de la ruta -->
+    <Placemark>
+      <name>Torre de Hércules</name>
+      <description>Faro romano del siglo II d.C., único en el mundo en activo, declarado           Patrimonio de la Humanidad por la UNESCO en 2009. Desde su cima se           obtienen vistas panorámicas de la ría y del océano.</description>
+      <styleUrl>#estilo_hito</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.4033,43.3860,57</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Parque Escultórico de la Torre de Hércules</name>
+      <description>Conjunto de esculturas al aire libre que rodean la Torre, entre las que           destacan la Rosa de los Vientos, el Ara Solis y el monolito en homenaje           a las víctimas del Prestige.</description>
+      <styleUrl>#estilo_hito</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.4050,43.3845,48</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Playa de Las Lapas</name>
+      <description>Pequeña cala de arena dorada situada en el extremo norte del paseo litoral,           rodeada de acantilados que ofrecen protección del viento atlántico. Ideal           para el baño en verano.</description>
+      <styleUrl>#estilo_hito</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.4120,43.3820,5</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Paseo Marítimo de La Coruña</name>
+      <description>Con más de 13 km de longitud, es uno de los paseos marítimos más largos           de Europa. Bordea la costa atlántica desde el barrio de Os Mallos hasta           Santa Cristina, con vistas continuas al mar y abundante vegetación.</description>
+      <styleUrl>#estilo_hito</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.4250,43.3790,8</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Playa de Riazor</name>
+      <description>Playa urbana de arena blanca y aguas limpias, una de las más populares           de Galicia. Cuenta con servicios completos y es escenario habitual de           competiciones deportivas de vóley playa y surf.</description>
+      <styleUrl>#estilo_hito</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.4350,43.3680,4</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Playa del Orzán</name>
+      <description>Contigua a Riazor, separada únicamente por el Paseo Marítimo, el Orzán           es el epicentro del surf coruñés. Sus olas regulares la convierten en           uno de los mejores spots de surf del norte de España.</description>
+      <styleUrl>#estilo_hito</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.4370,43.3710,4</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- LineString del trayecto completo de la ruta -->
+    <Placemark>
+      <name>Trayecto: Ruta de la Torre de Hércules y la Costa Atlántica</name>
+      <styleUrl>#estilo_ruta</styleUrl>
+      <LineString>
+        <extrude>1</extrude>
+        <tessellate>1</tessellate>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>
+          -8.4033,43.3860,57
+          -8.4033,43.3860,57
+          -8.4050,43.3845,48
+          -8.4120,43.3820,5
+          -8.4250,43.3790,8
+          -8.4350,43.3680,4
+          -8.4370,43.3710,4
+          -8.4033,43.3860,57
+        </coordinates>
+      </LineString>
+    </Placemark>
+
+  </Document>
+</kml>

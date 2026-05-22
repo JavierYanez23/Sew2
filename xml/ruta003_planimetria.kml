@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ruta003_planimetria.kml
+  Ruta: Ruta en Bicicleta por las Rías Altas
+  Generado por generar_kml.py
+  Proyecto: Turismo en La Coruña | UO301366
+-->
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Ruta en Bicicleta por las Rías Altas</name>
+    <description>
+      Tipo: Mixta
+      Transporte: Bicicleta
+      Duración: 1 día
+      Agencia: BikeGalicia
+      Ruta circular en bicicleta que recorre los municipios costeros de las Rías Altas       coruñesas, desde La Coruña hasta Betanzos, pasando por Sada y Miño. Un trayecto       que combina tramos de costa espectacular, gastronomía marinera en los puertos       pesqueros y el casco histórico medieval de Betanzos, uno de los mejor conservados       de Galicia.
+    </description>
+
+    <!-- Estilos del KML -->
+    <Style id="estilo_ruta">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>4</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>330000ff</color>
+      </PolyStyle>
+    </Style>
+
+    <Style id="estilo_inicio">
+      <IconStyle>
+        <color>ff00ff00</color>
+        <scale>1.3</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/shapes/flag.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <color>ff00ff00</color>
+        <scale>1.1</scale>
+      </LabelStyle>
+    </Style>
+
+    <Style id="estilo_hito">
+      <IconStyle>
+        <color>ff0000ff</color>
+        <scale>1.1</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+
+    <!-- Placemark de inicio de ruta -->
+    <Placemark>
+      <name>Inicio: Ruta en Bicicleta por las Rías Altas</name>
+      <description>Ruta circular en bicicleta que recorre los municipios costeros de las Rías Altas       coruñesas, desde La Coruña hasta Betanzos, pasando por Sada y Miño. Un trayecto       que combina tramos de costa...</description>
+      <styleUrl>#estilo_inicio</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.3945,43.3680,3</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- Placemarks de los hitos de la ruta -->
+    <Placemark>
+      <name>Puerto de La Coruña</name>
+      <description>Punto de partida de la ruta. El puerto deportivo y pesquero de La Coruña           es uno de los más activos de Galicia. La zona de la Marina ofrece vistas           de la bahía y del Castillo de San Antón, hoy Museo Arqueológico.</description>
+      <styleUrl>#estilo_hito</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.3945,43.3680,3</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Sada y su Puerto Pesquero</name>
+      <description>Localidad marinera a 18 km de La Coruña, conocida por su puerto pesquero           artesanal y sus mejillones de las bateas de la ría. El casco antiguo           conserva la arquitectura tradicional gallega de los siglos XVIII y XIX.</description>
+      <styleUrl>#estilo_hito</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.2470,43.3530,5</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Playa de Gandarío</name>
+      <description>Una de las playas más bellas de la provincia, con aguas tranquilas           protegidas por la ría de Betanzos. Cuenta con bandera azul y servicios           completos. Ideal para una parada de descanso a mitad de recorrido.</description>
+      <styleUrl>#estilo_hito</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.2310,43.3650,2</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Miño y su Playa Fluvial</name>
+      <description>El río Miño forma en este municipio una playa fluvial de agua dulce           excepcionalmente extensa y con aguas calmadas, muy frecuentada por           familias. El municipio organiza cada verano la Festa do Camarón,           con degustación de productos del río.</description>
+      <styleUrl>#estilo_hito</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.2063,43.3482,4</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Casco Histórico de Betanzos</name>
+      <description>Betanzos es una de las villas medievales mejor conservadas de Galicia.           Declarada Conjunto Histórico-Artístico, destaca por sus iglesias góticas           de San Francisco y Santa María del Azogue, sus soportales y sus calles           empedradas. Conocida también por la tortilla de patata más grande del mundo.</description>
+      <styleUrl>#estilo_hito</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.2097,43.2789,25</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Iglesia de San Francisco de Betanzos</name>
+      <description>Joya del gótico gallego del siglo XIV, construida por el Conde Fernán           Pérez de Andrade. Su pórtico de entrada está flanqueado por dos jabalíes           de piedra, emblema heráldico del conde, y en su interior se conserva           su sepulcro, obra maestra de la escultura medieval gallega.</description>
+      <styleUrl>#estilo_hito</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.2105,43.2795,28</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- LineString del trayecto completo de la ruta -->
+    <Placemark>
+      <name>Trayecto: Ruta en Bicicleta por las Rías Altas</name>
+      <styleUrl>#estilo_ruta</styleUrl>
+      <LineString>
+        <extrude>1</extrude>
+        <tessellate>1</tessellate>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>
+          -8.3945,43.3680,3
+          -8.3945,43.3680,3
+          -8.2470,43.3530,5
+          -8.2310,43.3650,2
+          -8.2063,43.3482,4
+          -8.2097,43.2789,25
+          -8.2105,43.2795,28
+          -8.3945,43.3680,3
+        </coordinates>
+      </LineString>
+    </Placemark>
+
+  </Document>
+</kml>

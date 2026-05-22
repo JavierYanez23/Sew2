@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ruta002_planimetria.kml
+  Ruta: Ruta del Camino Inglés
+  Generado por generar_kml.py
+  Proyecto: Turismo en La Coruña | UO301366
+-->
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Ruta del Camino Inglés</name>
+    <description>
+      Tipo: Senderismo
+      Transporte: A pie
+      Duración: 2 días
+      Agencia: Caminos de Galicia
+      El Camino Inglés es la ruta jacobea que recorrían los peregrinos medievales       procedentes de las Islas Británicas y el norte de Europa que llegaban en barco       al puerto de La Coruña o Ferrol. Desde La Coruña, el trayecto recorre unos       75 km hasta Santiago de Compostela atravesando paisajes rurales gallegos,       aldeas históricas y tramos del antiguo camino romano.
+    </description>
+
+    <!-- Estilos del KML -->
+    <Style id="estilo_ruta">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>4</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>330000ff</color>
+      </PolyStyle>
+    </Style>
+
+    <Style id="estilo_inicio">
+      <IconStyle>
+        <color>ff00ff00</color>
+        <scale>1.3</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/shapes/flag.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <color>ff00ff00</color>
+        <scale>1.1</scale>
+      </LabelStyle>
+    </Style>
+
+    <Style id="estilo_hito">
+      <IconStyle>
+        <color>ff0000ff</color>
+        <scale>1.1</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+
+    <!-- Placemark de inicio de ruta -->
+    <Placemark>
+      <name>Inicio: Ruta del Camino Inglés</name>
+      <description>El Camino Inglés es la ruta jacobea que recorrían los peregrinos medievales       procedentes de las Islas Británicas y el norte de Europa que llegaban en barco       al puerto de La Coruña o Ferrol. ...</description>
+      <styleUrl>#estilo_inicio</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.4060,43.3700,15</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- Placemarks de los hitos de la ruta -->
+    <Placemark>
+      <name>Obelisco de La Coruña (Punto de inicio oficial)</name>
+      <description>Monumento neoclásico del siglo XIX situado en la plaza de Pontevedra.           Es el punto oficial de inicio del Camino Inglés desde La Coruña, donde           los peregrinos sellan por primera vez su credencial.</description>
+      <styleUrl>#estilo_hito</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.4060,43.3700,15</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Iglesia de Santiago de Padrón</name>
+      <description>Iglesia románica del siglo XII que guarda, según la tradición, la barca           de piedra que trajo los restos del apóstol Santiago desde Palestina.           Situada a orillas del río Ulla, es uno de los lugares más sagrados           del Camino Jacobeo.</description>
+      <styleUrl>#estilo_hito</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.6594,42.7375,10</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Monte Pedroso</name>
+      <description>Punto más elevado del tramo final del Camino Inglés, con vistas           panorámicas de Santiago de Compostela. Desde aquí los peregrinos           avistan por primera vez las torres de la catedral.</description>
+      <styleUrl>#estilo_hito</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.5450,42.8820,464</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Capilla de Santa Lucía (Entrada a Santiago)</name>
+      <description>Pequeña capilla del siglo XV que marca la entrada oficial al término           municipal de Santiago de Compostela. Los peregrinos medievales hacían           aquí su primera parada para dar gracias por haber llegado sanos y salvos.</description>
+      <styleUrl>#estilo_hito</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.5370,42.8940,260</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Catedral de Santiago de Compostela</name>
+      <description>Meta final del Camino Inglés. La catedral románica, iniciada en el           siglo XI, alberga el sepulcro del apóstol Santiago el Mayor y es           uno de los tres grandes centros de peregrinación del mundo cristiano.           La Misa del Peregrino se celebra a las 12:00 todos los días.</description>
+      <styleUrl>#estilo_hito</styleUrl>
+      <Point>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>-8.5446,42.8805,260</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- LineString del trayecto completo de la ruta -->
+    <Placemark>
+      <name>Trayecto: Ruta del Camino Inglés</name>
+      <styleUrl>#estilo_ruta</styleUrl>
+      <LineString>
+        <extrude>1</extrude>
+        <tessellate>1</tessellate>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <coordinates>
+          -8.4060,43.3700,15
+          -8.4060,43.3700,15
+          -8.6594,42.7375,10
+          -8.5450,42.8820,464
+          -8.5370,42.8940,260
+          -8.5446,42.8805,260
+          -8.4060,43.3700,15
+        </coordinates>
+      </LineString>
+    </Placemark>
+
+  </Document>
+</kml>

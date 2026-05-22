@@ -1,0 +1,75 @@
+<!-- rutas.dtd — DTD para rutas.xml | Turismo La Coruña | UO301366 -->
+
+<!-- Elemento raíz -->
+<!ELEMENT rutas (ruta+)>
+<!ATTLIST rutas
+  provincia CDATA #REQUIRED>
+
+<!-- Ruta -->
+<!ELEMENT ruta (nombre, tipo, transporte, fechaInicio?, horaInicio?, duracion, agencia,
+                descripcion, personas, lugarInicio, direccionInicio, coordenadasInicio,
+                referencias, recomendacion, planimetria, altimetria, hitos)>
+<!ATTLIST ruta
+  id ID #REQUIRED>
+
+<!-- Datos básicos de ruta -->
+<!ELEMENT nombre        (#PCDATA)>
+<!ELEMENT tipo          (#PCDATA)>
+<!ELEMENT transporte    (#PCDATA)>
+<!ELEMENT duracion      (#PCDATA)>
+<!ELEMENT agencia       (#PCDATA)>
+<!ELEMENT descripcion   (#PCDATA)>
+<!ELEMENT personas      (#PCDATA)>
+<!ELEMENT lugarInicio   (#PCDATA)>
+<!ELEMENT direccionInicio (#PCDATA)>
+<!ELEMENT recomendacion (#PCDATA)>
+
+<!-- fechaInicio y horaInicio son opcionales (aparecen en ruta001 y ruta002, no en ruta003) -->
+<!ELEMENT fechaInicio   (#PCDATA)>
+<!ATTLIST fechaInicio
+  opcional (si|no) "no">
+
+<!ELEMENT horaInicio    (#PCDATA)>
+<!ATTLIST horaInicio
+  opcional (si|no) "no">
+
+<!-- Coordenadas de inicio de ruta -->
+<!ELEMENT coordenadasInicio (longitud, latitud, altitud)>
+<!ELEMENT longitud  (#PCDATA)>
+<!ELEMENT latitud   (#PCDATA)>
+<!ELEMENT altitud   (#PCDATA)>
+
+<!-- Referencias -->
+<!ELEMENT referencias (referencia+)>
+<!ELEMENT referencia  (#PCDATA)>
+
+<!-- Archivos adjuntos (elementos vacíos) -->
+<!ELEMENT planimetria EMPTY>
+<!ATTLIST planimetria
+  archivo CDATA #REQUIRED>
+
+<!ELEMENT altimetria EMPTY>
+<!ATTLIST altimetria
+  archivo CDATA #REQUIRED>
+
+<!-- Hitos -->
+<!ELEMENT hitos (hito+)>
+
+<!ELEMENT hito (nombre, descripcion, coordenadas, distanciaDesdeAnterior,
+                fotos, videos?)>
+<!ATTLIST hito
+  orden CDATA #REQUIRED>
+
+<!-- Coordenadas de hito (reutiliza los mismos elementos que coordenadasInicio) -->
+<!ELEMENT coordenadas (longitud, latitud, altitud)>
+
+<!ELEMENT distanciaDesdeAnterior (#PCDATA)>
+<!ATTLIST distanciaDesdeAnterior
+  unidades (m|km) #REQUIRED>
+
+<!-- Multimedia -->
+<!ELEMENT fotos  (foto+)>
+<!ELEMENT foto   (#PCDATA)>
+
+<!ELEMENT videos (video+)>
+<!ELEMENT video  (#PCDATA)>

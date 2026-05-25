@@ -162,7 +162,7 @@ class GestorRecursos
     <h1><a href="../index.html">Turismo en La Coruña</a></h1>
   </header>
 
-  <nav>
+  <nav aria-label="Menú principal">
     <ul>
       <li><a href="../index.html">Inicio</a></li>
       <li><a href="../gastronomia.html">Gastronomía</a></li>
@@ -174,7 +174,7 @@ class GestorRecursos
     </ul>
   </nav>
 
-  <nav>
+  <nav aria-label="Ruta de navegación">
     <ol>
       <li><a href="../index.html">Inicio</a></li>
       <li><a href="reservas.php">Reservas</a></li>

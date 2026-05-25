@@ -98,4 +98,6 @@ class BaseDatos
 
     /** Evitar clonación (Singleton) */
     private function __clone() {}
+
+
 }

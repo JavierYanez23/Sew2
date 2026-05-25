@@ -62,7 +62,9 @@ class InstaladorBD
 
         foreach ($sentencias as $i => $sentencia) {
             $sentencia = trim($sentencia);
-            if (empty($sentencia)) continue;
+            if (empty($sentencia)) {
+                continue;
+            }
             try {
                 $this->pdo->exec($sentencia);
                 echo "  [" . ($i + 1) . "] OK: " . substr($sentencia, 0, 60) . "...\n";

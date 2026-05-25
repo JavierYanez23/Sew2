@@ -53,7 +53,7 @@ class ControladorReservas
     <h1><a href="../index.html">Turismo en La Coruña</a></h1>
   </header>
 
-  <nav>
+  <nav aria-label="Menú principal">
     <ul>
       <li><a href="../index.html">Inicio</a></li>
       <li><a href="../gastronomia.html">Gastronomía</a></li>
@@ -65,7 +65,7 @@ class ControladorReservas
     </ul>
   </nav>
 
-  <nav>
+  <nav aria-label="Ruta de navegación">
     <ol>
       <li><a href="../index.html">Inicio</a></li>
       <li>Reservas</li>
@@ -96,7 +96,7 @@ class ControladorReservas
 
     <section>
       <h2>¿Qué deseas hacer?</h2>
-      <nav>
+      <nav aria-label="Opciones de reservas">
         <ul>
           <?php if (!$this->usuarioLogueado): ?>
           <li>

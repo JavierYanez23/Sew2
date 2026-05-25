@@ -62,8 +62,12 @@ class GestorUsuarios
         $telefono  = trim($_POST['telefono']  ?? '');
 
         // Validaciones
-        if (empty($nombre))    $this->errores[] = 'El nombre es obligatorio.';
-        if (empty($apellidos)) $this->errores[] = 'Los apellidos son obligatorios.';
+        if (empty($nombre))    {
+            $this->errores[] = 'El nombre es obligatorio.';
+        }
+        if (empty($apellidos)) {
+            $this->errores[] = 'Los apellidos son obligatorios.';
+        }
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $this->errores[] = 'El correo electrónico no tiene un formato válido.';
         }
@@ -71,7 +75,9 @@ class GestorUsuarios
             $this->errores[] = 'La contraseña debe tener al menos 8 caracteres.';
         }
 
-        if (!empty($this->errores)) return;
+        if (!empty($this->errores)) {
+            return;
+        }
 
         // Comprobar si el email ya existe
         $stmt = $this->bd->ejecutar(
@@ -167,7 +173,7 @@ class GestorUsuarios
     <h1><a href="../index.html">Turismo en La Coruña</a></h1>
   </header>
 
-  <nav>
+  <nav aria-label="Menú principal">
     <ul>
       <li><a href="../index.html">Inicio</a></li>
       <li><a href="../gastronomia.html">Gastronomía</a></li>
@@ -179,7 +185,7 @@ class GestorUsuarios
     </ul>
   </nav>
 
-  <nav>
+  <nav aria-label="Ruta de navegación">
     <ol>
       <li><a href="../index.html">Inicio</a></li>
       <li><a href="reservas.php">Reservas</a></li>

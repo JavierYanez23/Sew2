@@ -35,7 +35,9 @@ class ConsultaReservas
     /** Obtiene todas las reservas del usuario con sus líneas de detalle. */
     private function obtenerReservas(): array
     {
-        if (!$this->logueado) return [];
+        if (!$this->logueado) {
+            return [];
+        }
 
         $stmt = $this->bd->ejecutar(
             'SELECT r.id_reserva, r.fecha_reserva, r.estado, r.total, r.observaciones,
@@ -109,7 +111,7 @@ class ConsultaReservas
     <h1><a href="../index.html">Turismo en La Coruña</a></h1>
   </header>
 
-  <nav>
+  <nav aria-label="Menú principal">
     <ul>
       <li><a href="../index.html">Inicio</a></li>
       <li><a href="../gastronomia.html">Gastronomía</a></li>
@@ -121,7 +123,7 @@ class ConsultaReservas
     </ul>
   </nav>
 
-  <nav>
+  <nav aria-label="Ruta de navegación">
     <ol>
       <li><a href="../index.html">Inicio</a></li>
       <li><a href="reservas.php">Reservas</a></li>

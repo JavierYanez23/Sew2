@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * rutas.js — Carga y visualización de rutas turísticas desde rutas.xml
  * Proyecto: Turismo en La Coruña | UO301366
@@ -16,19 +18,38 @@
  *
  * NOTA: Este archivo requiere acceso local al servidor (CORS).
  *       Para desarrollo local usar: python3 -m http.server 8080
+ *       O bien usar el Live Server de VSCode.
  */
 
-"use strict";
+/**
+ * Clase BaseRuta
+ * Clase base que proporciona el método auxiliar _texto compartido
+ * por HitoRuta y Ruta, evitando duplicación de código.
+ */
+class BaseRuta {
+  /**
+   * Obtiene el texto del primer elemento hijo con el tag indicado.
+   * @param {Element} nodo - Nodo XML padre
+   * @param {string}  tag  - Nombre del tag hijo a buscar
+   * @returns {string}
+   */
+  _texto(nodo, tag) {
+    if (!nodo) return "";
+    const hijo = nodo.querySelector(tag);
+    return hijo ? hijo.textContent : "";
+  }
+}
 
 /**
  * Clase HitoRuta
  * Representa un hito turístico dentro de una ruta.
  */
-class HitoRuta {
+class HitoRuta extends BaseRuta {
   /**
    * @param {Element} nodoXML - Nodo <hito> del XML parseado
    */
   constructor(nodoXML) {
+    super();
     this.orden       = nodoXML.getAttribute("orden") || "1";
     this.nombre      = this._texto(nodoXML, "nombre");
     this.descripcion = this._texto(nodoXML, "descripcion").trim().replace(/\s+/g, " ");
@@ -43,13 +64,6 @@ class HitoRuta {
                            .map(f => f.textContent.trim());
     this.videos      = Array.from(nodoXML.querySelectorAll("videos video"))
                            .map(v => v.textContent.trim());
-  }
-
-  /** @private */
-  _texto(nodo, tag) {
-    if (!nodo) return "";
-    const hijo = nodo.querySelector(tag);
-    return hijo ? hijo.textContent : "";
   }
 
   /**
@@ -122,11 +136,12 @@ class HitoRuta {
  * Clase Ruta
  * Representa una ruta turística completa con todos sus datos del XML.
  */
-class Ruta {
+class Ruta extends BaseRuta {
   /**
    * @param {Element} nodoXML - Nodo <ruta> del XML parseado
    */
   constructor(nodoXML) {
+    super();
     this.id           = nodoXML.getAttribute("id") || "";
     this.nombre       = this._texto(nodoXML, "nombre");
     this.tipo         = this._texto(nodoXML, "tipo");
@@ -154,7 +169,6 @@ class Ruta {
     this.hitos = Array.from(nodoXML.querySelectorAll("hitos hito"))
                      .map(h => new HitoRuta(h));
   }
-
 
   /**
    * Genera el HTML completo de la ficha de ruta como objeto jQuery.
@@ -231,7 +245,7 @@ class Ruta {
  */
 class GestorMapas {
   constructor() {
-    GestorMapas.mapaActual = null;
+    this.mapaActual = null;
   }
 
   /**
@@ -260,8 +274,8 @@ class GestorMapas {
 
   /**
    * Renderiza el mapa de planimetría de una ruta en el div del HTML.
-   * @param {Ruta}   ruta       - Objeto Ruta con los datos
-   * @param {string} idContenedor - id del div donde renderizar el mapa
+   * @param {Ruta}   ruta          - Objeto Ruta con los datos
+   * @param {string} idContenedor  - id del div donde renderizar el mapa
    */
   renderizarMapa(ruta, idContenedor) {
     const $div = $(`#${idContenedor}`);
@@ -318,8 +332,8 @@ class GestorMapas {
 class GestorAltimetria {
   /**
    * Carga e incrusta el SVG de altimetría en la sección correspondiente.
-   * @param {Ruta}   ruta       - Objeto Ruta con referencia al archivo SVG
-   * @param {jQuery} $seccion   - Sección del DOM donde insertar el SVG
+   * @param {Ruta}   ruta      - Objeto Ruta con referencia al archivo SVG
+   * @param {jQuery} $seccion  - Sección del DOM donde insertar el SVG
    */
   renderizarSVG(ruta, $seccion) {
     $seccion.find("p").last().text("Cargando altimetría...");
@@ -329,7 +343,6 @@ class GestorAltimetria {
       dataType: "text",
       success : (svgText) => {
         $seccion.find("p").last().remove();
-        // Insertar el SVG directamente como elemento HTML
         const figura = $("<figure></figure>");
         figura.append(svgText);
         figura.append(
@@ -354,13 +367,14 @@ class GestorAltimetria {
  */
 class GestorRutas {
   constructor() {
-    this.rutas           = [];
+    this.rutas            = [];
     this.rutaSeleccionada = null;
-    this.gestorMapas     = new GestorMapas();
-    this.gestorAlti      = new GestorAltimetria();
-    this.$secRutas       = null;
-    this.$secPlanimetria = null;
-    this.$secAltimetria  = null;
+    this.gestorMapas      = new GestorMapas();
+    this.gestorAlti       = new GestorAltimetria();
+    this.$secRutas        = null;
+    this.$secPlanimetria  = null;
+    this.$secAltimetria   = null;
+    this.$areaDetalle     = null;
   }
 
   /**
@@ -384,19 +398,33 @@ class GestorRutas {
 
   /**
    * Carga el archivo rutas.xml mediante jQuery AJAX.
+   * Se recibe como texto y se parsea con DOMParser para evitar
+   * problemas con la declaración DOCTYPE del XML.
    * @private
    */
   _cargarXML() {
     $.ajax({
       url     : "xml/rutas.xml",
-      dataType: "xml",
-      success : (xmlDoc) => this._procesarXML(xmlDoc),
+      dataType: "text",
+      success : (textoXML) => {
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(textoXML, "text/xml");
+        const errorNodo = xmlDoc.querySelector("parsererror");
+        if (errorNodo) {
+          console.error("GestorRutas: XML inválido:", errorNodo.textContent);
+          this.$secRutas.find("p").last().text(
+            "Error al parsear rutas.xml. Revisa la consola para más detalles."
+          );
+          return;
+        }
+        this._procesarXML(xmlDoc);
+      },
       error   : (xhr, estado, error) => {
         console.error("GestorRutas: error al cargar rutas.xml:", estado, error);
         this.$secRutas.find("p").last().html(
           "<strong>Error:</strong> No se pudo cargar rutas.xml. " +
           "Asegúrate de que el servidor local está en ejecución " +
-          "(<code>python3 -m http.server 8080</code>)."
+          "(<code>python3 -m http.server 8080</code>) o usa el Live Server de VSCode."
         );
       }
     });
@@ -420,7 +448,7 @@ class GestorRutas {
    * @private
    */
   _renderizarListaRutas() {
-    const nav = $("<nav></nav>").attr("aria-label", "Listado de rutas disponibles");
+    const nav   = $("<nav></nav>").attr("aria-label", "Listado de rutas disponibles");
     const lista = $("<ul></ul>");
 
     this.rutas.forEach((ruta, indice) => {

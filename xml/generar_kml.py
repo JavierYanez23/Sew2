@@ -1,23 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-generar_kml.py — Generador de archivos KML (planimetría) a partir de rutas.xml
-Proyecto: Turismo en La Coruña | UO301366
-Asignatura: Software y Estándares para la Web 2025/2026
-
-Uso:
-    python3 generar_kml.py
-
-Genera un archivo KML por cada ruta definida en rutas.xml, con nombre:
-    ruta001_planimetria.kml
-    ruta002_planimetria.kml
-    ruta003_planimetria.kml
-    ...
-
-Los archivos KML se visualizan en rutas.html mediante Google Maps / OpenLayers.
-Solo se utilizan librerías estándar de Python (xml.etree.ElementTree).
-"""
-
 import xml.etree.ElementTree as ET
 import os
 
@@ -63,16 +43,13 @@ def generar_kml_ruta(ruta: ET.Element, directorio_salida: str) -> None:
     duracion    = texto(ruta, "duracion", "")
     agencia     = texto(ruta, "agencia", "")
 
-    # Coordenadas del punto de inicio
     coord_inicio = ruta.find("coordenadasInicio")
     lon_inicio   = texto(coord_inicio, "longitud")
     lat_inicio   = texto(coord_inicio, "latitud")
     alt_inicio   = texto(coord_inicio, "altitud", "0")
 
-    # Recoger todos los hitos con sus coordenadas
     hitos = ruta.findall("hitos/hito")
 
-    # Lista de puntos del trayecto: inicio + hitos
     puntos_trayecto = [(lon_inicio, lat_inicio, alt_inicio, "Inicio de la ruta", "")]
 
     for hito in hitos:
@@ -84,11 +61,8 @@ def generar_kml_ruta(ruta: ET.Element, directorio_salida: str) -> None:
         alt_h = texto(coord_hito, "altitud", "0")
         puntos_trayecto.append((lon_h, lat_h, alt_h, nombre_hito, desc_hito))
 
-    # Cerrar el polígono volviendo al punto de inicio
     puntos_trayecto.append((lon_inicio, lat_inicio, alt_inicio, "Regreso al inicio", ""))
 
-    # Construir el contenido KML como string (sin librerías externas)
-    # El KML generado sigue el estándar KML 2.2 (OGC KML Standard)
     lineas_coordenadas = "\n          ".join(
         f"{lon},{lat},{alt}"
         for lon, lat, alt, _, _ in puntos_trayecto
@@ -96,7 +70,6 @@ def generar_kml_ruta(ruta: ET.Element, directorio_salida: str) -> None:
 
     placemarks_hitos = ""
     for lon, lat, alt, nombre_h, desc_h in puntos_trayecto[1:-1]:
-        # Escapar caracteres especiales XML en descripción
         desc_escaped = (desc_h
                         .replace("&", "&amp;")
                         .replace("<", "&lt;")
@@ -197,7 +170,6 @@ def generar_kml_ruta(ruta: ET.Element, directorio_salida: str) -> None:
 </kml>
 """
 
-    # Determinar nombre del archivo de salida
     nombre_kml = f"{id_ruta}_planimetria.kml"
     ruta_salida = os.path.join(directorio_salida, nombre_kml)
 
@@ -211,10 +183,9 @@ def main():
     """
     Función principal: parsea rutas.xml y genera un KML por cada ruta.
     """
-    # Ruta al archivo XML (relativa al directorio de este script, que está en xml/)
     script_dir  = os.path.dirname(os.path.abspath(__file__))
     xml_path    = os.path.join(script_dir, "rutas.xml")
-    dir_salida  = script_dir  # Los KML se guardan en la misma carpeta xml/
+    dir_salida  = script_dir
 
     if not os.path.exists(xml_path):
         print(f"[ERROR] No se encuentra el archivo: {xml_path}")

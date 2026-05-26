@@ -1,30 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-generar_svg.py — Generador de archivos SVG (altimetría) a partir de rutas.xml
-Proyecto: Turismo en La Coruña | UO301366
-Asignatura: Software y Estándares para la Web 2025/2026
-
-Uso:
-    python3 generar_svg.py
-
-Genera un archivo SVG por cada ruta definida en rutas.xml, con nombre:
-    ruta001_altimetria.svg
-    ruta002_altimetria.svg
-    ruta003_altimetria.svg
-    ...
-
-El SVG muestra el perfil altimétrico de la ruta:
-  - Polilínea CERRADA con el perfil de elevación
-  - Eje X: distancia acumulada en metros (escala horizontal)
-  - Eje Y: altitud en metros (escala vertical)
-  - Etiquetas de escala en ambos ejes
-  - Etiquetas de texto horizontales y verticales para cada hito
-  - Cuadrícula de referencia
-
-Solo se utilizan librerías estándar de Python (xml.etree.ElementTree, math).
-"""
-
 import xml.etree.ElementTree as ET
 import os
 import math
@@ -34,23 +7,23 @@ import math
 # CONSTANTES DE DISEÑO DEL SVG
 # ============================================================
 
-SVG_ANCHO      = 900          # Ancho total del SVG en píxeles
-SVG_ALTO       = 480          # Alto total del SVG en píxeles
-MARGEN_IZQ     = 80           # Margen izquierdo (espacio para eje Y)
-MARGEN_DER     = 40           # Margen derecho
-MARGEN_SUP     = 50           # Margen superior (espacio para título)
-MARGEN_INF     = 100          # Margen inferior (espacio para eje X y etiquetas)
+SVG_ANCHO      = 900          
+SVG_ALTO       = 480          
+MARGEN_IZQ     = 80           
+MARGEN_DER     = 40           
+MARGEN_SUP     = 50           
+MARGEN_INF     = 100          
 
 AREA_ANCHO     = SVG_ANCHO - MARGEN_IZQ - MARGEN_DER
 AREA_ALTO      = SVG_ALTO  - MARGEN_SUP  - MARGEN_INF
 
-COLOR_FONDO    = "#f4f0eb"    # Crema arena atlántica (paleta del proyecto)
-COLOR_RELLENO  = "#7bafd4"    # Azul agua semitransparente
-COLOR_LINEA    = "#1a3a5c"    # Azul océano profundo
-COLOR_CUADRIC  = "#c5b99a"    # Color de la cuadrícula
-COLOR_TEXTO    = "#2c2c2c"    # Casi negro
-COLOR_TITULO   = "#1a3a5c"    # Azul principal
-COLOR_EJES     = "#2c2c2c"    # Color de los ejes
+COLOR_FONDO    = "#f4f0eb"
+COLOR_RELLENO  = "#7bafd4" 
+COLOR_LINEA    = "#1a3a5c"
+COLOR_CUADRIC  = "#c5b99a"
+COLOR_TEXTO    = "#2c2c2c"
+COLOR_TITULO   = "#1a3a5c"
+COLOR_EJES     = "#2c2c2c"
 
 
 def texto(elemento: ET.Element, tag: str, defecto: str = "") -> str:
@@ -76,7 +49,7 @@ def haversine_metros(lat1: float, lon1: float, lat2: float, lon2: float) -> floa
     usando la fórmula haversine. Usada como fallback si la distancia
     declarada en el XML es 0 en hitos distintos al primero.
     """
-    R = 6_371_000  # Radio de la Tierra en metros
+    R = 6_371_000 
     phi1 = math.radians(lat1)
     phi2 = math.radians(lat2)
     dphi = math.radians(lat2 - lat1)
@@ -104,13 +77,11 @@ def generar_svg_ruta(ruta: ET.Element, directorio_salida: str) -> None:
     id_ruta     = ruta.get("id", "rutaXXX")
     nombre_ruta = texto(ruta, "nombre", "Ruta sin nombre")
 
-    # --- Recoger puntos del perfil (inicio + hitos) ---
     coord_inicio = ruta.find("coordenadasInicio")
     lat_ini = float(texto(coord_inicio, "latitud", "0"))
     lon_ini = float(texto(coord_inicio, "longitud", "0"))
     alt_ini = float(texto(coord_inicio, "altitud", "0"))
 
-    # Lista de tuplas (distancia_acumulada_m, altitud_m, nombre_hito, lat, lon)
     puntos = [(0.0, alt_ini, "Inicio", lat_ini, lon_ini)]
 
     hitos = ruta.findall("hitos/hito")
@@ -127,17 +98,14 @@ def generar_svg_ruta(ruta: ET.Element, directorio_salida: str) -> None:
             dist_m    = distancia_a_metros(dist_val, unidades)
         else:
             dist_m = 0.0
-        # Si la distancia declarada es 0 pero no es el inicio, usar haversine
         prev = puntos[-1]
         if dist_m == 0 and len(puntos) > 0:
             dist_m = haversine_metros(prev[3], prev[4], lat_h, lon_h)
         dist_acum = prev[0] + dist_m
         puntos.append((dist_acum, alt_h, nombre_hito[:25], lat_h, lon_h))
 
-    # Cerrar polilínea: añadir punto de retorno con altitud del inicio
     puntos.append((puntos[-1][0] + 10, alt_ini, "", puntos[-1][3], puntos[-1][4]))
 
-    # --- Calcular rangos para escala ---
     distancias = [p[0] for p in puntos]
     altitudes  = [p[1] for p in puntos]
     dist_max   = max(distancias) if max(distancias) > 0 else 1
@@ -145,7 +113,6 @@ def generar_svg_ruta(ruta: ET.Element, directorio_salida: str) -> None:
     alt_max    = max(altitudes)
     alt_rango  = alt_max - alt_min if (alt_max - alt_min) > 0 else 1
 
-    # Margen vertical para que la línea no toque los bordes del área
     margen_v   = alt_rango * 0.15
     alt_min_v  = alt_min - margen_v
     alt_max_v  = alt_max + margen_v
@@ -159,20 +126,16 @@ def generar_svg_ruta(ruta: ET.Element, directorio_salida: str) -> None:
         """Convierte altitud en metros a píxeles en el SVG (eje Y invertido)."""
         return MARGEN_SUP + AREA_ALTO - ((alt - alt_min_v) / alt_rango_v) * AREA_ALTO
 
-    # --- Construir la polilínea CERRADA ---
-    # Puntos del perfil de elevación
     pts_perfil = [(x_pixel(p[0]), y_pixel(p[1])) for p in puntos]
-    # Cerrar por abajo: bajar al fondo del área desde el último punto y el primero
     base_y     = MARGEN_SUP + AREA_ALTO
     pts_poligono = pts_perfil + [
         (pts_perfil[-1][0], base_y),
         (pts_perfil[0][0],  base_y),
-        pts_perfil[0]  # volver al inicio para cerrar
+        pts_perfil[0]  
     ]
     poligono_str = " ".join(f"{x:.1f},{y:.1f}" for x, y in pts_poligono)
     polilinea_str = " ".join(f"{x:.1f},{y:.1f}" for x, y in pts_perfil)
 
-    # --- Cuadrícula Y (altitud) ---
     num_marcas_y = 5
     cuadricula_y = ""
     escala_y     = ""
@@ -190,7 +153,6 @@ def generar_svg_ruta(ruta: ET.Element, directorio_salida: str) -> None:
             f'{int(alt_marca)} m</text>\n    '
         )
 
-    # --- Cuadrícula X (distancia) ---
     num_marcas_x = 6
     cuadricula_x = ""
     escala_x     = ""
@@ -202,7 +164,6 @@ def generar_svg_ruta(ruta: ET.Element, directorio_salida: str) -> None:
             f'x2="{xp:.1f}" y2="{MARGEN_SUP + AREA_ALTO}" '
             f'stroke="{COLOR_CUADRIC}" stroke-width="0.5" stroke-dasharray="4,4"/>\n    '
         )
-        # Mostrar distancia en km si supera 2000m, si no en m
         if dist_max > 2000:
             label_x = f"{dist_marca / 1000:.1f} km"
         else:
@@ -212,8 +173,6 @@ def generar_svg_ruta(ruta: ET.Element, directorio_salida: str) -> None:
             f'text-anchor="middle" font-size="11" fill="{COLOR_TEXTO}">'
             f'{label_x}</text>\n    '
         )
-
-    # --- Etiquetas de hitos ---
     etiquetas_hitos = ""
     for i, (dist, alt, nombre_h, _, _) in enumerate(puntos[:-1]):  # excluir punto de cierre
         if not nombre_h:
@@ -225,13 +184,11 @@ def generar_svg_ruta(ruta: ET.Element, directorio_salida: str) -> None:
             f'<circle cx="{xp:.1f}" cy="{yp:.1f}" r="4" '
             f'fill="{COLOR_LINEA}" stroke="white" stroke-width="1.5"/>\n    '
         )
-        # Línea vertical de referencia desde el hito al eje X
         etiquetas_hitos += (
             f'<line x1="{xp:.1f}" y1="{yp:.1f}" '
             f'x2="{xp:.1f}" y2="{MARGEN_SUP + AREA_ALTO}" '
             f'stroke="{COLOR_LINEA}" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.5"/>\n    '
         )
-        # Texto VERTICAL con el nombre del hito (rotado -90°)
         texto_y_pos = MARGEN_SUP + AREA_ALTO + 25
         etiquetas_hitos += (
             f'<text transform="rotate(-90, {xp:.1f}, {texto_y_pos})" '
@@ -239,13 +196,10 @@ def generar_svg_ruta(ruta: ET.Element, directorio_salida: str) -> None:
             f'text-anchor="start" font-size="10" fill="{COLOR_TITULO}" font-weight="bold">'
             f'{nombre_h}</text>\n    '
         )
-        # Altitud HORIZONTAL sobre el punto
         etiquetas_hitos += (
             f'<text x="{xp + 6:.1f}" y="{yp - 6:.1f}" '
             f'font-size="10" fill="{COLOR_TEXTO}">{int(alt)} m</text>\n    '
         )
-
-    # --- Etiquetas de ejes ---
     etiqueta_eje_y = (
         f'<text transform="rotate(-90, 18, {MARGEN_SUP + AREA_ALTO // 2})" '
         f'x="18" y="{MARGEN_SUP + AREA_ALTO // 2}" '
@@ -258,8 +212,6 @@ def generar_svg_ruta(ruta: ET.Element, directorio_salida: str) -> None:
         f'text-anchor="middle" font-size="13" fill="{COLOR_TITULO}" font-weight="bold">'
         f'Distancia</text>'
     )
-
-    # --- Ensamblar el SVG completo ---
     svg_content = f"""<?xml version="1.0" encoding="UTF-8"?>
 <!--
   {id_ruta}_altimetria.svg

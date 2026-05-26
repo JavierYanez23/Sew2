@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rutas SYSTEM "rutas.dtd">
-<!--
-  rutas.xml — Rutas turísticas de la provincia de La Coruña
-  Proyecto: Turismo en La Coruña | UO301366
-  Asignatura: Software y Estándares para la Web 2025/2026
--->
 <rutas provincia="La Coruña">
 
   <!-- ============================================================

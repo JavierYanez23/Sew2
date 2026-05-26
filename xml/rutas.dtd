@@ -1,6 +1,3 @@
-<!-- rutas.dtd — DTD para rutas.xml | Turismo La Coruña | UO301366 -->
-
-<!-- Elemento raíz -->
 <!ELEMENT rutas (ruta+)>
 <!ATTLIST rutas
   provincia CDATA #REQUIRED>

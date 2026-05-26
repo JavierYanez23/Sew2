@@ -1,15 +1,4 @@
 <?php
-/**
- * datos_tablas.php — Carga los datos de ejemplo desde los CSV a la base de datos
- * Proyecto: Turismo en La Coruña | UO301366
- * Asignatura: Software y Estándares para la Web 2025/2026
- *
- * Uso: ejecutar desde la línea de comandos o desde el navegador UNA sola vez
- *   php datos_tablas.php
- *
- * Paradigma OOP obligatorio.
- */
-
 declare(strict_types=1);
 
 require_once __DIR__ . '/bd.php';
@@ -23,7 +12,6 @@ class CargadorDatos
 {
     private BaseDatos $bd;
 
-    /** Directorio donde están los archivos CSV (misma carpeta que este script) */
     private string $directorioCSV;
 
     public function __construct()
@@ -43,7 +31,7 @@ class CargadorDatos
         $this->cargarRecursos();
         $this->cargarUsuarios();
 
-        echo "\n✅ Carga de datos completada correctamente.\n";
+        echo "\nCarga de datos completada correctamente.\n";
         echo "   Nota: Las tablas 'reservas' y 'lineas_reserva' se rellenan\n";
         echo "   mediante la aplicación web al realizar reservas.\n";
     }
@@ -175,7 +163,6 @@ class CargadorDatos
 
         while (($linea = fgetcsv($handle, 0, ',', '"', '\\')) !== false) {
             if ($cabecera === null) {
-                // Primera línea: cabecera
                 $cabecera = $linea;
                 continue;
             }
@@ -189,6 +176,5 @@ class CargadorDatos
     }
 }
 
-// Punto de entrada
 $cargador = new CargadorDatos();
 $cargador->cargarTodo();

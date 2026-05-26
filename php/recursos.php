@@ -1,13 +1,4 @@
 <?php
-/**
- * recursos.php — Listado de recursos turísticos y gestión de reservas
- * Proyecto: Turismo en La Coruña | UO301366
- * Asignatura: Software y Estándares para la Web 2025/2026
- *
- * Paradigma OOP obligatorio.
- * Funciones: ver recursos, ver presupuesto y confirmar reserva.
- */
-
 declare(strict_types=1);
 
 require_once __DIR__ . '/bd.php';
@@ -35,7 +26,6 @@ class GestorRecursos
         $this->idUsuario = (int)($_SESSION['id_usuario'] ?? 0);
     }
 
-    /** Punto de entrada. */
     public function ejecutar(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->accion === 'confirmar') {
@@ -43,8 +33,6 @@ class GestorRecursos
         }
         $this->renderizarPagina();
     }
-
-    // ── LÓGICA DE NEGOCIO ────────────────────────────────────────
 
     /** Obtiene todos los recursos activos ordenados por tipo. */
     private function obtenerRecursos(): array
@@ -107,7 +95,6 @@ class GestorRecursos
         $precioUnidad = (float)$recurso['precio'];
         $subtotal     = $precioUnidad * $numPersonas;
 
-        // Insertar cabecera de reserva
         $this->bd->ejecutar(
             'INSERT INTO reservas (id_usuario, total, estado)
              VALUES (:id_usuario, :total, "confirmada")',
@@ -115,7 +102,6 @@ class GestorRecursos
         );
         $idReserva = (int)$this->bd->ultimoId();
 
-        // Insertar línea de reserva
         $this->bd->ejecutar(
             'INSERT INTO lineas_reserva (id_reserva, id_recurso, num_personas, precio_unidad, subtotal)
              VALUES (:id_reserva, :id_recurso, :num_personas, :precio_unidad, :subtotal)',
@@ -128,7 +114,6 @@ class GestorRecursos
             ]
         );
 
-        // Decrementar plazas libres
         $this->bd->ejecutar(
             'UPDATE recursos SET plazas_libres = plazas_libres - :n WHERE id_recurso = :id',
             [':n' => $numPersonas, ':id' => $idRecurso]
@@ -138,7 +123,6 @@ class GestorRecursos
         $this->accion     = 'ok';
     }
 
-    // ── VISTA ────────────────────────────────────────────────────
 
     private function renderizarPagina(): void
     {

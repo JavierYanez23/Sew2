@@ -1,22 +1,3 @@
--- ============================================================
--- creacion_bd.sql
--- Base de datos: turismo_coruna
--- Proyecto: Turismo en La Coruña | UO301366
--- Asignatura: Software y Estándares para la Web 2025/2026
---
--- Usuario: DBUSER2026  |  Password: DBPWD2026
---
--- 5 TABLAS NORMALIZADAS (3FN):
---   1. usuarios          — Datos de los usuarios registrados
---   2. tipos_recurso     — Catálogo de tipos de recurso turístico
---   3. recursos          — Recursos turísticos disponibles
---   4. reservas          — Reservas de recursos por usuarios
---   5. lineas_reserva    — Líneas de detalle de cada reserva
---
--- DIAGRAMA E-R (simplificado):
---   usuarios 1──N reservas N──1 recursos N──1 tipos_recurso
---   reservas 1──N lineas_reserva N──1 recursos
--- ============================================================
 
 -- Crear la base de datos si no existe
 CREATE DATABASE IF NOT EXISTS turismo_coruna

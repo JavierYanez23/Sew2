@@ -1,13 +1,4 @@
 <?php
-/**
- * reservas.php — Portal principal del sistema de reservas turísticas
- * Proyecto: Turismo en La Coruña | UO301366
- * Asignatura: Software y Estándares para la Web 2025/2026
- *
- * Paradigma OOP obligatorio.
- * Actúa como hub de navegación entre las funcionalidades de reservas.
- */
-
 declare(strict_types=1);
 
 /**
@@ -34,7 +25,6 @@ class ControladorReservas
         $this->renderizarPie();
     }
 
-    /** @private */
     private function renderizarCabecera(): void
     {
         ?>
@@ -74,7 +64,6 @@ class ControladorReservas
         <?php
     }
 
-    /** @private */
     private function renderizarMain(): void
     {
         ?>
@@ -140,7 +129,6 @@ class ControladorReservas
         <?php
     }
 
-    /** @private */
     private function renderizarPie(): void
     {
         ?>

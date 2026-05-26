@@ -1,17 +1,4 @@
 <?php
-/**
- * creacion_bd.php — Crea la base de datos ejecutando creacion_bd.sql
- * Proyecto: Turismo en La Coruña | UO301366
- * Asignatura: Software y Estándares para la Web 2025/2026
- *
- * Uso: ejecutar desde línea de comandos o navegador UNA sola vez:
- *   php creacion_bd.php
- *
- * Paradigma OOP obligatorio.
- * NOTA: Requiere privilegios de root/admin en MySQL para crear
- *       la base de datos y el usuario DBUSER2026.
- */
-
 declare(strict_types=1);
 
 /**
@@ -21,8 +8,8 @@ declare(strict_types=1);
 class InstaladorBD
 {
     private const HOST_ADMIN     = 'localhost';
-    private const USUARIO_ADMIN  = 'root';          // Cambiar si el usuario root tiene otro nombre
-    private const PASSWORD_ADMIN = '';               // Contraseña del root de MySQL (vacía en XAMPP por defecto)
+    private const USUARIO_ADMIN  = 'root';
+    private const PASSWORD_ADMIN = '';
     private const CHARSET        = 'utf8mb4';
     private const ARCHIVO_SQL    = __DIR__ . '/creacion_bd.sql';
 
@@ -39,9 +26,9 @@ class InstaladorBD
 
         try {
             $this->pdo = new PDO($dsn, self::USUARIO_ADMIN, self::PASSWORD_ADMIN, $opciones);
-            echo "✅ Conexión a MySQL establecida correctamente.\n";
+            echo "Conexión a MySQL establecida correctamente.\n";
         } catch (PDOException $e) {
-            die("❌ Error al conectar a MySQL: " . $e->getMessage() . "\n");
+            die("Error al conectar a MySQL: " . $e->getMessage() . "\n");
         }
     }
 
@@ -52,7 +39,7 @@ class InstaladorBD
     public function instalar(): void
     {
         if (!file_exists(self::ARCHIVO_SQL)) {
-            die("❌ Archivo SQL no encontrado: " . self::ARCHIVO_SQL . "\n");
+            die("Archivo SQL no encontrado: " . self::ARCHIVO_SQL . "\n");
         }
 
         $sql       = file_get_contents(self::ARCHIVO_SQL);
@@ -73,7 +60,7 @@ class InstaladorBD
             }
         }
 
-        echo "\n✅ Base de datos 'turismo_coruna' instalada correctamente.\n";
+        echo "\nBase de datos 'turismo_coruna' instalada correctamente.\n";
         echo "   Usuario: DBUSER2026 | Password: DBPWD2026\n";
         echo "\nAhora ejecuta 'php datos_tablas.php' para cargar los datos de ejemplo.\n";
     }
@@ -85,15 +72,12 @@ class InstaladorBD
      */
     private function parsearSQL(string $sql): array
     {
-        // Eliminar comentarios de bloque /* ... */
         $sql = preg_replace('/\/\*.*?\*\//s', '', $sql);
 
-        // Dividir por punto y coma
         $partes     = explode(';', $sql);
         $sentencias = [];
 
         foreach ($partes as $parte) {
-            // Eliminar comentarios de línea (--)
             $lineas = explode("\n", $parte);
             $lineasLimpias = array_filter($lineas, static function (string $l): bool {
                 return !str_starts_with(trim($l), '--');

@@ -1,22 +1,3 @@
-/**
- * meteorologia.js — Información meteorológica en tiempo real para La Coruña
- * Proyecto: Turismo en La Coruña | UO301366
- * Asignatura: Software y Estándares para la Web 2025/2026
- *
- * Requisitos del guión:
- *  - Mostrar tiempo actual en la capital de la provincia (La Coruña ciudad)
- *  - Mostrar previsión para los próximos 7 días
- *  - Consumo de Servicios Web mediante jQuery
- *  - Paradigma OOP obligatorio; jQuery encapsulado dentro de clases
- *
- * API utilizada: Open-Meteo (https://open-meteo.com) — gratuita, sin API key
- *   Endpoint actual:  https://api.open-meteo.com/v1/forecast
- *   Coordenadas de La Coruña ciudad: lat=43.3623, lon=-8.4115
- *
- * Códigos WMO de condición meteorológica (wmo_code):
- *   https://open-meteo.com/en/docs#weathervariables
- */
-
 "use strict";
 
 // Coordenadas de La Coruña capital
@@ -38,7 +19,6 @@ class CondicionMeteo {
     this.emoji   = info.emoji;
   }
 
-  /** Mapa de códigos WMO a descripción en español y emoji. */
   static CODIGOS = {
     0  : { texto: "Cielo despejado",          emoji: "☀️"  },
     1  : { texto: "Principalmente despejado", emoji: "🌤️" },
@@ -176,7 +156,7 @@ class TiempoActual {
 /**
  * Clase ServicioMeteorologico
  * Gestiona la obtención y presentación de datos meteorológicos
- * mediante la API Open-Meteo (gratuita, sin autenticación).
+ * mediante la API Open-Meteo.
  */
 class ServicioMeteorologico {
   /**
@@ -259,7 +239,6 @@ class ServicioMeteorologico {
    * @private
    */
   _manejarExito(datos) {
-    // --- Tiempo actual ---
     const c = datos.current;
     const tiempoActual = new TiempoActual(
       c.temperature_2m,
@@ -271,7 +250,6 @@ class ServicioMeteorologico {
     this.$secActual.find("p").last().remove();
     this.$secActual.append(tiempoActual.renderizar());
 
-    // --- Previsión de 7 días ---
     const d = datos.daily;
     const dias = d.time.map((fecha, i) => new DiaMeteo(
       fecha,
@@ -282,7 +260,6 @@ class ServicioMeteorologico {
       d.wind_speed_10m_max[i] || 0
     ));
 
-    // Construir tabla accesible de previsión
     const tabla = $("<table></table>");
     const caption = $("<caption></caption>").text(
       "Previsión meteorológica para los próximos 7 días en La Coruña"

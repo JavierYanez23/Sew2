@@ -1,20 +1,3 @@
-/**
- * noticias.js — Sección de noticias sobre La Coruña mediante servicio web
- * Proyecto: Turismo en La Coruña | UO301366
- * Asignatura: Software y Estándares para la Web 2025/2026
- *
- * Requisitos del guión:
- *  - Consumo de Servicios Web en la página principal (index.html)
- *  - Paradigma OOP obligatorio; jQuery encapsulado dentro de clases
- *
- * API utilizada: GNews API (https://gnews.io) — plan gratuito
- *   Endpoint: https://gnews.io/api/v4/search
- *   Parámetros: q (búsqueda), lang, country, max, apikey
- *
- * NOTA: Sustituir GNEWS_API_KEY por tu clave gratuita obtenida en https://gnews.io
- *       Si la API no está disponible, se mostrará un mensaje de error informativo.
- */
-
 "use strict";
 
 /**
@@ -28,7 +11,7 @@ class Noticia {
    * @param {string} url         - URL del artículo original
    * @param {string} fuente      - Nombre del medio de comunicación
    * @param {string} fecha       - Fecha de publicación (ISO 8601)
-   * @param {string} imagen      - URL de la imagen de portada (puede ser "")
+   * @param {string} imagen      - URL de la imagen de portada
    */
   constructor(titulo, descripcion, url, fuente, fecha, imagen) {
     this.titulo      = titulo;
@@ -54,7 +37,6 @@ class Noticia {
 
   /**
    * Genera el elemento HTML del artículo de noticia como objeto jQuery.
-   * Estructura semántica con <article>, <h3>, <p> y <a>.
    * @returns {jQuery} Elemento <article> con la noticia formateada
    */
   renderizar() {
@@ -82,7 +64,6 @@ class Noticia {
 
     articulo.append(titulo, meta, descripcion, leerMas);
 
-    // Imagen opcional si la noticia la incluye
     if (this.imagen) {
       const figura = $("<figure></figure>").append(
         $("<img>").attr({
@@ -121,7 +102,6 @@ class ServicioNoticias {
    * y lanzando la petición al servicio web.
    */
   inicializar() {
-    // Localizar la sección de noticias por su encabezado
     this.$contenedor = $("section").filter(function () {
       return $(this).find("h2").text().trim() === "Noticias sobre La Coruña";
     });
@@ -172,7 +152,6 @@ class ServicioNoticias {
    * @private
    */
   _manejarExito(datos) {
-    // Limpiar el contenido de carga
     this.$contenedor.find("p").remove();
 
     if (!datos.articles || datos.articles.length === 0) {
@@ -182,7 +161,6 @@ class ServicioNoticias {
       return;
     }
 
-    // Construir y renderizar cada noticia
     datos.articles.forEach((art) => {
       const noticia = new Noticia(
         art.title       || "Sin título",
@@ -216,10 +194,8 @@ class ServicioNoticias {
 
 /**
  * Punto de entrada: se ejecuta cuando el DOM está listo.
- * IMPORTANTE: Sustituir "TU_API_KEY_AQUI" por tu clave de GNews.io
  */
 $(function () {
-  // ⚠️ SUSTITUIR por la clave real obtenida en https://gnews.io (plan gratuito)
   const API_KEY = "4b08f6a20815d3d0a4951d0e094da478";
 
   const servicio = new ServicioNoticias(

@@ -1,16 +1,3 @@
-/**
- * carrusel.js — Carrusel de fotos para la página principal (index.html)
- * Proyecto: Turismo en La Coruña | UO301366
- * Asignatura: Software y Estándares para la Web 2025/2026
- *
- * Requisitos del guión:
- *  - Mínimo 5 fotos con los principales recursos turísticos de la provincia
- *  - Una de las imágenes debe ser el mapa de situación de la provincia
- *  - Las imágenes son archivos locales en la carpeta "multimedia/"
- *  - Paradigma OOP obligatorio; jQuery encapsulado dentro de clases
- *  - No se permiten bibliotecas externas salvo jQuery
- */
-
 "use strict";
 
 /**
@@ -52,10 +39,6 @@ class Diapositiva {
  * Clase Carrusel
  * Gestiona la visualización de un conjunto de diapositivas con navegación
  * manual (botones anterior/siguiente) y reproducción automática opcional.
- *
- * Uso en el HTML:
- *   <section id="carrusel">...</section>
- *   Los botones con texto "Anterior" y "Siguiente" ya están en el HTML estático.
  */
 class Carrusel {
   /**
@@ -79,7 +62,6 @@ class Carrusel {
    * y conecta los botones de navegación.
    */
   inicializar() {
-    // Localizar la sección del carrusel buscando el h2 correspondiente
     this.$contenedor = $("section").filter(function () {
       return $(this).find("h2").text().trim() === "Galería de la Provincia";
     });
@@ -89,11 +71,9 @@ class Carrusel {
       return;
     }
 
-    // Crear el área de imagen dinámica (sustituye el <figure> estático del HTML)
     this.$displayImagen = $("<div></div>").attr("role", "img").attr("aria-live", "polite");
     this.$contenedor.find("figure").replaceWith(this.$displayImagen);
 
-    // Crear indicadores de posición (puntos)
     this.$indicadores = $("<p></p>").attr("aria-label", "Indicadores del carrusel");
     this.diapositivas.forEach((_, i) => {
       const punto = $("<button></button>")
@@ -105,21 +85,17 @@ class Carrusel {
     });
     this.$contenedor.find("p").first().before(this.$indicadores);
 
-    // Conectar botones de navegación (ya existen en el HTML estático)
     const $botones = this.$contenedor.find("button[type='button']");
     $botones.filter(":contains('Anterior')").on("click", () => this.anterior());
     $botones.filter(":contains('Siguiente')").on("click", () => this.siguiente());
 
-    // Soporte de teclado: flechas izquierda/derecha
     $(document).on("keydown", (e) => {
       if (e.key === "ArrowLeft")  this.anterior();
       if (e.key === "ArrowRight") this.siguiente();
     });
 
-    // Mostrar primera diapositiva
     this.mostrar(0);
 
-    // Iniciar reproducción automática
     if (this.intervalo > 0) {
       this.iniciarAuto();
     }
@@ -133,13 +109,11 @@ class Carrusel {
     this.indiceActual = (indice + this.diapositivas.length) % this.diapositivas.length;
     const diap = this.diapositivas[this.indiceActual];
 
-    // Renderizar la diapositiva con animación de fundido
     this.$displayImagen
       .fadeOut(250, () => {
         this.$displayImagen.empty().append(diap.renderizar()).fadeIn(400);
       });
 
-    // Actualizar indicadores de posición
     if (this.$indicadores) {
       this.$indicadores.find("button").each((i, btn) => {
         $(btn).css("opacity", i === this.indiceActual ? "1" : "0.4");
@@ -195,9 +169,6 @@ class Carrusel {
  * Define las diapositivas y arranca el carrusel.
  */
 $(function () {
-  // Definición de las 5 diapositivas (mínimo exigido por el guión).
-  // Una de ellas ES el mapa de situación de la provincia (diapositiva 5).
-  // Todas las imágenes son archivos locales en multimedia/imagenes/
   const diapositivas = [
     new Diapositiva(
       "multimedia/imagenes/torre de hercules al atardecer.jpg",

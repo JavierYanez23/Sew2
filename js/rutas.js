@@ -1,27 +1,6 @@
 "use strict";
 
 /**
- * rutas.js — Carga y visualización de rutas turísticas desde rutas.xml
- * Proyecto: Turismo en La Coruña | UO301366
- * Asignatura: Software y Estándares para la Web 2025/2026
- *
- * Requisitos del guión:
- *  - Carga del archivo rutas.xml desde la máquina local
- *  - Visualización de la información completa de cada ruta
- *  - Visualización de planimetría (KML) sobre mapa cartográfico (OpenLayers + OpenStreetMap)
- *  - Visualización de altimetría (SVG) con etiquetas de hitos
- *  - Paradigma OOP obligatorio; jQuery encapsulado dentro de clases
- *  - No se permite XSLT; se usa ECMAScript para transformar el XML en HTML
- *
- * Mapas: Se usa OpenLayers con OpenStreetMap (gratuito, sin API Key).
- *        El API Key personal de los profesores está PROHIBIDO.
- *
- * NOTA: Este archivo requiere acceso local al servidor (CORS).
- *       Para desarrollo local usar: python3 -m http.server 8080
- *       O bien usar el Live Server de VSCode.
- */
-
-/**
  * Clase BaseRuta
  * Clase base que proporciona el método auxiliar _texto compartido
  * por HitoRuta y Ruta, evitando duplicación de código.
@@ -85,7 +64,6 @@ class HitoRuta extends BaseRuta {
     ));
     art.append(dl);
 
-    // Galería de fotos del hito
     if (this.fotos.length > 0) {
       art.append($("<p></p>").append($("<strong></strong>").text("Fotografías:")));
       const galeria = $("<ul></ul>");
@@ -106,7 +84,6 @@ class HitoRuta extends BaseRuta {
       art.append(galeria);
     }
 
-    // Galería de vídeos del hito (opcional)
     if (this.videos.length > 0) {
       art.append($("<p></p>").append($("<strong></strong>").text("Vídeos:")));
       this.videos.forEach(video => {
@@ -178,7 +155,6 @@ class Ruta extends BaseRuta {
     const seccion = $("<section></section>");
     seccion.append($("<h3></h3>").text(this.nombre));
 
-    // Datos generales en tabla accesible
     const tabla = $("<table></table>");
     tabla.append($("<caption></caption>").text(`Ficha de la ruta: ${this.nombre}`));
     const thead = $("<thead></thead>").append(
@@ -214,11 +190,9 @@ class Ruta extends BaseRuta {
     tabla.append(tbody);
     seccion.append(tabla);
 
-    // Descripción
     seccion.append($("<h4></h4>").text("Descripción"));
     seccion.append($("<p></p>").text(this.descripcion));
 
-    // Referencias
     seccion.append($("<h4></h4>").text("Fuentes y referencias"));
     const listaRef = $("<ol></ol>");
     this.referencias.forEach(ref => {
@@ -230,7 +204,6 @@ class Ruta extends BaseRuta {
     });
     seccion.append(listaRef);
 
-    // Hitos
     seccion.append($("<h4></h4>").text(`Hitos de la ruta (${this.hitos.length})`));
     this.hitos.forEach(hito => seccion.append(hito.renderizar()));
 
@@ -258,13 +231,11 @@ class GestorMapas {
       deferred.resolve();
       return deferred.promise();
     }
-    // Cargar CSS de OpenLayers
     $("<link>").attr({
       rel : "stylesheet",
       href: "https://cdn.jsdelivr.net/npm/ol@v9.2.4/ol.css"
     }).appendTo("head");
 
-    // Cargar JS de OpenLayers
     $.getScript("https://cdn.jsdelivr.net/npm/ol@v9.2.4/dist/ol.js")
       .done(() => deferred.resolve())
       .fail(() => deferred.reject("No se pudo cargar OpenLayers"));
@@ -282,12 +253,10 @@ class GestorMapas {
     $div.empty().css({ width: "100%", height: "420px" });
 
     this.cargarOpenLayers().done(() => {
-      // Capa base: OpenStreetMap (gratuita, sin API key)
       const capaOSM = new ol.layer.Tile({
         source: new ol.source.OSM()
       });
 
-      // Capa KML con la planimetría de la ruta
       const capaKML = new ol.layer.Vector({
         source: new ol.source.Vector({
           url   : `xml/${ruta.planimetria}`,
@@ -295,7 +264,6 @@ class GestorMapas {
         })
       });
 
-      // Eliminar mapa anterior si existe
       if (this.mapaActual) {
         this.mapaActual.setTarget(null);
       }
@@ -309,7 +277,6 @@ class GestorMapas {
         })
       });
 
-      // Ajustar vista al extent del KML cuando cargue
       capaKML.getSource().once("change", () => {
         const extent = capaKML.getSource().getExtent();
         if (extent && Number.isFinite(extent[0])) {
@@ -462,11 +429,9 @@ class GestorRutas {
     nav.append(lista);
     this.$secRutas.append(nav);
 
-    // Área de detalle de la ruta seleccionada
     this.$areaDetalle = $("<section></section>").attr("aria-live", "polite");
     this.$secRutas.after(this.$areaDetalle);
 
-    // Seleccionar la primera ruta por defecto
     if (this.rutas.length > 0) {
       this._seleccionarRuta(0);
     }
@@ -481,22 +446,17 @@ class GestorRutas {
     this.rutaSeleccionada = this.rutas[indice];
     const ruta = this.rutaSeleccionada;
 
-    // Mostrar ficha de la ruta
     this.$areaDetalle.empty().append(ruta.renderizarFicha());
 
-    // Actualizar planimetría (mapa KML)
     if (this.$secPlanimetria) {
       this.gestorMapas.renderizarMapa(ruta, "mapa-ruta");
     }
 
-    // Actualizar altimetría (SVG)
     if (this.$secAltimetria) {
       this.$secAltimetria.find("figure").remove();
       this.$secAltimetria.find("p").last().text("Cargando perfil altimétrico...");
       this.gestorAlti.renderizarSVG(ruta, this.$secAltimetria);
     }
-
-    // Hacer scroll suave a la ficha
     $("html, body").animate(
       { scrollTop: this.$areaDetalle.offset().top - 80 },
       400

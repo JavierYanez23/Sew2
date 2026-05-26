@@ -1,13 +1,4 @@
-<?php
-/**
- * anulacion.php — Anulación de reservas del usuario autenticado
- * Proyecto: Turismo en La Coruña | UO301366
- * Asignatura: Software y Estándares para la Web 2025/2026
- *
- * Paradigma OOP obligatorio.
- * Flujo: lista reservas confirmadas → confirmación de anulación → procesa anulación.
- */
-
+<?php 
 declare(strict_types=1);
 
 require_once __DIR__ . '/bd.php';
@@ -43,8 +34,6 @@ class AnulacionReservas
         $this->renderizarPagina();
     }
 
-    // ── LÓGICA DE NEGOCIO ────────────────────────────────────────
-
     /** Procesa la anulación de la reserva indicada en POST[id_reserva]. */
     private function procesarAnulacion(): void
     {
@@ -59,7 +48,6 @@ class AnulacionReservas
             return;
         }
 
-        // Verificar que la reserva pertenece al usuario y está confirmada
         $stmt = $this->bd->ejecutar(
             'SELECT id_reserva, estado FROM reservas
              WHERE id_reserva = :id AND id_usuario = :uid AND estado = "confirmada"',
@@ -72,7 +60,6 @@ class AnulacionReservas
             return;
         }
 
-        // Devolver plazas: leer las líneas para saber cuántas plazas reponer
         $stmtLineas = $this->bd->ejecutar(
             'SELECT id_recurso, num_personas FROM lineas_reserva WHERE id_reserva = :id',
             [':id' => $idReserva]
@@ -86,7 +73,6 @@ class AnulacionReservas
             );
         }
 
-        // Marcar la reserva como anulada
         $this->bd->ejecutar(
             'UPDATE reservas SET estado = "anulada" WHERE id_reserva = :id',
             [':id' => $idReserva]
@@ -116,7 +102,6 @@ class AnulacionReservas
         return $stmt->fetchAll();
     }
 
-    // ── VISTA ────────────────────────────────────────────────────
 
     private function renderizarPagina(): void
     {

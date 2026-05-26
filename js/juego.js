@@ -1,17 +1,3 @@
-/**
- * juego.js — Juego de 10 preguntas sobre los recursos turísticos de La Coruña
- * Proyecto: Turismo en La Coruña | UO301366
- * Asignatura: Software y Estándares para la Web 2025/2026
- *
- * Requisitos del guión:
- *  - ECMAScript PURO: sin jQuery ni ninguna otra biblioteca
- *  - Paradigma OOP obligatorio (clases, objetos, métodos)
- *  - 10 preguntas, cada una con 5 opciones y 1 respuesta correcta
- *  - Las preguntas versan sobre información contenida en el sitio web
- *  - El jugador DEBE responder todas las preguntas
- *  - Puntuación final de 0 a 10 (1 punto por acierto)
- */
-
 "use strict";
 
 /**
@@ -84,7 +70,6 @@ class ResultadoRespuesta {
  * Clase Juego
  * Gestiona el flujo completo del test: presentación de preguntas,
  * recogida de respuestas, cálculo de puntuación y presentación de resultados.
- * Usa ECMAScript puro (DOM API nativa), sin jQuery.
  */
 class Juego {
   /**
@@ -105,7 +90,6 @@ class Juego {
    * Inicializa el juego: localiza las secciones del DOM y arranca la primera pregunta.
    */
   inicializar() {
-    // Localizar secciones por el texto del h2
     const secciones = document.querySelectorAll("section");
     secciones.forEach(sec => {
       const h2 = sec.querySelector("h2");
@@ -120,7 +104,6 @@ class Juego {
       return;
     }
 
-    // Ocultar la sección de puntuación hasta el final
     this.$secPuntuacion.style.display = "none";
 
     this._mostrarPregunta();
@@ -134,17 +117,14 @@ class Juego {
     const pregunta = this.preguntas[this.indiceActual];
     const total    = this.preguntas.length;
 
-    // Limpiar contenido anterior de la sección (excepto el h2)
     const h2 = this.$secPreguntas.querySelector("h2");
     this.$secPreguntas.innerHTML = "";
     this.$secPreguntas.appendChild(h2);
 
-    // Indicador de progreso
     const progreso = document.createElement("p");
     progreso.textContent = `Pregunta ${this.indiceActual + 1} de ${total}`;
     this.$secPreguntas.appendChild(progreso);
 
-    // Barra de progreso accesible
     const barraContenedor = document.createElement("p");
     const barra = document.createElement("progress");
     barra.setAttribute("max", total.toString());
@@ -153,14 +133,12 @@ class Juego {
     barraContenedor.appendChild(barra);
     this.$secPreguntas.appendChild(barraContenedor);
 
-    // Enunciado de la pregunta
     const enunciado = document.createElement("p");
     const fuerte    = document.createElement("strong");
     fuerte.textContent = pregunta.enunciado;
     enunciado.appendChild(fuerte);
     this.$secPreguntas.appendChild(enunciado);
 
-    // Opciones de respuesta como fieldset + radiobuttons accesibles
     const fieldset  = document.createElement("fieldset");
     const leyenda   = document.createElement("legend");
     leyenda.textContent = "Selecciona una respuesta:";
@@ -181,7 +159,6 @@ class Juego {
 
     this.$secPreguntas.appendChild(fieldset);
 
-    // Botón de confirmación
     const botonSiguiente = document.createElement("button");
     botonSiguiente.setAttribute("type", "button");
     botonSiguiente.textContent =
@@ -198,7 +175,6 @@ class Juego {
   _confirmarRespuesta(fieldset) {
     const seleccionado = fieldset.querySelector("input[name='respuesta']:checked");
 
-    // Es OBLIGATORIO responder cada pregunta (requisito del guión)
     if (!seleccionado) {
       this._mostrarAlerta("⚠️ Debes seleccionar una respuesta antes de continuar.");
       return;
@@ -223,7 +199,6 @@ class Juego {
    * @private
    */
   _mostrarAlerta(mensaje) {
-    // Eliminar alerta anterior si existe
     const alertaAnterior = this.$secPreguntas.querySelector("[role='alert']");
     if (alertaAnterior) alertaAnterior.remove();
 
@@ -239,10 +214,8 @@ class Juego {
    * @private
    */
   _mostrarResultados() {
-    // Ocultar sección de preguntas
     this.$secPreguntas.style.display = "none";
 
-    // Mostrar sección de puntuación
     this.$secPuntuacion.style.display = "";
 
     const h2 = this.$secPuntuacion.querySelector("h2");
@@ -251,21 +224,18 @@ class Juego {
 
     const aciertos   = this.respuestas.filter(r => r.acertada).length;
     const total      = this.preguntas.length;
-    const puntuacion = aciertos;  // 1 punto por acierto, 0 por fallo
+    const puntuacion = aciertos; 
 
-    // Mensaje de puntuación
     const msgPuntuacion = document.createElement("p");
     const spanPuntuacion = document.createElement("strong");
     spanPuntuacion.textContent = `Tu puntuación: ${puntuacion} / ${total}`;
     msgPuntuacion.appendChild(spanPuntuacion);
     this.$secPuntuacion.appendChild(msgPuntuacion);
 
-    // Comentario según la puntuación
     const comentario = document.createElement("p");
     comentario.textContent = this._comentarioPuntuacion(puntuacion);
     this.$secPuntuacion.appendChild(comentario);
 
-    // Tabla de resumen detallado
     const tabla = document.createElement("table");
     const caption = document.createElement("caption");
     caption.textContent = "Resumen de tus respuestas";
@@ -305,14 +275,12 @@ class Juego {
     tabla.appendChild(tbody);
     this.$secPuntuacion.appendChild(tabla);
 
-    // Botón para jugar de nuevo
     const botonReiniciar = document.createElement("button");
     botonReiniciar.setAttribute("type", "button");
     botonReiniciar.textContent = "Jugar de nuevo";
     botonReiniciar.addEventListener("click", () => this._reiniciar());
     this.$secPuntuacion.appendChild(botonReiniciar);
 
-    // Scroll suave a los resultados
     this.$secPuntuacion.scrollIntoView({ behavior: "smooth" });
   }
 

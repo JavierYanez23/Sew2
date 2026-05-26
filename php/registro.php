@@ -1,13 +1,4 @@
 <?php
-/**
- * registro.php — Registro de usuarios e inicio/cierre de sesión
- * Proyecto: Turismo en La Coruña | UO301366
- * Asignatura: Software y Estándares para la Web 2025/2026
- *
- * Paradigma OOP obligatorio.
- * Gestiona 3 acciones: 'registrar', 'login', 'cerrar' (cerrar sesión).
- */
-
 declare(strict_types=1);
 
 require_once __DIR__ . '/bd.php';
@@ -42,15 +33,12 @@ class GestorUsuarios
             };
         }
 
-        // Cerrar sesión
         if ($this->accion === 'cerrar') {
             $this->cerrarSesion();
         }
 
         $this->renderizarPagina();
     }
-
-    // ── LÓGICA DE NEGOCIO ────────────────────────────────────────
 
     /** Registra un nuevo usuario en la base de datos. */
     private function procesarRegistro(): void
@@ -61,7 +49,6 @@ class GestorUsuarios
         $password  = $_POST['password']       ?? '';
         $telefono  = trim($_POST['telefono']  ?? '');
 
-        // Validaciones
         if (empty($nombre))    {
             $this->errores[] = 'El nombre es obligatorio.';
         }
@@ -79,7 +66,6 @@ class GestorUsuarios
             return;
         }
 
-        // Comprobar si el email ya existe
         $stmt = $this->bd->ejecutar(
             'SELECT id_usuario FROM usuarios WHERE email = :email',
             [':email' => $email]
@@ -89,7 +75,6 @@ class GestorUsuarios
             return;
         }
 
-        // Insertar usuario
         $hash = password_hash($password, PASSWORD_BCRYPT);
         $this->bd->ejecutar(
             'INSERT INTO usuarios (nombre, apellidos, email, password_hash, telefono)
@@ -103,7 +88,6 @@ class GestorUsuarios
             ]
         );
 
-        // Iniciar sesión automáticamente
         $idNuevo = (int)$this->bd->ultimoId();
         $_SESSION['id_usuario'] = $idNuevo;
         $_SESSION['nombre']     = $nombre;
@@ -152,7 +136,6 @@ class GestorUsuarios
         exit;
     }
 
-    // ── VISTA ────────────────────────────────────────────────────
 
     private function renderizarPagina(): void
     {
@@ -213,7 +196,6 @@ class GestorUsuarios
     </section>
     <?php else: ?>
 
-    <!-- Mostrar errores si los hay -->
     <?php if (!empty($this->errores)): ?>
     <section>
       <h2>Errores en el formulario</h2>
@@ -225,7 +207,6 @@ class GestorUsuarios
     </section>
     <?php endif; ?>
 
-    <!-- Formulario de inicio de sesión -->
     <section>
       <h2>Iniciar sesión</h2>
       <p>Si ya tienes una cuenta, introduce tu correo electrónico y contraseña.</p>
@@ -249,7 +230,6 @@ class GestorUsuarios
       </form>
     </section>
 
-    <!-- Formulario de registro -->
     <section>
       <h2>Crear una cuenta nueva</h2>
       <p>Si es la primera vez que visitas nuestro portal, regístrate para poder realizar reservas.</p>

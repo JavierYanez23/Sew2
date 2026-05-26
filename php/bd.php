@@ -1,28 +1,14 @@
 <?php
-/**
- * bd.php — Clase de conexión a la base de datos MySQL/MariaDB
- * Proyecto: Turismo en La Coruña | UO301366
- * Asignatura: Software y Estándares para la Web 2025/2026
- *
- * Paradigma OOP obligatorio: clase singleton con PDO.
- * Usuario y contraseña fijados según el guión del proyecto.
- */
-
 declare(strict_types=1);
 
 class BaseDatos
 {
-    /* ── Credenciales fijas del guión ── */
     private const HOST     = 'localhost';
     private const DBNAME   = 'turismo_coruna';
     private const USUARIO  = 'DBUSER2026';
     private const PASSWORD = 'DBPWD2026';
     private const CHARSET  = 'utf8mb4';
-
-    /** Instancia única (patrón Singleton) */
     private static ?BaseDatos $instancia = null;
-
-    /** Conexión PDO */
     private PDO $pdo;
 
     /**
@@ -54,7 +40,7 @@ class BaseDatos
     }
 
     /**
-     * Devuelve la instancia única de BaseDatos (Singleton).
+     * Devuelve la instancia única de BaseDatos.
      * @return BaseDatos
      */
     public static function obtenerInstancia(): BaseDatos
@@ -96,7 +82,7 @@ class BaseDatos
         return $this->pdo->lastInsertId();
     }
 
-    /** Evitar clonación (Singleton) */
+    /** Evitar clonación*/
     private function __clone() {}
 
 

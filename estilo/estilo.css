@@ -132,3 +132,8 @@ button {
 button:hover { background-color: var(--color-principal); transform: translateY(-1px); } /* 0,1,1 */
 button:focus { outline: 3px solid var(--color-acento); outline-offset: 2px; } /* 0,1,1 */
 button:active { transform: translateY(0); } /* 0,1,1 */
+
+/* Especificidad: 0,0,2 — selector section nav */
+section nav {
+  background-color: transparent;
+}

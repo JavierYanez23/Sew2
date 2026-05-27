@@ -429,8 +429,14 @@ class GestorRutas {
     nav.append(lista);
     this.$secRutas.append(nav);
 
-    this.$areaDetalle = $("<section></section>").attr("aria-live", "polite");
-    this.$secRutas.after(this.$areaDetalle);
+    this.$areaDetalle = $("<section></section>")
+  .attr("aria-live", "polite");
+
+    this.$areaDetalle.append(
+      $("<h2></h2>").text("Detalle de la ruta")
+  );
+
+  this.$secRutas.after(this.$areaDetalle);
 
     if (this.rutas.length > 0) {
       this._seleccionarRuta(0);
@@ -443,25 +449,27 @@ class GestorRutas {
    * @private
    */
   _seleccionarRuta(indice) {
-    this.rutaSeleccionada = this.rutas[indice];
-    const ruta = this.rutaSeleccionada;
+  this.rutaSeleccionada = this.rutas[indice];
+  const ruta = this.rutaSeleccionada;
 
-    this.$areaDetalle.empty().append(ruta.renderizarFicha());
+  this.$areaDetalle.find("section").remove();
+  this.$areaDetalle.append(ruta.renderizarFicha());
 
-    if (this.$secPlanimetria) {
-      this.gestorMapas.renderizarMapa(ruta, "mapa-ruta");
-    }
-
-    if (this.$secAltimetria) {
-      this.$secAltimetria.find("figure").remove();
-      this.$secAltimetria.find("p").last().text("Cargando perfil altimétrico...");
-      this.gestorAlti.renderizarSVG(ruta, this.$secAltimetria);
-    }
-    $("html, body").animate(
-      { scrollTop: this.$areaDetalle.offset().top - 80 },
-      400
-    );
+  if (this.$secPlanimetria) {
+    this.gestorMapas.renderizarMapa(ruta, "mapa-ruta");
   }
+
+  if (this.$secAltimetria) {
+    this.$secAltimetria.find("figure").remove();
+    this.$secAltimetria.find("p").last().text("Cargando perfil altimétrico...");
+    this.gestorAlti.renderizarSVG(ruta, this.$secAltimetria);
+  }
+
+  $("html, body").animate(
+    { scrollTop: this.$areaDetalle.offset().top - 80 },
+    400
+  );
+}
 }
 
 /**

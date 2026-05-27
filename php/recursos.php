@@ -240,7 +240,7 @@ class GestorRecursos
         <input type="hidden" name="num_personas" value="<?= $numPersonas ?>">
         <p>
           <button type="submit">Confirmar reserva</button>
-          <a href="recursos.php"><button type="button">Cancelar</button></a>
+          <a href="recursos.php">Cancelar</a>
         </p>
       </form>
       <?php endif; ?>
@@ -288,7 +288,7 @@ class GestorRecursos
                 <input type="number" name="personas"
                        id="personas_<?= (int)$r['id_recurso'] ?>"
                        value="1" min="1"
-                       max="<?= (int)$r['plazas_libres'] ?>" size="3">
+                       max="<?= (int)$r['plazas_libres'] ?>">
                 <button type="submit">Ver presupuesto</button>
               </form>
               <?php else: ?>

@@ -1,62 +1,33 @@
-/*
- * layout.css — Posicionamiento y maquetación del proyecto Turismo La Coruña
- * Asignatura: Software y Estándares para la Web 2025/2026
- *
- * RESTRICCIONES DEL GUIÓN:
- *  - Solo se permiten los módulos CSS Flexible Box Layout, CSS Grid Layout
- *    y CSS Multi-column Layout para maquetación y posicionamiento.
- *  - Prohibido usar selectores #id y .class (salvo .activo, ya definido en estilo.css)
- *  - Cada selector va precedido por su especificidad como comentario
- *  - Las advertencias por redefinición de propiedades en media queries
- *    están documentadas en el propio comentario de la regla afectada
- *
- * BREAKPOINTS:
- *   Móvil:   < 600px
- *   Tableta: 600px – 1023px
- *   Desktop: ≥ 1024px
- */
-
-/* =========================================================
-   ESTRUCTURA GLOBAL DE LA PÁGINA
-   Flexbox en dirección columna para que el footer quede
-   siempre al fondo aunque el contenido sea corto.
-   ========================================================= */
-
-/* Especificidad: 0,0,1 — selector de elemento body */
+/* Especificidad: 0,0,1 */ 
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* Especificidad: 0,0,1 — selector de elemento main */
+/* Especificidad: 0,0,1 */
 main {
   flex: 1;
-  /* flex: 1 hace que main ocupe todo el espacio disponible
-     empujando el footer al fondo (sticky footer con Flexbox) */
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* =========================================================
-   HEADER
-   ========================================================= */
-
-/* Especificidad: 0,0,1 — selector de elemento header */
+/* Especificidad: 0,0,1 */
 header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* =========================================================
-   NAVEGACIÓN PRINCIPAL
-   Flexbox horizontal con wrap para que en móvil los ítems
-   bajen a la siguiente línea si no caben.
-   ========================================================= */
-
-/* Especificidad: 0,0,2 — selector nav ul */
-nav ul {
+/* Especificidad: 0,0,2 */
+nav ul,
+nav ol {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -64,374 +35,200 @@ nav ul {
   padding: 0;
 }
 
-/* =========================================================
-   MIGAS DE NAVEGACIÓN
-   Flexbox horizontal con separadores.
-   ========================================================= */
-
-/* Especificidad: 0,0,2 — selector nav ol */
-nav ol {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0.5rem 2rem;
+/* Especificidad: 0,0,3 */
+nav ul li {
+  margin: 0.25rem;
 }
 
-/* =========================================================
-   MAIN — LAYOUT INTERIOR CON CSS GRID
-   Una sola columna por defecto (móvil).
-   En tableta y desktop se expande a 2 columnas donde conviene.
-   ========================================================= */
-
-/* Especificidad: 0,0,1 — selector de elemento main */
-main {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0;
-  padding: 1.5rem;
-  max-width: 1100px;
-  margin-inline: auto;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* =========================================================
-   SECCIONES Y ARTÍCULOS
-   ========================================================= */
-
-/* Especificidad: 0,0,1 — selector de elemento section */
-section {
-  width: 100%;
-}
-
-/* Especificidad: 0,0,1 — selector de elemento article */
-article {
-  width: 100%;
-}
-
-/* =========================================================
-   TABLA — adaptabilidad en móvil con scroll horizontal
-   ========================================================= */
-
-/* Especificidad: 0,0,1 — selector de elemento table */
+/* Especificidad: 0,0,1 */
 table {
+  width: 100%;
   display: block;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+}
+
+/* Especificidad: 0,0,1 */
+section,
+article,
+figure {
   width: 100%;
 }
 
-/* =========================================================
-   GALERÍA DE FOTOS DE HITOS (generada por rutas.js)
-   CSS Multi-column Layout para la galería de fotografías
-   ========================================================= */
-
-/* Especificidad: 0,0,3 — selector article ul */
+/* Especificidad: 0,0,3 */
 article ul {
   column-count: 1;
   column-gap: 1rem;
+  padding: 0;
 }
 
-/* Especificidad: 0,0,4 — selector article ul li */
+/* Especificidad: 0,0,4 */
 article ul li {
-  break-inside: avoid;
   list-style: none;
+  break-inside: avoid;
   margin-bottom: 1rem;
 }
 
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-/* Especificidad: 0,0,1 — selector de elemento footer */
-footer {
-  flex-shrink: 0;
-  width: 100%;
-}
-
-/* =========================================================
-   DIV DEL MAPA (excepción permitida por el guión)
-   Permitido el uso de div y su selector para los mapas dinámicos.
-   ========================================================= */
-
-/* Especificidad: 0,0,1 — selector div (excepción explícita del guión para mapas dinámicos) */
-div {
-  width: 100%;
-  min-height: 300px;
-  box-sizing: border-box;
-}
-
-/* =========================================================
-   FIELDSET Y FORMULARIOS (PHP)
-   ========================================================= */
-
-/* Especificidad: 0,0,1 — selector de elemento fieldset */
-fieldset {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.5rem;
-  border: 1px solid var(--color-borde);
-  border-radius: var(--radio);
-  padding: 1rem 1.25rem;
-  margin-bottom: 1rem;
-}
-
-/* Especificidad: 0,0,1 — selector de elemento input */
-input {
-  width: 100%;
-  max-width: 400px;
-  padding: 0.45rem 0.7rem;
-  font-family: 'Source Serif 4', Georgia, serif;
-  font-size: 0.95rem;
-  border: 1px solid var(--color-borde);
-  border-radius: var(--radio);
-  box-sizing: border-box;
-}
-
-/* Especificidad: 0,1,1 — selector input:focus */
-input:focus {
-  outline: 3px solid var(--color-acento);
-  outline-offset: 2px;
-  border-color: var(--color-principal);
-}
-
-/* Especificidad: 0,0,1 — selector de elemento label */
-label {
-  font-weight: 600;
-  color: var(--color-principal);
-  /* ADVERTENCIA HERENCIA: color sobreescrito respecto a body.
-     Contraste: #1a3a5c sobre #f4f0eb = ratio 9.4:1 (AAA) */
-  display: block;
-  margin-bottom: 0.25rem;
-}
-
-/* Especificidad: 0,0,1 — selector de elemento select */
-select {
-  padding: 0.45rem 0.7rem;
-  font-family: 'Source Serif 4', Georgia, serif;
-  font-size: 0.95rem;
-  border: 1px solid var(--color-borde);
-  border-radius: var(--radio);
-  background-color: var(--color-claro);
-}
-
-/* =========================================================
-   FIGURA E IMAGEN — adaptabilidad
-   ========================================================= */
-
-/* Especificidad: 0,0,1 — selector de elemento figure */
-figure {
-  width: 100%;
-  max-width: 100%;
-}
-
-/* Especificidad: 0,0,2 — selector figure img */
-figure img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Especificidad: 0,0,2 — selector figure video */
+/* Especificidad: 0,0,2 */
+figure img,
 figure video {
   width: 100%;
   height: auto;
   display: block;
 }
 
-/* =========================================================
-   PROGRESS (juego)
-   ========================================================= */
-
-/* Especificidad: 0,0,1 — selector de elemento progress */
-progress {
+/* Especificidad: 0,0,1 */
+form {
   width: 100%;
-  height: 0.75rem;
-  border-radius: var(--radio);
-  appearance: none;
-  border: none;
 }
 
-/* =========================================================
-   MEDIA QUERY — TABLETA (≥ 600px)
-   ========================================================= */
+/* Especificidad: 0,0,1 */
+fieldset {
+  display: grid;
+  gap: 1rem;
+  border: 1px solid #999;
+  padding: 1rem;
+}
 
+/* Especificidad: 0,0,1 */
+label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: bold;
+}
+
+/* Especificidad: 0,0,1 */
+input,
+select,
+button,
+textarea {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+/* Especificidad: 0,1,1 */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #1a3a5c;
+}
+
+/* Especificidad: 0,0,1 */
+footer {
+  margin-top: auto;
+}
+
+/* Especificidad: 0,0,1 */
+div {
+  width: 100%;
+  min-height: 300px;
+}
+
+/* Especificidad: 0,0,1 */
+progress {
+  width: 100%;
+}
 @media (min-width: 600px) {
 
-  /* Especificidad: 0,0,1 — selector main
-     ADVERTENCIA REDEFINICIÓN: padding redefinido respecto al valor base
-     por la media query de tableta. */
+  /* Especificidad: 0,0,1
+     ADVERTENCIA VÁLIDA:
+     redefinición de padding respecto al valor base
+     para adaptar el layout a tablet */
   main {
-    padding: 1.75rem 2rem;
+    padding: 2rem;
   }
 
-  /* Especificidad: 0,0,3 — selector article ul
-     ADVERTENCIA REDEFINICIÓN: column-count redefinido respecto al valor base
-     por la media query de tableta. */
+  /* Especificidad: 0,0,3
+     ADVERTENCIA VÁLIDA:
+     redefinición de column-count
+     para mostrar más columnas en tablet */
   article ul {
     column-count: 2;
   }
 
-  /* Especificidad: 0,0,1 — selector fieldset
-     ADVERTENCIA REDEFINICIÓN: grid-template-columns redefinido respecto al valor base
-     por la media query de tableta. */
+  /* Especificidad: 0,0,1
+     ADVERTENCIA VÁLIDA:
+     redefinición de grid-template-columns
+     para formularios en 2 columnas */
   fieldset {
     grid-template-columns: 1fr 1fr;
   }
 
-  /* Especificidad: 0,0,1 — selector table
-     ADVERTENCIA REDEFINICIÓN: display redefinido respecto al valor base (block)
-     por la media query de tableta para recuperar el comportamiento de tabla. */
+  /* Especificidad: 0,0,1
+     ADVERTENCIA VÁLIDA:
+     redefinición de display
+     para recuperar comportamiento normal de tabla */
   table {
     display: table;
-    overflow-x: visible;
   }
 }
 
-/* =========================================================
-   MEDIA QUERY — DESKTOP (≥ 1024px)
-   ========================================================= */
-
 @media (min-width: 1024px) {
 
-  /* Especificidad: 0,0,1 — selector main
-     ADVERTENCIA REDEFINICIÓN: padding y grid-template-columns redefinidos
-     respecto a los valores de tableta por la media query de desktop. */
-  main {
-    padding: 2rem;
-    grid-template-columns: 1fr;
-  }
-
-  /* Especificidad: 0,0,3 — selector article ul
-     ADVERTENCIA REDEFINICIÓN: column-count redefinido respecto al valor de tableta
-     por la media query de desktop. */
+  /* Especificidad: 0,0,3
+     ADVERTENCIA VÁLIDA:
+     redefinición de column-count
+     para mostrar 3 columnas en desktop */
   article ul {
     column-count: 3;
   }
 
-  /* Especificidad: 0,0,1 — selector fieldset
-     ADVERTENCIA REDEFINICIÓN: grid-template-columns redefinido respecto al valor de tableta
-     por la media query de desktop. */
+  /* Especificidad: 0,0,1
+     ADVERTENCIA VÁLIDA:
+     redefinición de grid-template-columns
+     para formularios en 3 columnas */
   fieldset {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 
-  /* Especificidad: 0,0,2 — selector nav ul
-     ADVERTENCIA REDEFINICIÓN: flex-wrap redefinido respecto al valor base
-     por la media query de desktop para forzar una sola línea en el menú. */
+  /* Especificidad: 0,0,2
+     ADVERTENCIA VÁLIDA:
+     redefinición de flex-wrap
+     para mantener el menú en una sola línea */
   nav ul {
     flex-wrap: nowrap;
   }
 }
 
-/* =========================================================
-   MEDIA QUERY — PANTALLA PEQUEÑA (< 600px)
-   Ajustes específicos para móvil
-   ========================================================= */
-
 @media (max-width: 599px) {
 
-  /* Especificidad: 0,0,4 — selector nav ul li a
-     ADVERTENCIA REDEFINICIÓN: padding y font-size redefinidos respecto al valor base
-     por la media query de móvil para mejorar la usabilidad en pantallas pequeñas. */
-  nav ul li a {
-    padding: 0.65rem 0.75rem;
-    font-size: 0.8rem;
-    letter-spacing: 0.02em;
-  }
-
-  /* Especificidad: 0,0,1 — selector h1
-     ADVERTENCIA REDEFINICIÓN: font-size redefinido respecto al valor base de estilo.css
-     por la media query de móvil. */
+  /* Especificidad: 0,0,1 */
   h1 {
     font-size: 1.6rem;
   }
 
-  /* Especificidad: 0,0,1 — selector h2
-     ADVERTENCIA REDEFINICIÓN: font-size redefinido respecto al valor base de estilo.css
-     por la media query de móvil. */
+  /* Especificidad: 0,0,1 */
   h2 {
-    font-size: 1.35rem;
+    font-size: 1.3rem;
   }
 
-  /* Especificidad: 0,0,1 — selector main
-     ADVERTENCIA REDEFINICIÓN: padding redefinido respecto al valor base
-     por la media query de móvil. */
-  main {
-    padding: 1rem;
-  }
-
-  /* Especificidad: 0,0,1 — selector input
-     ADVERTENCIA REDEFINICIÓN: max-width redefinido respecto al valor base
-     por la media query de móvil para que los inputs ocupen todo el ancho. */
-  input {
-    max-width: 100%;
-  }
-
-  /* Especificidad: 0,0,2 — selector figure img
-     ADVERTENCIA REDEFINICIÓN: height redefinido respecto al valor base
-     por la media query de móvil. */
-  figure img {
-    height: auto;
-  }
-
-  /* Especificidad: 0,0,1 — selector div
-     ADVERTENCIA REDEFINICIÓN: min-height redefinido respecto al valor base
-     por la media query de móvil para reducir la altura del mapa en pantallas pequeñas. */
+  /* Especificidad: 0,0,1
+     ADVERTENCIA VÁLIDA:
+     redefinición de min-height
+     para reducir altura del mapa en móvil */
   div {
     min-height: 220px;
   }
 }
 
-
-/* =========================================================
-   MENÚ DE OPCIONES DE RESERVAS
-   Solo afecta al nav dentro de section
-   ========================================================= */
-
-/* Especificidad: 0,0,3 — selector section nav ul */
+/* Especificidad: 0,0,3 */
 section nav ul {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
-  list-style: none;
-  margin: 1rem 0;
-  padding: 0;
 }
 
-/* Especificidad: 0,0,4 — selector section nav ul li */
+/* Especificidad: 0,0,4 */
 section nav ul li {
-  background-color: var(--color-principal);
-  color: var(--color-claro);
-  border-radius: var(--radio);
-  padding: 1.25rem;
-  box-shadow: var(--sombra);
-  line-height: 1.6;
-  border: none;
+  padding: 1rem;
+  border: 1px solid #999;
 }
 
-/* Especificidad: 0,0,5 — selector section nav ul li a */
+/* Especificidad: 0,0,5 */
 section nav ul li a {
   display: block;
-  color: var(--color-claro);
   text-decoration: none;
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin-bottom: 0.6rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  padding: 0;
-}
-
-/* Especificidad: 0,1,5 — selector section nav ul li a:hover */
-section nav ul li a:hover {
-  color: #ffe9a8;
-  opacity: 1;
-}
-
-/* Especificidad: 0,0,4 — selector section nav ul li */
-section nav ul li:hover {
-  transform: translateY(-2px);
-  transition: transform var(--transicion);
+  font-weight: bold;
 }

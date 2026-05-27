@@ -34,8 +34,8 @@ h3 {
    ADVERTENCIA VÁLIDA:
    redefinición de color respecto al heredado de body */
 h1 {
-  background: #1a3a5c;
-  color: #ffffff;
+  background: #ffffff;
+  color: #000000;
   padding: 1rem 2rem;
   font-size: 2rem;
 }
@@ -72,7 +72,7 @@ a {
    ADVERTENCIA VÁLIDA:
    redefinición de color respecto a a */
 a:hover {
-  color: #1a3a5c;
+  color: #ff00aa;
 }
 
 /* Especificidad: 0,0,1 */
@@ -184,7 +184,7 @@ button {
    ADVERTENCIA VÁLIDA:
    redefinición de background respecto a button */
 button:hover {
-  background: #1a3a5c;
+  background: #ff009d;
 }
 
 /* Especificidad: 0,0,1 */

@@ -1,4 +1,4 @@
-/* Especificidad: 0,0,1 */ 
+/* Especificidad: 0,0,1 */
 body {
   display: flex;
   flex-direction: column;
@@ -130,6 +130,39 @@ div {
 progress {
   width: 100%;
 }
+
+/* Especificidad: 0,0,2 */
+section ol {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+}
+
+/* Especificidad: 0,0,3 */
+section ol li {
+  margin: 0;
+}
+
+/* Especificidad: 0,0,4 */
+section ol li button {
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  border-radius: 50%;
+  border: none;
+  background-color: #777;
+  cursor: pointer;
+}
+
+/* Especificidad: 0,1,4 */
+section ol li button:hover {
+  background-color: #1a3a5c;
+  transform: scale(1.1);
+}
+
 @media (min-width: 600px) {
 
   /* Especificidad: 0,0,1

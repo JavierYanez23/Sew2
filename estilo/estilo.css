@@ -65,14 +65,14 @@ p {
    ADVERTENCIA VÁLIDA:
    redefinición de color respecto al heredado de body */
 a {
-  color: #c0392b;
+  color: #8b1a10;
 }
 
 /* Especificidad: 0,1,1
    ADVERTENCIA VÁLIDA:
    redefinición de color respecto a a */
 a:hover {
-  color: #ff00aa;
+  color: #6a0060; 
 }
 
 /* Especificidad: 0,0,1 */
@@ -102,7 +102,7 @@ nav ul li a {
    redefinición de color respecto a nav ul li a */
 nav ul li a:hover,
 nav ul li.activo a {
-  background: #c0392b;
+  background: #7b1a10; 
   color: #ffffff;
 }
 
@@ -174,17 +174,15 @@ textarea {
    ADVERTENCIA VÁLIDA:
    redefinición de color respecto al heredado de body */
 button {
-  padding: 0.5rem;
-  background: #c0392b;
+  background: #7b1a10;
   color: #ffffff;
-  cursor: pointer;
 }
 
 /* Especificidad: 0,1,1
    ADVERTENCIA VÁLIDA:
    redefinición de background respecto a button */
 button:hover {
-  background: #ff009d;
+  background: #5a0050;
 }
 
 /* Especificidad: 0,0,1 */

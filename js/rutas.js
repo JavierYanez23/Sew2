@@ -217,9 +217,7 @@ class Ruta extends BaseRuta {
  * Usa OpenLayers + OpenStreetMap (gratuito, sin API Key personal).
  */
 class GestorMapas {
-  constructor() {
-    this.mapaActual = null;
-  }
+  mapaActual = null;
 
   /**
    * Carga el script de OpenLayers dinámicamente si no está ya cargado.

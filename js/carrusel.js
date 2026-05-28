@@ -189,7 +189,7 @@ $(function () {
       "Ciudad de Cristal — Las galerías acristaladas del casco antiguo, símbolo de la ciudad"
     ),
     new Diapositiva(
-      "multimedia/imagenes/situacion_la_coruna.jpg",
+      "multimedia/imagenes/situacion_la_coruna.png",
       "Mapa de situación de la provincia de La Coruña en el noroeste de España, en Galicia",
       "📍 Situación — La Coruña se encuentra en el extremo noroeste de la Península Ibérica"
     )

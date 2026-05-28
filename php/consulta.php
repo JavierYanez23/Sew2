@@ -85,9 +85,8 @@ class ConsultaReservas
     private function etiquetaEstado(string $estado): string
     {
         return match($estado) {
-            'confirmada' => 'Confirmada ✅',
-            'anulada'    => 'Anulada ❌',
-            'pendiente'  => 'Pendiente ⏳',
+            'confirmada' => 'Confirmada ',
+            'anulada'    => 'Anulada ',
             default      => ucfirst($estado),
         };
     }

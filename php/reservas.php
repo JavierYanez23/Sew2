@@ -90,26 +90,26 @@ class ControladorReservas
           <?php if (!$this->usuarioLogueado): ?>
           <li>
             <a href="registro.php">Registrarse / Iniciar sesión</a>
-            &mdash; Crea tu cuenta o accede con tu usuario y contraseña.
+            <h4>&mdash; Crea tu cuenta o accede con tu usuario y contraseña.</h4>
           </li>
           <?php endif; ?>
           <li>
             <a href="recursos.php">Ver recursos turísticos disponibles</a>
-            &mdash; Consulta museos, rutas, restaurantes, hoteles y actividades con precios y disponibilidad.
+            <h4>&mdash; Consulta museos, rutas, restaurantes, hoteles y actividades con precios y disponibilidad.</h4>
           </li>
           <?php if ($this->usuarioLogueado): ?>
           <li>
             <a href="consulta.php">Mis reservas</a>
-            &mdash; Consulta el listado de tus reservas activas.
+            <h4>&mdash; Consulta el listado de tus reservas activas.</h4>
           </li>
           <li>
             <a href="anulacion.php">Anular una reserva</a>
-            &mdash; Cancela cualquier reserva que hayas realizado.
+            <h4>&mdash; Cancela cualquier reserva que hayas realizado.</h4>
           </li>
           <?php else: ?>
           <li>
             <a href="registro.php">Mis reservas</a>
-            &mdash; Inicia sesión para consultar tus reservas.
+            <h4>&mdash; Inicia sesión para consultar tus reservas.</h4>
           </li>
           <?php endif; ?>
         </ul>

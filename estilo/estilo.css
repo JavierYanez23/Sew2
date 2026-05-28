@@ -56,6 +56,13 @@ h3 {
   color: #1a3a5c;
 }
 
+/* Especificidad: 0,0,1
+   ADVERTENCIA VÁLIDA:
+   redefinición de color respecto al heredado de body */
+h4 {
+  color: #ffffff;
+}
+
 /* Especificidad: 0,0,1 */
 p {
   margin-bottom: 1rem;

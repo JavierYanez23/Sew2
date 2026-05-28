@@ -235,3 +235,17 @@ footer {
     font-size: 1.3rem;
   }
 }
+
+.carrusel-indicador {
+  color: #5a5047;
+}
+
+.carrusel-indicador.activo {
+  color: #1a3a5c; 
+}
+
+header a,
+footer a,
+nav > a {
+  color: #ffffff; 
+}

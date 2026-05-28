@@ -39,6 +39,10 @@ class Diapositiva {
  * Clase Carrusel
  * Gestiona la visualización de un conjunto de diapositivas con navegación
  * manual (botones anterior/siguiente) y reproducción automática opcional.
+ *
+ * Uso en el HTML:
+ *   <section id="carrusel">...</section>
+ *   Los botones con texto "Anterior" y "Siguiente" ya están en el HTML estático.
  */
 class Carrusel {
   /**
@@ -71,18 +75,35 @@ class Carrusel {
       return;
     }
 
-    this.$displayImagen = $("<div></div>")
-    .attr("aria-live", "polite");
-
+    this.$displayImagen = $("<div></div>").attr("role", "img").attr("aria-live", "polite");
     this.$contenedor.find("figure").replaceWith(this.$displayImagen);
 
     this.$indicadores = $("<nav></nav>")
-    .attr("aria-label", "Indicadores del carrusel");
+      .attr("aria-label", "Indicadores del carrusel")
+      .css({
+        "display"        : "flex",
+        "justify-content": "center",
+        "align-items"    : "center",
+        "gap"            : "0.5rem",
+        "padding"        : "0.6rem 0",
+        "background"     : "transparent"
+      });
+
     this.diapositivas.forEach((_, i) => {
       const punto = $("<button></button>")
         .attr("type", "button")
         .attr("aria-label", `Ir a la diapositiva ${i + 1}`)
-        .text("●");
+        .text("●")
+        .css({
+          "background"   : "transparent",
+          "color"        : "#c5b99a",
+          "border"       : "none",
+          "font-size"    : "1.4rem",
+          "cursor"       : "pointer",
+          "padding"      : "0 0.1rem",
+          "line-height"  : "1",
+          "transition"   : "color 0.25s ease, transform 0.25s ease"
+        });
       punto.on("click", () => this.irA(i));
       this.$indicadores.append(punto);
     });
@@ -91,11 +112,6 @@ class Carrusel {
     const $botones = this.$contenedor.find("button[type='button']");
     $botones.filter(":contains('Anterior')").on("click", () => this.anterior());
     $botones.filter(":contains('Siguiente')").on("click", () => this.siguiente());
-
-    $(document).on("keydown", (e) => {
-      if (e.key === "ArrowLeft")  this.anterior();
-      if (e.key === "ArrowRight") this.siguiente();
-    });
 
     this.mostrar(0);
 
@@ -106,7 +122,7 @@ class Carrusel {
 
   /**
    * Muestra la diapositiva en el índice indicado.
-   * @param {number} indice - Índice de la diapositiva a mostrar
+   * @param {number} indice 
    */
   mostrar(indice) {
     this.indiceActual = (indice + this.diapositivas.length) % this.diapositivas.length;
@@ -119,7 +135,11 @@ class Carrusel {
 
     if (this.$indicadores) {
       this.$indicadores.find("button").each((i, btn) => {
-        $(btn).css("opacity", i === this.indiceActual ? "1" : "0.4");
+        if (i === this.indiceActual) {
+          $(btn).css({ "color": "#c0392b", "transform": "scale(1.4)" });
+        } else {
+          $(btn).css({ "color": "#c5b99a", "transform": "scale(1)" });
+        }
       });
     }
   }
@@ -194,9 +214,9 @@ $(function () {
       "Ciudad de Cristal — Las galerías acristaladas del casco antiguo, símbolo de la ciudad"
     ),
     new Diapositiva(
-      "multimedia/imagenes/situacion_la_coruna.png",
+      "multimedia/imagenes/situacion_la_coruna.jpg",
       "Mapa de situación de la provincia de La Coruña en el noroeste de España, en Galicia",
-      "Situación — La Coruña se encuentra en el extremo noroeste de la Península Ibérica"
+      "📍 Situación — La Coruña se encuentra en el extremo noroeste de la Península Ibérica"
     )
   ];
 

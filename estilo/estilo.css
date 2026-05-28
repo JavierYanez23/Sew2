@@ -34,8 +34,8 @@ h3 {
    ADVERTENCIA VÁLIDA:
    redefinición de color respecto al heredado de body */
 h1 {
-  background: #ffffff;
-  color: #000000;
+  background:#1a3a5c;
+  color: #ffffff;
   padding: 1rem 2rem;
   font-size: 2rem;
 }

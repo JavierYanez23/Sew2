@@ -80,30 +80,14 @@ class Carrusel {
 
     this.$indicadores = $("<nav></nav>")
       .attr("aria-label", "Indicadores del carrusel")
-      .css({
-        "display"        : "flex",
-        "justify-content": "center",
-        "align-items"    : "center",
-        "gap"            : "0.5rem",
-        "padding"        : "0.6rem 0",
-        "background"     : "transparent"
-      });
+      ;
 
     this.diapositivas.forEach((_, i) => {
       const punto = $("<button></button>")
         .attr("type", "button")
         .attr("aria-label", `Ir a la diapositiva ${i + 1}`)
         .text("●")
-        .css({
-          "background"   : "transparent",
-          "color"        : "#c5b99a",
-          "border"       : "none",
-          "font-size"    : "1.4rem",
-          "cursor"       : "pointer",
-          "padding"      : "0 0.1rem",
-          "line-height"  : "1",
-          "transition"   : "color 0.25s ease, transform 0.25s ease"
-        });
+        ;
       punto.on("click", () => this.irA(i));
       this.$indicadores.append(punto);
     });
@@ -133,15 +117,6 @@ class Carrusel {
         this.$displayImagen.empty().append(diap.renderizar()).fadeIn(400);
       });
 
-    if (this.$indicadores) {
-      this.$indicadores.find("button").each((i, btn) => {
-        if (i === this.indiceActual) {
-          $(btn).css({ "color": "#c0392b", "transform": "scale(1.4)" });
-        } else {
-          $(btn).css({ "color": "#c5b99a", "transform": "scale(1)" });
-        }
-      });
-    }
   }
 
   /** Avanza a la siguiente diapositiva. */

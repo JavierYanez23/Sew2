@@ -171,7 +171,7 @@ class GestorUsuarios
     </ul>
   </nav>
 
-  <nav aria-label="Ruta de navegación">
+  <nav aria-label="Migas de pan">
     <ol>
       <li><a href="../index.html">Inicio</a></li>
       <li><a href="reservas.php">Reservas</a></li>

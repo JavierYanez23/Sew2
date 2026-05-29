@@ -120,11 +120,6 @@ footer {
   margin-top: auto;
 }
 
-/* Especificidad: 0,0,1 */
-div {
-  width: 100%;
-  min-height: 300px;
-}
 
 /* Especificidad: 0,0,1 */
 progress {
@@ -237,13 +232,6 @@ section ol li button:hover {
     font-size: 1.3rem;
   }
 
-  /* Especificidad: 0,0,1
-     ADVERTENCIA VÁLIDA:
-     redefinición de min-height
-     para reducir altura del mapa en móvil */
-  div {
-    min-height: 220px;
-  }
 }
 
 /* Especificidad: 0,0,3 */

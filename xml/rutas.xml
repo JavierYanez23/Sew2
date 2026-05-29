@@ -51,13 +51,8 @@
         </coordenadas>
         <distanciaDesdeAnterior unidades="m">0</distanciaDesdeAnterior>
         <fotos>
-          <foto>torre_hercules_exterior.jpg</foto>
-          <foto>torre_hercules_panoramica.jpg</foto>
-          <foto>torre_hercules_escalera.jpg</foto>
+          <foto>torre_de_hercules.jpg</foto>
         </fotos>
-        <videos>
-          <video>torre_hercules_360.mp4</video>
-        </videos>
       </hito>
 
       <hito orden="2">
@@ -73,10 +68,9 @@
           <altitud>48</altitud>
         </coordenadas>
         <distanciaDesdeAnterior unidades="m">250</distanciaDesdeAnterior>
-        <fotos>
-          <foto>parque_escultorico_rosa_vientos.jpg</foto>
-          <foto>parque_escultorico_ara_solis.jpg</foto>
-        </fotos>
+          <fotos>
+            <foto>parque_escultorio.jpg</foto>
+          </fotos>
       </hito>
 
       <hito orden="3">
@@ -93,9 +87,9 @@
         </coordenadas>
         <distanciaDesdeAnterior unidades="m">900</distanciaDesdeAnterior>
         <fotos>
-          <foto>playa_lapas_panoramica.jpg</foto>
-          <foto>playa_lapas_acantilados.jpg</foto>
-        </fotos>
+          <foto>playa_de_las_lapas.jpg</foto>
+        </fotos>  
+        
       </hito>
 
       <hito orden="4">
@@ -112,12 +106,8 @@
         </coordenadas>
         <distanciaDesdeAnterior unidades="m">1400</distanciaDesdeAnterior>
         <fotos>
-          <foto>paseo_maritimo_atardecer.jpg</foto>
-          <foto>paseo_maritimo_bicicletas.jpg</foto>
+          <foto>paseo_maritimo_de_la_coruna.jpg</foto>
         </fotos>
-        <videos>
-          <video>paseo_maritimo_timelapse.mp4</video>
-        </videos>
       </hito>
 
       <hito orden="5">
@@ -133,11 +123,9 @@
           <altitud>4</altitud>
         </coordenadas>
         <distanciaDesdeAnterior unidades="m">1800</distanciaDesdeAnterior>
-        <fotos>
-          <foto>playa_riazor_panoramica.jpg</foto>
-          <foto>playa_riazor_surf.jpg</foto>
-          <foto>playa_riazor_atardecer.jpg</foto>
-        </fotos>
+          <fotos>
+            <foto>playa_de_riazor.jpg</foto>
+          </fotos>
       </hito>
 
       <hito orden="6">
@@ -154,8 +142,7 @@
         </coordenadas>
         <distanciaDesdeAnterior unidades="m">400</distanciaDesdeAnterior>
         <fotos>
-          <foto>playa_orzan_surf.jpg</foto>
-          <foto>playa_orzan_atardecer.jpg</foto>
+          <foto>playa_del_orzan.jpg</foto>
         </fotos>
       </hito>
 
@@ -212,8 +199,7 @@
         </coordenadas>
         <distanciaDesdeAnterior unidades="m">0</distanciaDesdeAnterior>
         <fotos>
-          <foto>obelisco_coruna.jpg</foto>
-          <foto>obelisco_coruna_peregrinos.jpg</foto>
+          <foto>obelisco_de_la_coruña.jpg</foto>
         </fotos>
       </hito>
 
@@ -232,9 +218,7 @@
         </coordenadas>
         <distanciaDesdeAnterior unidades="km">38</distanciaDesdeAnterior>
         <fotos>
-          <foto>iglesia_padron_exterior.jpg</foto>
-          <foto>iglesia_padron_barca_piedra.jpg</foto>
-          <foto>iglesia_padron_interior.jpg</foto>
+          <foto>iglesia_de_padron.jpg</foto>
         </fotos>
       </hito>
 
@@ -252,12 +236,8 @@
         </coordenadas>
         <distanciaDesdeAnterior unidades="km">25</distanciaDesdeAnterior>
         <fotos>
-          <foto>monte_pedroso_vistas.jpg</foto>
-          <foto>monte_pedroso_catedral_fondo.jpg</foto>
+          <foto>monte_pedroso.jpg</foto>
         </fotos>
-        <videos>
-          <video>monte_pedroso_panoramica.mp4</video>
-        </videos>
       </hito>
 
       <hito orden="4">
@@ -274,8 +254,7 @@
         </coordenadas>
         <distanciaDesdeAnterior unidades="km">4</distanciaDesdeAnterior>
         <fotos>
-          <foto>capilla_santa_lucia.jpg</foto>
-          <foto>capilla_santa_lucia_peregrinos.jpg</foto>
+          <foto>santa_lucia.jpg</foto>
         </fotos>
       </hito>
 
@@ -294,13 +273,8 @@
         </coordenadas>
         <distanciaDesdeAnterior unidades="km">8</distanciaDesdeAnterior>
         <fotos>
-          <foto>catedral_santiago_fachada.jpg</foto>
-          <foto>catedral_santiago_plaza_obradoiro.jpg</foto>
-          <foto>catedral_santiago_interior.jpg</foto>
+          <foto>santiago.jpg</foto>
         </fotos>
-        <videos>
-          <video>catedral_santiago_botafumeiro.mp4</video>
-        </videos>
       </hito>
 
     </hitos>
@@ -354,8 +328,7 @@
         </coordenadas>
         <distanciaDesdeAnterior unidades="m">0</distanciaDesdeAnterior>
         <fotos>
-          <foto>puerto_coruna_marina.jpg</foto>
-          <foto>puerto_coruna_castillo_sananton.jpg</foto>
+          <foto>puerto_de_la_coruña.jpg</foto>
         </fotos>
       </hito>
 
@@ -373,9 +346,7 @@
         </coordenadas>
         <distanciaDesdeAnterior unidades="km">18</distanciaDesdeAnterior>
         <fotos>
-          <foto>sada_puerto.jpg</foto>
-          <foto>sada_bateas_mejillones.jpg</foto>
-          <foto>sada_casco_antiguo.jpg</foto>
+          <foto>sada.jpg</foto>
         </fotos>
       </hito>
 
@@ -393,8 +364,7 @@
         </coordenadas>
         <distanciaDesdeAnterior unidades="km">8</distanciaDesdeAnterior>
         <fotos>
-          <foto>playa_gandario_bandera_azul.jpg</foto>
-          <foto>playa_gandario_ria.jpg</foto>
+          <foto>playa_de_gandario.jpg</foto>
         </fotos>
       </hito>
 
@@ -413,12 +383,8 @@
         </coordenadas>
         <distanciaDesdeAnterior unidades="km">7</distanciaDesdeAnterior>
         <fotos>
-          <foto>mino_playa_fluvial.jpg</foto>
-          <foto>mino_rio.jpg</foto>
+          <foto>playa_fluvial.jpg</foto>
         </fotos>
-        <videos>
-          <video>mino_festa_camaron.mp4</video>
-        </videos>
       </hito>
 
       <hito orden="5">
@@ -436,13 +402,8 @@
         </coordenadas>
         <distanciaDesdeAnterior unidades="km">12</distanciaDesdeAnterior>
         <fotos>
-          <foto>betanzos_iglesia_san_francisco.jpg</foto>
-          <foto>betanzos_soportales.jpg</foto>
-          <foto>betanzos_plaza_garcia_hermanos.jpg</foto>
+          <foto>betanzos.jpg</foto>
         </fotos>
-        <videos>
-          <video>betanzos_globo_carnaval.mp4</video>
-        </videos>
       </hito>
 
       <hito orden="6">
@@ -460,9 +421,7 @@
         </coordenadas>
         <distanciaDesdeAnterior unidades="m">80</distanciaDesdeAnterior>
         <fotos>
-          <foto>betanzos_san_francisco_portico.jpg</foto>
-          <foto>betanzos_san_francisco_sepulcro.jpg</foto>
-          <foto>betanzos_san_francisco_interior.jpg</foto>
+          <foto>iglesia_san_francisco_de_betanzos.jpg</foto>
         </fotos>
       </hito>
 

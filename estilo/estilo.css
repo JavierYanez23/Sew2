@@ -35,7 +35,7 @@ h3 {
    redefinición de color respecto al heredado de body */
 h1 {
   background:#1a3a5c;
-  color: #ffffff;
+  color: #000000;
   padding: 1rem 2rem;
   font-size: 2rem;
 }
@@ -59,7 +59,7 @@ h3 {
 /* Especificidad: 0,0,1
    ADVERTENCIA VÁLIDA:
    redefinición de color respecto al heredado de body */
-h4 {
+h5 {
   color: #ffffff;
 }
 

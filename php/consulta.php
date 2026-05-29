@@ -98,11 +98,14 @@ class ConsultaReservas
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>Mis Reservas &mdash; Turismo La Coruña</title>
-  <link rel="stylesheet" href="../estilo/estilo.css">
-  <link rel="stylesheet" href="../estilo/layout.css">
+  <meta name="author" content="Javier" />
+  <meta name="description" content="Página de consulta de reservas del proyecto Turismo en La Coruña" />
+  <meta name="keywords" content="Turismo, La Coruña, reservas, consulta, mis reservas" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="../estilo/estilo.css" />
+  <link rel="stylesheet" type="text/css" href="../estilo/layout.css" />
 </head>
 <body>
 

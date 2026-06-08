@@ -78,9 +78,9 @@ class Carrusel {
     this.$displayImagen = $("<div></div>").attr("role", "img").attr("aria-live", "polite");
     this.$contenedor.find("figure").replaceWith(this.$displayImagen);
 
-    this.$indicadores = $("<nav></nav>")
-      .attr("aria-label", "Indicadores del carrusel")
-      ;
+    this.$indicadores = $("<p></p>")
+    .attr("role", "group")
+    .attr("aria-label", "Indicadores del carrusel")
 
     this.diapositivas.forEach((_, i) => {
       const punto = $("<button></button>")

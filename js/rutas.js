@@ -214,19 +214,18 @@ class Ruta extends BaseRuta {
  */
 class GestorMapas {
   mapaActual = null;
+  resizeObserver = null;
 
-  /**
-   * Carga el script de OpenLayers dinámicamente si no está ya cargado.
-   * @returns {jQuery.Deferred}
-   */
   cargarOpenLayers() {
     const deferred = $.Deferred();
+
     if (typeof ol !== "undefined") {
       deferred.resolve();
       return deferred.promise();
     }
+
     $("<link>").attr({
-      rel : "stylesheet",
+      rel: "stylesheet",
       href: "https://cdn.jsdelivr.net/npm/ol@v9.2.4/ol.css"
     }).appendTo("head");
 
@@ -237,54 +236,71 @@ class GestorMapas {
     return deferred.promise();
   }
 
-  /**
-   * Renderiza el mapa de planimetría de una ruta en el div del HTML.
-   * @param {Ruta}   ruta          - Objeto Ruta con los datos
-   * @param {string} idContenedor  - id del div donde renderizar el mapa
-   */
   renderizarMapa(ruta, idContenedor) {
     const $div = $(`#${idContenedor}`);
-    $div.empty().css({ width: "100%", height: "100%" });
- 
+
+    $div.empty();
+
     this.cargarOpenLayers().done(() => {
+
       const capaOSM = new ol.layer.Tile({
         source: new ol.source.OSM()
       });
 
       const capaKML = new ol.layer.Vector({
         source: new ol.source.Vector({
-          url   : `xml/${ruta.planimetria}`,
+          url: `xml/${ruta.planimetria}`,
           format: new ol.format.KML({ extractStyles: true })
         })
       });
 
       if (this.mapaActual) {
         this.mapaActual.setTarget(null);
+        this.mapaActual = null;
       }
 
       this.mapaActual = new ol.Map({
         target: idContenedor,
         layers: [capaOSM, capaKML],
-        view  : new ol.View({
+        view: new ol.View({
           center: ol.proj.fromLonLat([ruta.lonInicio, ruta.latInicio]),
-          zoom  : 12
+          zoom: 12
         })
       });
 
-      // Fuerza recálculo del canvas al tamaño real del contenedor
-      setTimeout(() => {
-        this.mapaActual.updateSize();
-      }, 300);
+      // 🔥 FIX REAL: esperar a layout final + recalcular
+      const ajustarMapa = () => {
+        if (this.mapaActual) {
+          this.mapaActual.updateSize();
+        }
+      };
 
+      requestAnimationFrame(() => {
+        setTimeout(ajustarMapa, 100);
+      });
+
+      // 🔥 CLAVE: observer real del contenedor (ESTO ARREGLA <500px)
+      if (this.resizeObserver) {
+        this.resizeObserver.disconnect();
+      }
+
+      this.resizeObserver = new ResizeObserver(() => {
+        ajustarMapa();
+      });
+
+      this.resizeObserver.observe(document.getElementById(idContenedor));
+
+      // encuadre KML
       capaKML.getSource().once("change", () => {
         const extent = capaKML.getSource().getExtent();
         if (extent && Number.isFinite(extent[0])) {
           this.mapaActual.getView().fit(extent, {
-            padding : [40, 40, 40, 40],
-            maxZoom : 15
+            padding: [40, 40, 40, 40],
+            maxZoom: 15
           });
         }
       });
+
     }).fail((msg) => {
       $div.text(`No se pudo cargar el mapa: ${msg}`);
     });

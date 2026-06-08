@@ -1,22 +1,26 @@
-/* Especificidad: 0,0,0 */
+/* =========================
+   BASE
+========================= */
+
 * {
   box-sizing: border-box;
 }
 
-/* Especificidad: 0,0,1 */
 html, body {
   overflow-x: hidden;
   max-width: 100%;
 }
 
-/* Especificidad: 0,0,1 */
+/* =========================
+   ESTRUCTURA
+========================= */
+
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* Especificidad: 0,0,1 */
 main {
   flex: 1;
   display: grid;
@@ -27,7 +31,10 @@ main {
   width: 100%;
 }
 
-/* Especificidad: 0,0,1 */
+/* =========================
+   HEADER / NAV
+========================= */
+
 header {
   display: flex;
   flex-wrap: wrap;
@@ -35,65 +42,33 @@ header {
   align-items: center;
 }
 
-/* Especificidad: 0,0,2 */
 nav ul,
 nav ol {
   display: flex;
   flex-wrap: wrap;
 }
 
-/* Especificidad: 0,0,3 */
 nav ul li {
   margin: 0.25rem;
 }
 
-/* Especificidad: 0,0,1 */
-table {
-  width: 100%;
-  display: block;
-  overflow-x: auto;
+/* navegación tipo grid */
+section nav ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
 }
 
-/* Especificidad: 0,0,1 */
+/* =========================
+   CONTENIDO GENERAL
+========================= */
+
 section,
 article {
   width: 100%;
 }
 
-/* Especificidad: 0,0,1 */
-figure {
-  margin: 1rem 0;
-  width: 100%;
-  overflow: hidden;
-}
-
-/* Especificidad: 0,0,2 */
-figure svg {
-  display: block;
-  max-width: 100%;
-  width: 100%;
-  height: auto;
-}
-
-/* =======================================================
-   REEMPLAZO IMPORTANTE: column-count → GRID (MUCHO MÁS ESTABLE)
-   ======================================================= */
-
-/* Especificidad: 0,0,3 */
-article ul {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  padding: 0;
-}
-
-/* Especificidad: 0,0,4 */
-article ul li {
-  break-inside: avoid;
-  margin-bottom: 1rem;
-}
-
-/* Especificidad: 0,0,2 */
+/* imágenes y vídeo */
 img,
 video {
   max-width: 100%;
@@ -101,24 +76,77 @@ video {
   display: block;
 }
 
-/* Especificidad: 0,0,1 */
+/* 🔥 SVG (IMPORTANTE PARA ALTIMETRÍA) */
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================
+   FIGURES
+========================= */
+
+figure {
+  margin: 1rem 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* =========================
+   MAPA (CLAVE)
+========================= */
+
+#mapa-ruta {
+  width: 100%;
+  height: 420px;
+  min-height: 250px;
+  display: block;
+}
+
+/* =========================
+   TABLAS
+========================= */
+
+table {
+  width: 100%;
+  display: block;
+  overflow-x: auto;
+}
+
+/* =========================
+   LISTAS DE HITOS
+========================= */
+
+article ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 0;
+}
+
+article ul li {
+  break-inside: avoid;
+}
+
+/* =========================
+   FORMULARIOS
+========================= */
+
 form {
   width: 100%;
 }
 
-/* Especificidad: 0,0,1 */
 fieldset {
   display: grid;
   gap: 1rem;
 }
 
-/* Especificidad: 0,0,1 */
 label {
   display: block;
   margin-bottom: 0.25rem;
 }
 
-/* Especificidad: 0,0,1 */
 input,
 select,
 button,
@@ -127,161 +155,89 @@ textarea {
   max-width: 400px;
 }
 
-/* Especificidad: 0,0,1 */
+/* =========================
+   FOOTER
+========================= */
+
 footer {
   margin-top: auto;
 }
 
-/* Especificidad: 0,0,1 */
-progress {
-  width: 100%;
-}
-
-/* Especificidad: 0,0,2 */
-section ol {
-  display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-  margin: 1rem 0;
-  padding: 0;
-}
-
-/* Especificidad: 0,0,3 */
-section ol li {
-  margin: 0;
-}
-
-/* Especificidad: 0,0,4 */
-section ol li button {
-  width: 14px;
-  height: 14px;
-  padding: 0;
-}
-
-/* Especificidad: 0,1,4 */
-section ol li button:hover {
-  transform: scale(1.1);
-}
-
-/* ===========================
+/* =========================
    BREAKPOINT TABLET
-   =========================== */
+========================= */
+
 @media (min-width: 600px) {
 
-  /* Especificidad: 0,0,1 */
-  main {
-    padding: 2rem;
-  }
-
-  /* Especificidad: 0,0,3 */
   article ul {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Especificidad: 0,0,1 */
   fieldset {
     grid-template-columns: 1fr 1fr;
   }
 
-  /* Especificidad: 0,0,1 */
   table {
     display: table;
   }
 }
 
-/* ===========================
+/* =========================
    BREAKPOINT DESKTOP
-   =========================== */
+========================= */
+
 @media (min-width: 1024px) {
 
-  /* Especificidad: 0,0,3 */
   article ul {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  /* Especificidad: 0,0,1 */
   fieldset {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  /* Especificidad: 0,0,2 */
   nav ul {
     flex-wrap: nowrap;
   }
 }
 
-/* ===========================
-   BREAKPOINT MÓVIL
-   =========================== */
-@media (max-width: 599px) {
+/* =========================
+   MÓVIL CRÍTICO (<=500px)
+========================= */
 
-  /* Especificidad: 0,0,1 */
+@media (max-width: 500px) {
+
   main {
     padding: 0.75rem;
   }
 
-  /* Especificidad: 0,0,2 */
+  /* NAV en columna */
   nav ul {
     flex-direction: column;
   }
 
-  /* Especificidad: 0,0,3 */
   nav ul li {
-    margin: 0;
     width: 100%;
+    margin: 0;
   }
 
-  /* Especificidad: 0,0,4 */
-  section nav ul li {
-    padding: 0.5rem;
-    overflow: hidden;
+  /* MAPA MÁS PEQUEÑO PERO FIJO */
+  #mapa-ruta {
+    height: 240px;
+    min-height: 240px;
   }
 
-  /* Especificidad: 0,0,5 */
+  /* BOTONES LARGOS */
   section nav ul li button {
-    max-width: 100%;
     width: 100%;
     white-space: normal;
     word-break: break-word;
     text-align: left;
+  }
+
+  /* SVG extra seguro */
+  svg {
+    max-width: 100%;
     height: auto;
-    padding: 0.75rem;
-    box-sizing: border-box;
   }
-
-  /* Especificidad: 0,0,1 */
-  table {
-    display: block;
-    overflow-x: auto;
-  }
-
-  /* Especificidad: 0,0,2 */
-  table th,
-  table td {
-    padding: 0.5rem;
-    min-width: 80px;
-    word-break: break-word;
-  }
-
-  /* Especificidad: 0,1,0 */
-  #mapa-ruta {
-    height: 250px;
-  }
-}
-
-/* ===========================
-   NAV GRID RUTAS
-   =========================== */
-
-/* Especificidad: 0,0,3 */
-section nav ul {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-}
-
-/* Especificidad: 0,1,0 */
-#mapa-ruta {
-  width: 100%;
-  height: 420px;
 }

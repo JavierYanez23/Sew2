@@ -34,7 +34,7 @@ h3 {
    ADVERTENCIA VÁLIDA:
    redefinición de color respecto al heredado de body */
 h1 {
-  background:#1a3a5c;
+  background: #1a3a5c;
   color: #000000;
   padding: 1rem 2rem;
   font-size: 2rem;
@@ -79,7 +79,7 @@ a {
    ADVERTENCIA VÁLIDA:
    redefinición de color respecto a a */
 a:hover {
-  color: #6a0060; 
+  color: #6a0060;
 }
 
 /* Especificidad: 0,0,1 */
@@ -92,6 +92,8 @@ nav {
 nav ul,
 nav ol {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* Especificidad: 0,0,4
@@ -109,7 +111,7 @@ nav ul li a {
    redefinición de color respecto a nav ul li a */
 nav ul li a:hover,
 nav ul li.activo a {
-  background: #7b1a10; 
+  background: #7b1a10;
   color: #ffffff;
 }
 
@@ -129,7 +131,6 @@ nav ol li a {
 
 /* Especificidad: 0,0,1 */
 table {
-  width: 100%;
   border-collapse: collapse;
   margin: 1rem 0;
 }
@@ -175,6 +176,14 @@ select,
 textarea {
   padding: 0.5rem;
   border: 1px solid #999;
+  box-sizing: border-box;
+}
+
+/* Especificidad: 0,1,1 */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #1a3a5c;
 }
 
 /* Especificidad: 0,0,1
@@ -183,6 +192,8 @@ textarea {
 button {
   background: #7b1a10;
   color: #ffffff;
+  padding: 0.5rem;
+  box-sizing: border-box;
 }
 
 /* Especificidad: 0,1,1
@@ -192,17 +203,9 @@ button:hover {
   background: #5a0050;
 }
 
-/* Especificidad: 0,0,1 */
-img,
-video {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Especificidad: 0,0,1 */
-figure {
-  margin: 1rem 0;
+/* Especificidad: 0,0,4 */
+article ul li {
+  list-style: none;
 }
 
 /* Especificidad: 0,0,1
@@ -216,8 +219,48 @@ footer {
   margin-top: 2rem;
 }
 
-@media (min-width: 600px) {
+/* Especificidad: 0,0,1 */
+section ol li button {
+  border-radius: 50%;
+  border: none;
+  background-color: #777;
+  cursor: pointer;
+}
 
+/* Especificidad: 0,1,4 */
+section ol li button:hover {
+  background-color: #1a3a5c;
+}
+
+/* Especificidad: 0,0,4 */
+section nav ul li {
+  border: 1px solid #999;
+}
+
+/* Especificidad: 0,0,5 */
+section nav ul li a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Especificidad: 0,0,1 */
+.carrusel-indicador {
+  color: #5a5047;
+}
+
+/* Especificidad: 0,0,1 */
+.carrusel-indicador.activo {
+  color: #1a3a5c;
+}
+
+/* Especificidad: 0,0,1 */
+header a,
+footer a,
+nav > a {
+  color: #ffffff;
+}
+
+@media (min-width: 600px) {
   /* Especificidad: 0,0,1
      ADVERTENCIA VÁLIDA:
      redefinición de padding respecto al valor base */
@@ -227,7 +270,6 @@ footer {
 }
 
 @media (max-width: 599px) {
-
   /* Especificidad: 0,0,1
      ADVERTENCIA VÁLIDA:
      redefinición de font-size respecto al valor base */
@@ -241,18 +283,11 @@ footer {
   h2 {
     font-size: 1.3rem;
   }
-}
 
-.carrusel-indicador {
-  color: #5a5047;
-}
-
-.carrusel-indicador.activo {
-  color: #1a3a5c; 
-}
-
-header a,
-footer a,
-nav > a {
-  color: #ffffff; 
+  /* Especificidad: 0,0,1
+     ADVERTENCIA VÁLIDA:
+     redefinición de font-size respecto al valor base */
+  table {
+    font-size: 0.9rem;
+  }
 }

@@ -1,3 +1,14 @@
+/* Especificidad: 0,0,0 */
+* {
+  box-sizing: border-box;
+}
+
+/* Especificidad: 0,0,1 */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 /* Especificidad: 0,0,1 */
 body {
   display: flex;
@@ -14,7 +25,6 @@ main {
   max-width: 1100px;
   margin: 0 auto;
   width: 100%;
-  box-sizing: border-box;
 }
 
 /* Especificidad: 0,0,1 */
@@ -30,9 +40,6 @@ nav ul,
 nav ol {
   display: flex;
   flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 /* Especificidad: 0,0,3 */
@@ -45,14 +52,30 @@ table {
   width: 100%;
   display: block;
   overflow-x: auto;
-  border-collapse: collapse;
 }
 
 /* Especificidad: 0,0,1 */
 section,
-article,
-figure {
+article {
   width: 100%;
+}
+
+/* Especificidad: 0,0,1 */
+figure {
+  margin: 1rem 0;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Especificidad: 0,0,2
+   ADVERTENCIA VÁLIDA:
+   redefinición de width respecto al valor base
+   para que el SVG de altimetría sea responsive */
+figure svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 /* Especificidad: 0,0,3 */
@@ -64,15 +87,14 @@ article ul {
 
 /* Especificidad: 0,0,4 */
 article ul li {
-  list-style: none;
   break-inside: avoid;
   margin-bottom: 1rem;
 }
 
 /* Especificidad: 0,0,2 */
-figure img,
-figure video {
-  width: 100%;
+img,
+video {
+  max-width: 100%;
   height: auto;
   display: block;
 }
@@ -86,15 +108,12 @@ form {
 fieldset {
   display: grid;
   gap: 1rem;
-  border: 1px solid #999;
-  padding: 1rem;
 }
 
 /* Especificidad: 0,0,1 */
 label {
   display: block;
   margin-bottom: 0.25rem;
-  font-weight: bold;
 }
 
 /* Especificidad: 0,0,1 */
@@ -104,22 +123,12 @@ button,
 textarea {
   width: 100%;
   max-width: 400px;
-  padding: 0.5rem;
-  box-sizing: border-box;
-}
-
-/* Especificidad: 0,1,1 */
-input:focus,
-select:focus,
-textarea:focus {
-  outline: 2px solid #1a3a5c;
 }
 
 /* Especificidad: 0,0,1 */
 footer {
   margin-top: auto;
 }
-
 
 /* Especificidad: 0,0,1 */
 progress {
@@ -131,7 +140,6 @@ section ol {
   display: flex;
   justify-content: center;
   gap: 0.75rem;
-  list-style: none;
   margin: 1rem 0;
   padding: 0;
 }
@@ -146,20 +154,14 @@ section ol li button {
   width: 14px;
   height: 14px;
   padding: 0;
-  border-radius: 50%;
-  border: none;
-  background-color: #777;
-  cursor: pointer;
 }
 
 /* Especificidad: 0,1,4 */
 section ol li button:hover {
-  background-color: #1a3a5c;
   transform: scale(1.1);
 }
 
 @media (min-width: 600px) {
-
   /* Especificidad: 0,0,1
      ADVERTENCIA VÁLIDA:
      redefinición de padding respecto al valor base
@@ -173,7 +175,7 @@ section ol li button:hover {
      redefinición de column-count
      para mostrar más columnas en tablet */
   article ul {
-    column-count: 2;
+  column-count: 1 !important;
   }
 
   /* Especificidad: 0,0,1
@@ -194,7 +196,6 @@ section ol li button:hover {
 }
 
 @media (min-width: 1024px) {
-
   /* Especificidad: 0,0,3
      ADVERTENCIA VÁLIDA:
      redefinición de column-count
@@ -221,17 +222,82 @@ section ol li button:hover {
 }
 
 @media (max-width: 599px) {
-
-  /* Especificidad: 0,0,1 */
-  h1 {
-    font-size: 1.6rem;
+  /* Especificidad: 0,0,1
+     ADVERTENCIA VÁLIDA:
+     redefinición de padding respecto al valor base (2rem)
+     para reducir márgenes generales en móvil */
+  main {
+    padding: 0.75rem;
   }
 
-  /* Especificidad: 0,0,1 */
-  h2 {
-    font-size: 1.3rem;
+  /* Especificidad: 0,0,2
+     ADVERTENCIA VÁLIDA:
+     redefinición de flex-direction respecto al valor base
+     para apilar verticalmente el nav principal en móvil */
+  nav ul {
+    flex-direction: column;
   }
 
+  /* Especificidad: 0,0,3
+     ADVERTENCIA VÁLIDA:
+     redefinición de margin y width respecto al valor base
+     para que cada ítem del nav ocupe el ancho completo en móvil */
+  nav ul li {
+    margin: 0;
+    width: 100%;
+  }
+
+  /* Especificidad: 0,0,4
+     ADVERTENCIA VÁLIDA:
+     redefinición de padding respecto al valor base
+     para reducir el espacio del contenedor del botón de ruta en móvil */
+  section nav ul li {
+    padding: 0.5rem;
+    overflow: hidden;
+  }
+
+  /* Especificidad: 0,0,5
+     ADVERTENCIA VÁLIDA:
+     redefinición de max-width respecto al valor base (400px)
+     para evitar desbordamiento del botón de ruta en móvil */
+  section nav ul li button {
+    max-width: 100%;
+    width: 100%;
+    white-space: normal;
+    word-break: break-word;
+    text-align: left;
+    height: auto;
+    padding: 0.75rem;
+    box-sizing: border-box;
+  }
+
+  /* Especificidad: 0,0,1
+     ADVERTENCIA VÁLIDA:
+     redefinición de display respecto al valor base
+     para forzar scroll horizontal en tabla en móvil */
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  /* Especificidad: 0,0,2
+     ADVERTENCIA VÁLIDA:
+     redefinición de padding respecto al valor base
+     para reducir el espacio en celdas en móvil */
+  table th,
+  table td {
+    padding: 0.5rem;
+    min-width: 80px;
+    word-break: break-word;
+  }
+
+  /* Especificidad: 0,1,0
+     ADVERTENCIA VÁLIDA:
+     redefinición de height respecto al valor base (420px)
+     para reducir la altura del mapa en móvil */
+  #mapa-ruta {
+    height: 250px;
+  }
 }
 
 /* Especificidad: 0,0,3 */
@@ -241,15 +307,8 @@ section nav ul {
   gap: 1rem;
 }
 
-/* Especificidad: 0,0,4 */
-section nav ul li {
-  padding: 1rem;
-  border: 1px solid #999;
-}
-
-/* Especificidad: 0,0,5 */
-section nav ul li a {
-  display: block;
-  text-decoration: none;
-  font-weight: bold;
+/* Especificidad: 0,1,0 */
+#mapa-ruta {
+  width: 100%;
+  height: 420px;
 }

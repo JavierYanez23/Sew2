@@ -73,8 +73,6 @@ class HitoRuta extends BaseRuta {
           $("<img>").attr({
             src   : `multimedia/imagenes/${foto}`,
             alt   : `Fotografía del hito ${this.nombre}: ${foto}`,
-            width : "280",
-            height: "180"
           }),
           $("<figcaption></figcaption>").text(foto)
         );
@@ -90,8 +88,6 @@ class HitoRuta extends BaseRuta {
         const fig = $("<figure></figure>");
         const vid = $("<video></video>").attr({
           controls: true,
-          width   : "400",
-          height  : "225"
         });
         vid.append(
           $("<source>").attr({
@@ -248,8 +244,8 @@ class GestorMapas {
    */
   renderizarMapa(ruta, idContenedor) {
     const $div = $(`#${idContenedor}`);
-    $div.empty().css({ width: "100%", height: "420px" });
-
+    $div.empty().css({ width: "100%", height: "100%" });
+ 
     this.cargarOpenLayers().done(() => {
       const capaOSM = new ol.layer.Tile({
         source: new ol.source.OSM()
@@ -274,6 +270,11 @@ class GestorMapas {
           zoom  : 12
         })
       });
+
+      // Fuerza recálculo del canvas al tamaño real del contenedor
+      setTimeout(() => {
+        this.mapaActual.updateSize();
+      }, 300);
 
       capaKML.getSource().once("change", () => {
         const extent = capaKML.getSource().getExtent();
@@ -428,13 +429,13 @@ class GestorRutas {
     this.$secRutas.append(nav);
 
     this.$areaDetalle = $("<section></section>")
-  .attr("aria-live", "polite");
+      .attr("aria-live", "polite");
 
     this.$areaDetalle.append(
       $("<h2></h2>").text("Detalle de la ruta")
-  );
+    );
 
-  this.$secRutas.after(this.$areaDetalle);
+    this.$secRutas.after(this.$areaDetalle);
 
     if (this.rutas.length > 0) {
       this._seleccionarRuta(0);
@@ -447,27 +448,27 @@ class GestorRutas {
    * @private
    */
   _seleccionarRuta(indice) {
-  this.rutaSeleccionada = this.rutas[indice];
-  const ruta = this.rutaSeleccionada;
+    this.rutaSeleccionada = this.rutas[indice];
+    const ruta = this.rutaSeleccionada;
 
-  this.$areaDetalle.find("section").remove();
-  this.$areaDetalle.append(ruta.renderizarFicha());
+    this.$areaDetalle.find("section").remove();
+    this.$areaDetalle.append(ruta.renderizarFicha());
 
-  if (this.$secPlanimetria) {
-    this.gestorMapas.renderizarMapa(ruta, "mapa-ruta");
+    if (this.$secPlanimetria) {
+      this.gestorMapas.renderizarMapa(ruta, "mapa-ruta");
+    }
+
+    if (this.$secAltimetria) {
+      this.$secAltimetria.find("figure").remove();
+      this.$secAltimetria.find("p").last().text("Cargando perfil altimétrico...");
+      this.gestorAlti.renderizarSVG(ruta, this.$secAltimetria);
+    }
+
+    $("html, body").animate(
+      { scrollTop: this.$areaDetalle.offset().top - 80 },
+      400
+    );
   }
-
-  if (this.$secAltimetria) {
-    this.$secAltimetria.find("figure").remove();
-    this.$secAltimetria.find("p").last().text("Cargando perfil altimétrico...");
-    this.gestorAlti.renderizarSVG(ruta, this.$secAltimetria);
-  }
-
-  $("html, body").animate(
-    { scrollTop: this.$areaDetalle.offset().top - 80 },
-    400
-  );
-}
 }
 
 /**

@@ -207,10 +207,6 @@ class ConsultaReservas
 
   </main>
 
-  <footer>
-    <p>Proyecto Universitario &mdash; Software y Estándares para la Web 2025/2026 &mdash; La Coruña</p>
-  </footer>
-
 </body>
 </html>
         <?php

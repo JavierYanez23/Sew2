@@ -22,7 +22,6 @@ class ControladorReservas
     {
         $this->renderizarCabecera();
         $this->renderizarMain();
-        $this->renderizarPie();
     }
 
     private function renderizarCabecera(): void
@@ -32,7 +31,7 @@ class ControladorReservas
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Reservas &mdash; Turismo La Coruña</title>
+  <title>Reservas Turismo La Coruña</title>
   <meta name="author" content="Javier" />
   <meta name="description" content="Página de reservas del proyecto Turismo en La Coruña" />
   <meta name="keywords" content="Turismo, La Coruña, reservas, viajes, planificación" />
@@ -129,20 +128,10 @@ class ControladorReservas
       </ul>
     </section>
   </main>
-        <?php
-    }
-
-    private function renderizarPie(): void
-    {
-        ?>
-  <footer>
-    <p>Proyecto Universitario &mdash; Software y Estándares para la Web 2025/2026 &mdash; La Coruña</p>
-  </footer>
-
-</body>
-</html>
-        <?php
-    }
+  </body>
+  </html>
+          <?php
+      }
 }
 
 $controlador = new ControladorReservas();

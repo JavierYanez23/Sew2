@@ -8,8 +8,8 @@ declare(strict_types=1);
 class InstaladorBD
 {
     private const HOST_ADMIN     = 'localhost';
-    private const USUARIO_ADMIN  = 'root';
-    private const PASSWORD_ADMIN = '';
+    private const USUARIO_ADMIN  = 'DBUSER2026';
+    private const PASSWORD_ADMIN = 'DBPWD2026';
     private const CHARSET        = 'utf8mb4';
     private const ARCHIVO_SQL    = __DIR__ . '/creacion_bd.sql';
 

@@ -64,24 +64,26 @@ article {
 figure {
   margin: 1rem 0;
   width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
 }
 
-/* Especificidad: 0,0,2
-   ADVERTENCIA VÁLIDA:
-   redefinición de width respecto al valor base
-   para que el SVG de altimetría sea responsive */
+/* Especificidad: 0,0,2 */
 figure svg {
   display: block;
   max-width: 100%;
+  width: 100%;
   height: auto;
 }
 
+/* =======================================================
+   REEMPLAZO IMPORTANTE: column-count → GRID (MUCHO MÁS ESTABLE)
+   ======================================================= */
+
 /* Especificidad: 0,0,3 */
 article ul {
-  column-count: 1;
-  column-gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
   padding: 0;
 }
 
@@ -161,105 +163,81 @@ section ol li button:hover {
   transform: scale(1.1);
 }
 
+/* ===========================
+   BREAKPOINT TABLET
+   =========================== */
 @media (min-width: 600px) {
-  /* Especificidad: 0,0,1
-     ADVERTENCIA VÁLIDA:
-     redefinición de padding respecto al valor base
-     para adaptar el layout a tablet */
+
+  /* Especificidad: 0,0,1 */
   main {
     padding: 2rem;
   }
 
-  /* Especificidad: 0,0,3
-     ADVERTENCIA VÁLIDA:
-     redefinición de column-count
-     para mostrar más columnas en tablet */
+  /* Especificidad: 0,0,3 */
   article ul {
-  column-count: 1 !important;
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Especificidad: 0,0,1
-     ADVERTENCIA VÁLIDA:
-     redefinición de grid-template-columns
-     para formularios en 2 columnas */
+  /* Especificidad: 0,0,1 */
   fieldset {
     grid-template-columns: 1fr 1fr;
   }
 
-  /* Especificidad: 0,0,1
-     ADVERTENCIA VÁLIDA:
-     redefinición de display
-     para recuperar comportamiento normal de tabla */
+  /* Especificidad: 0,0,1 */
   table {
     display: table;
   }
 }
 
+/* ===========================
+   BREAKPOINT DESKTOP
+   =========================== */
 @media (min-width: 1024px) {
-  /* Especificidad: 0,0,3
-     ADVERTENCIA VÁLIDA:
-     redefinición de column-count
-     para mostrar 3 columnas en desktop */
+
+  /* Especificidad: 0,0,3 */
   article ul {
-    column-count: 3;
+    grid-template-columns: repeat(3, 1fr);
   }
 
-  /* Especificidad: 0,0,1
-     ADVERTENCIA VÁLIDA:
-     redefinición de grid-template-columns
-     para formularios en 3 columnas */
+  /* Especificidad: 0,0,1 */
   fieldset {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  /* Especificidad: 0,0,2
-     ADVERTENCIA VÁLIDA:
-     redefinición de flex-wrap
-     para mantener el menú en una sola línea */
+  /* Especificidad: 0,0,2 */
   nav ul {
     flex-wrap: nowrap;
   }
 }
 
+/* ===========================
+   BREAKPOINT MÓVIL
+   =========================== */
 @media (max-width: 599px) {
-  /* Especificidad: 0,0,1
-     ADVERTENCIA VÁLIDA:
-     redefinición de padding respecto al valor base (2rem)
-     para reducir márgenes generales en móvil */
+
+  /* Especificidad: 0,0,1 */
   main {
     padding: 0.75rem;
   }
 
-  /* Especificidad: 0,0,2
-     ADVERTENCIA VÁLIDA:
-     redefinición de flex-direction respecto al valor base
-     para apilar verticalmente el nav principal en móvil */
+  /* Especificidad: 0,0,2 */
   nav ul {
     flex-direction: column;
   }
 
-  /* Especificidad: 0,0,3
-     ADVERTENCIA VÁLIDA:
-     redefinición de margin y width respecto al valor base
-     para que cada ítem del nav ocupe el ancho completo en móvil */
+  /* Especificidad: 0,0,3 */
   nav ul li {
     margin: 0;
     width: 100%;
   }
 
-  /* Especificidad: 0,0,4
-     ADVERTENCIA VÁLIDA:
-     redefinición de padding respecto al valor base
-     para reducir el espacio del contenedor del botón de ruta en móvil */
+  /* Especificidad: 0,0,4 */
   section nav ul li {
     padding: 0.5rem;
     overflow: hidden;
   }
 
-  /* Especificidad: 0,0,5
-     ADVERTENCIA VÁLIDA:
-     redefinición de max-width respecto al valor base (400px)
-     para evitar desbordamiento del botón de ruta en móvil */
+  /* Especificidad: 0,0,5 */
   section nav ul li button {
     max-width: 100%;
     width: 100%;
@@ -271,19 +249,13 @@ section ol li button:hover {
     box-sizing: border-box;
   }
 
-  /* Especificidad: 0,0,1
-     ADVERTENCIA VÁLIDA:
-     redefinición de display respecto al valor base
-     para forzar scroll horizontal en tabla en móvil */
+  /* Especificidad: 0,0,1 */
   table {
     display: block;
     overflow-x: auto;
   }
 
-  /* Especificidad: 0,0,2
-     ADVERTENCIA VÁLIDA:
-     redefinición de padding respecto al valor base
-     para reducir el espacio en celdas en móvil */
+  /* Especificidad: 0,0,2 */
   table th,
   table td {
     padding: 0.5rem;
@@ -291,14 +263,15 @@ section ol li button:hover {
     word-break: break-word;
   }
 
-  /* Especificidad: 0,1,0
-     ADVERTENCIA VÁLIDA:
-     redefinición de height respecto al valor base (420px)
-     para reducir la altura del mapa en móvil */
+  /* Especificidad: 0,1,0 */
   #mapa-ruta {
     height: 250px;
   }
 }
+
+/* ===========================
+   NAV GRID RUTAS
+   =========================== */
 
 /* Especificidad: 0,0,3 */
 section nav ul {
